@@ -29,24 +29,22 @@ import org.logicware.jpi.jtrolog.JTrologProvider;
 
 public final class JPIJTrologDocuments extends JPIDocuments {
 
-    static final Documents instance = new JPIJTrologDocuments();
+	static final Documents instance = new JPIJTrologDocuments();
 
-    protected JPIJTrologDocuments() {
-	super(new Properties(), new JTrologProvider());
-    }
+	protected JPIJTrologDocuments() {
+		super(new Properties(), new JTrologProvider());
+	}
 
-    @Override
-    public Documents getInstance() {
-	return instance;
-    }
+	public Documents getInstance() {
+		return instance;
+	}
 
-    public Cache createCache() {
-	return new JPICache(getProvider());
-    }
+	public Cache createCache() {
+		return new JPICache(getProvider());
+	}
 
-    @Override
-    public ContainerFactory createContainerFactory() {
-	return new JPIJTrologContainerFactory(getProperties(), getProvider());
-    }
+	public ContainerFactory createContainerFactory() {
+		return new JPIJTrologContainerFactory(getProperties(), getProvider());
+	}
 
 }

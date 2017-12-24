@@ -27,47 +27,47 @@ import jTrolog.terms.StructAtom;
 
 public final class JTrologAtom extends JTrologTerm implements PrologAtom {
 
-    JTrologAtom(PrologProvider provider, String name) {
-	super(ATOM_TYPE, provider, new StructAtom(name));
-    }
+	JTrologAtom(PrologProvider provider, String name) {
+		super(ATOM_TYPE, provider, new StructAtom(name));
+	}
 
-    public String getStringValue() {
-	return getFunctor();
-    }
+	public String getStringValue() {
+		return getFunctor();
+	}
 
-    public void setStringValue(String value) {
-	this.value = new StructAtom(value);
-    }
+	public void setStringValue(String value) {
+		this.value = new StructAtom(value);
+	}
 
-    @Override
-    public PrologTerm[] getArguments() {
-	return new JTrologAtom[0];
-    }
+	@Override
+	public PrologTerm[] getArguments() {
+		return new JTrologAtom[0];
+	}
 
-    @Override
-    public int getArity() {
-	return 0;
-    }
+	@Override
+	public int getArity() {
+		return 0;
+	}
 
-    @Override
-    public String getFunctor() {
-	return "" + value + "";
-    }
+	@Override
+	public String getFunctor() {
+		return "" + value + "";
+	}
 
-    @Override
-    public String getIndicator() {
-	return getFunctor() + "/" + getArity();
-    }
+	@Override
+	public String getIndicator() {
+		return getFunctor() + "/" + getArity();
+	}
 
-    @Override
-    public boolean hasIndicator(String functor, int arity) {
-	return getFunctor().equals(functor) && getArity() == arity;
-    }
+	@Override
+	public boolean hasIndicator(String functor, int arity) {
+		return getFunctor().equals(functor) && getArity() == arity;
+	}
 
-    @Override
-    public PrologTerm clone() {
-	String s = getFunctor();
-	return new JTrologAtom(provider, s);
-    }
+	@Override
+	public PrologTerm clone() {
+		String s = getFunctor();
+		return new JTrologAtom(provider, s);
+	}
 
 }

@@ -26,38 +26,38 @@ import jTrolog.terms.StructAtom;
 
 public final class JTrologFail extends JTrologTerm implements PrologTerm {
 
-    JTrologFail(PrologProvider provider) {
-	super(FAIL_TYPE, provider, new StructAtom("fail"));
-    }
+	JTrologFail(PrologProvider provider) {
+		super(FAIL_TYPE, provider, new StructAtom("fail"));
+	}
 
-    @Override
-    public PrologTerm[] getArguments() {
-	return new PrologTerm[0];
-    }
+	@Override
+	public PrologTerm[] getArguments() {
+		return new PrologTerm[0];
+	}
 
-    @Override
-    public int getArity() {
-	return 0;
-    }
+	@Override
+	public int getArity() {
+		return 0;
+	}
 
-    @Override
-    public String getFunctor() {
-	return "" + value + "";
-    }
+	@Override
+	public String getFunctor() {
+		return "" + value + "";
+	}
 
-    @Override
-    public String getIndicator() {
-	return getFunctor() + "/" + getArity();
-    }
+	@Override
+	public String getIndicator() {
+		return getFunctor() + "/" + getArity();
+	}
 
-    @Override
-    public boolean hasIndicator(String functor, int arity) {
-	return getFunctor().equals(functor) && getArity() == arity;
-    }
+	@Override
+	public boolean hasIndicator(String functor, int arity) {
+		return getFunctor().equals(functor) && getArity() == arity;
+	}
 
-    @Override
-    public PrologTerm clone() {
-	return new JTrologFail(provider);
-    }
+	@Override
+	public PrologTerm clone() {
+		return new JTrologFail(provider);
+	}
 
 }

@@ -30,176 +30,176 @@ import jTrolog.terms.Term;
 
 public class JTrologList extends JTrologTerm implements PrologList {
 
-    protected JTrologList(PrologProvider provider) {
-	super(LIST_TYPE, provider, Term.emptyList);
-    }
+	protected JTrologList(PrologProvider provider) {
+		super(LIST_TYPE, provider, Term.emptyList);
+	}
 
-    protected JTrologList(PrologProvider provider, Term[] arguments) {
-	super(LIST_TYPE, provider);
-	if (arguments != null) {
-	    int length = arguments.length;
-	    if (length > 0) {
-		if (arguments[length - 1].equals(Term.emptyList)) {
-		    value = arguments[length - 1];
-		    for (int i = length - 2; i >= 0; --i) {
-			value = new Struct(".", new Term[] { arguments[i], value });
-		    }
+	protected JTrologList(PrologProvider provider, Term[] arguments) {
+		super(LIST_TYPE, provider);
+		if (arguments != null) {
+			int length = arguments.length;
+			if (length > 0) {
+				if (arguments[length - 1].equals(Term.emptyList)) {
+					value = arguments[length - 1];
+					for (int i = length - 2; i >= 0; --i) {
+						value = new Struct(".", new Term[] { arguments[i], value });
+					}
+				} else {
+					value = Term.emptyList;
+					for (int i = length - 1; i >= 0; --i) {
+						value = new Struct(".", new Term[] { arguments[i], value });
+					}
+				}
+			} else {
+				value = Term.emptyList;
+			}
 		} else {
-		    value = Term.emptyList;
-		    for (int i = length - 1; i >= 0; --i) {
-			value = new Struct(".", new Term[] { arguments[i], value });
-		    }
+			value = Term.emptyList;
 		}
-	    } else {
-		value = Term.emptyList;
-	    }
-	} else {
-	    value = Term.emptyList;
 	}
-    }
 
-    protected JTrologList(PrologProvider provider, PrologTerm[] arguments) {
-	super(LIST_TYPE, provider);
-	if (arguments != null) {
-	    int length = arguments.length;
-	    if (length > 0) {
-		if (arguments[length - 1].isEmptyList()) {
-		    value = unwrap(arguments[length - 1], JTrologTerm.class).value;
-		    for (int i = length - 2; i >= 0; --i) {
-			value = new Struct(".", new Term[] { unwrap(arguments[i], JTrologTerm.class).value, value });
-		    }
+	protected JTrologList(PrologProvider provider, PrologTerm[] arguments) {
+		super(LIST_TYPE, provider);
+		if (arguments != null) {
+			int length = arguments.length;
+			if (length > 0) {
+				if (arguments[length - 1].isEmptyList()) {
+					value = unwrap(arguments[length - 1], JTrologTerm.class).value;
+					for (int i = length - 2; i >= 0; --i) {
+						value = new Struct(".", new Term[] { unwrap(arguments[i], JTrologTerm.class).value, value });
+					}
+				} else {
+					value = Term.emptyList;
+					for (int i = length - 1; i >= 0; --i) {
+						value = new Struct(".", new Term[] { unwrap(arguments[i], JTrologTerm.class).value, value });
+					}
+				}
+			} else {
+				value = Term.emptyList;
+			}
 		} else {
-		    value = Term.emptyList;
-		    for (int i = length - 1; i >= 0; --i) {
-			value = new Struct(".", new Term[] { unwrap(arguments[i], JTrologTerm.class).value, value });
-		    }
+			value = Term.emptyList;
 		}
-	    } else {
+	}
+
+	protected JTrologList(PrologProvider provider, PrologTerm head, PrologTerm tail) {
+		super(LIST_TYPE, provider);
+		Term h = unwrap(head, JTrologTerm.class).value;
+		Term t = unwrap(tail, JTrologTerm.class).value;
+		value = new Struct(".", new Term[] { h, t });
+	}
+
+	protected JTrologList(PrologProvider provider, Term[] arguments, Term tail) {
+		super(LIST_TYPE, provider);
+		value = tail;
+		for (int i = arguments.length - 1; i >= 0; --i) {
+			value = new Struct(".", new Term[] { arguments[i], value });
+		}
+	}
+
+	protected JTrologList(PrologProvider provider, PrologTerm[] arguments, PrologTerm tail) {
+		super(LIST_TYPE, provider);
+		value = unwrap(tail, JTrologTerm.class).value;
+		for (int i = arguments.length - 1; i >= 0; --i) {
+			value = new Struct(".", new Term[] { unwrap(arguments[i], JTrologTerm.class).value, value });
+		}
+	}
+
+	public int size() {
+		int counter = 0;
+		Iterator<?> i = iterator();
+		while (i.hasNext()) {
+			counter++;
+			i.next();
+		}
+		return counter;
+	}
+
+	public void clear() {
 		value = Term.emptyList;
-	    }
-	} else {
-	    value = Term.emptyList;
-	}
-    }
-
-    protected JTrologList(PrologProvider provider, PrologTerm head, PrologTerm tail) {
-	super(LIST_TYPE, provider);
-	Term h = unwrap(head, JTrologTerm.class).value;
-	Term t = unwrap(tail, JTrologTerm.class).value;
-	value = new Struct(".", new Term[] { h, t });
-    }
-
-    protected JTrologList(PrologProvider provider, Term[] arguments, Term tail) {
-	super(LIST_TYPE, provider);
-	value = tail;
-	for (int i = arguments.length - 1; i >= 0; --i) {
-	    value = new Struct(".", new Term[] { arguments[i], value });
-	}
-    }
-
-    protected JTrologList(PrologProvider provider, PrologTerm[] arguments, PrologTerm tail) {
-	super(LIST_TYPE, provider);
-	value = unwrap(tail, JTrologTerm.class).value;
-	for (int i = arguments.length - 1; i >= 0; --i) {
-	    value = new Struct(".", new Term[] { unwrap(arguments[i], JTrologTerm.class).value, value });
-	}
-    }
-
-    public int size() {
-	int counter = 0;
-	Iterator<?> i = iterator();
-	while (i.hasNext()) {
-	    counter++;
-	    i.next();
-	}
-	return counter;
-    }
-
-    public void clear() {
-	value = Term.emptyList;
-    }
-
-    public boolean isEmpty() {
-	return value == Term.emptyList;
-    }
-
-    public Iterator<PrologTerm> iterator() {
-	Struct list = (Struct) value;
-	return new JTrologListIter(list);
-    }
-
-    public PrologTerm getHead() {
-	Term head = ((Struct) value).getArg(0);
-	return toTerm(head, PrologTerm.class);
-    }
-
-    public PrologTerm getTail() {
-	Term tail = ((Struct) value).getArg(1);
-	return toTerm(tail, PrologTerm.class);
-    }
-
-    @Override
-    public int getArity() {
-	return ((Struct) value).arity;
-    }
-
-    @Override
-    public String getFunctor() {
-	return ((Struct) value).name;
-    }
-
-    @Override
-    public String getIndicator() {
-	return getFunctor() + "/" + getArity();
-    }
-
-    @Override
-    public boolean hasIndicator(String functor, int arity) {
-	return getFunctor().equals(functor) && getArity() == arity;
-    }
-
-    @Override
-    public PrologTerm[] getArguments() {
-	PrologTerm[] a = new PrologTerm[size()];
-	Iterator<PrologTerm> i = iterator();
-	for (int index = 0; i.hasNext();) {
-	    a[index++] = i.next();
-	}
-	return a;
-    }
-
-    @Override
-    public PrologTerm clone() {
-	PrologTerm[] array = getArguments();
-	return new JTrologList(provider, array);
-    }
-
-    private class JTrologListIter implements Iterator<PrologTerm> {
-
-	private PrologTerm next;
-	private final Iterator<?> i;
-
-	private JTrologListIter(Struct list) {
-	    i = Struct.iterator(list);
-	    if (i.hasNext()) {
-		next = toTerm(i.next(), PrologTerm.class);
-	    }
 	}
 
-	public boolean hasNext() {
-	    return next != null && !next.isEmptyList();
+	public boolean isEmpty() {
+		return value == Term.emptyList;
 	}
 
-	public PrologTerm next() {
-	    PrologTerm lastReturned = next;
-	    next = toTerm(i.next(), PrologTerm.class);
-	    return lastReturned;
+	public Iterator<PrologTerm> iterator() {
+		Struct list = (Struct) value;
+		return new JTrologListIter(list);
 	}
 
-	public void remove() {
-	    i.remove();
+	public PrologTerm getHead() {
+		Term head = ((Struct) value).getArg(0);
+		return toTerm(head, PrologTerm.class);
 	}
 
-    }
+	public PrologTerm getTail() {
+		Term tail = ((Struct) value).getArg(1);
+		return toTerm(tail, PrologTerm.class);
+	}
+
+	@Override
+	public int getArity() {
+		return ((Struct) value).arity;
+	}
+
+	@Override
+	public String getFunctor() {
+		return ((Struct) value).name;
+	}
+
+	@Override
+	public String getIndicator() {
+		return getFunctor() + "/" + getArity();
+	}
+
+	@Override
+	public boolean hasIndicator(String functor, int arity) {
+		return getFunctor().equals(functor) && getArity() == arity;
+	}
+
+	@Override
+	public PrologTerm[] getArguments() {
+		PrologTerm[] a = new PrologTerm[size()];
+		Iterator<PrologTerm> i = iterator();
+		for (int index = 0; i.hasNext();) {
+			a[index++] = i.next();
+		}
+		return a;
+	}
+
+	@Override
+	public PrologTerm clone() {
+		PrologTerm[] array = getArguments();
+		return new JTrologList(provider, array);
+	}
+
+	private class JTrologListIter implements Iterator<PrologTerm> {
+
+		private PrologTerm next;
+		private final Iterator<?> i;
+
+		private JTrologListIter(Struct list) {
+			i = Struct.iterator(list);
+			if (i.hasNext()) {
+				next = toTerm(i.next(), PrologTerm.class);
+			}
+		}
+
+		public boolean hasNext() {
+			return next != null && !next.isEmptyList();
+		}
+
+		public PrologTerm next() {
+			PrologTerm lastReturned = next;
+			next = toTerm(i.next(), PrologTerm.class);
+			return lastReturned;
+		}
+
+		public void remove() {
+			i.remove();
+		}
+
+	}
 
 }

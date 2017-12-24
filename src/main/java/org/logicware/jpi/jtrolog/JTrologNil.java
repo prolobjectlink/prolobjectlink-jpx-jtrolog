@@ -26,38 +26,38 @@ import jTrolog.terms.StructAtom;
 
 public final class JTrologNil extends JTrologTerm implements PrologTerm {
 
-    protected JTrologNil(PrologProvider provider) {
-	super(NIL_TYPE, provider, new StructAtom("nil"));
-    }
+	protected JTrologNil(PrologProvider provider) {
+		super(NIL_TYPE, provider, new StructAtom("nil"));
+	}
 
-    @Override
-    public PrologTerm[] getArguments() {
-	return new PrologTerm[0];
-    }
+	@Override
+	public PrologTerm[] getArguments() {
+		return new PrologTerm[0];
+	}
 
-    @Override
-    public int getArity() {
-	return 0;
-    }
+	@Override
+	public int getArity() {
+		return 0;
+	}
 
-    @Override
-    public String getFunctor() {
-	return "" + value + "";
-    }
+	@Override
+	public String getFunctor() {
+		return "" + value + "";
+	}
 
-    @Override
-    public String getIndicator() {
-	return getFunctor() + "/" + getArity();
-    }
+	@Override
+	public String getIndicator() {
+		return getFunctor() + "/" + getArity();
+	}
 
-    @Override
-    public boolean hasIndicator(String functor, int arity) {
-	return getFunctor().equals(functor) && getArity() == arity;
-    }
+	@Override
+	public boolean hasIndicator(String functor, int arity) {
+		return getFunctor().equals(functor) && getArity() == arity;
+	}
 
-    @Override
-    public PrologTerm clone() {
-	return new JTrologNil(provider);
-    }
+	@Override
+	public PrologTerm clone() {
+		return new JTrologNil(provider);
+	}
 
 }

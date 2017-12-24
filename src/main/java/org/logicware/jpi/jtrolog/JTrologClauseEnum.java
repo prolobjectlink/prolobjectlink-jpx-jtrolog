@@ -27,18 +27,18 @@ import org.logicware.jpi.PrologClause;
 
 final class JTrologClauseEnum implements Enumeration<PrologClause> {
 
-    private final Iterator<PrologClause> i;
+	private final Iterator<PrologClause> i;
 
-    public JTrologClauseEnum(Collection<PrologClause> cls) {
-	i = cls.iterator();
-    }
+	public JTrologClauseEnum(Collection<PrologClause> cls) {
+		i = cls.iterator();
+	}
 
-    public boolean hasMoreElements() {
-	return i.hasNext();
-    }
+	public boolean hasMoreElements() {
+		return i.hasNext();
+	}
 
-    public PrologClause nextElement() {
-	return i.next();
-    }
+	public PrologClause nextElement() {
+		return i.next();
+	}
 
 }

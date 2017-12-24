@@ -26,38 +26,38 @@ import jTrolog.terms.Term;
 
 public final class JTrologFalse extends JTrologTerm implements PrologTerm {
 
-    protected JTrologFalse(PrologProvider provider) {
-	super(FALSE_TYPE, provider, Term.FALSE);
-    }
+	protected JTrologFalse(PrologProvider provider) {
+		super(FALSE_TYPE, provider, Term.FALSE);
+	}
 
-    @Override
-    public PrologTerm[] getArguments() {
-	return new PrologTerm[0];
-    }
+	@Override
+	public PrologTerm[] getArguments() {
+		return new PrologTerm[0];
+	}
 
-    @Override
-    public int getArity() {
-	return 0;
-    }
+	@Override
+	public int getArity() {
+		return 0;
+	}
 
-    @Override
-    public String getFunctor() {
-	return "" + value + "";
-    }
+	@Override
+	public String getFunctor() {
+		return "" + value + "";
+	}
 
-    @Override
-    public String getIndicator() {
-	return getFunctor() + "/" + getArity();
-    }
+	@Override
+	public String getIndicator() {
+		return getFunctor() + "/" + getArity();
+	}
 
-    @Override
-    public boolean hasIndicator(String functor, int arity) {
-	return getFunctor().equals(functor) && getArity() == arity;
-    }
+	@Override
+	public boolean hasIndicator(String functor, int arity) {
+		return getFunctor().equals(functor) && getArity() == arity;
+	}
 
-    @Override
-    public PrologTerm clone() {
-	return new JTrologFalse(provider);
-    }
+	@Override
+	public PrologTerm clone() {
+		return new JTrologFalse(provider);
+	}
 
 }

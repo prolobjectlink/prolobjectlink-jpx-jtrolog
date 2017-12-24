@@ -33,75 +33,75 @@ import jTrolog.terms.Double;
 
 public final class JTrologDouble extends JTrologTerm implements PrologDouble {
 
-    JTrologDouble(PrologProvider provider) {
-	super(DOUBLE_TYPE, provider, new Double(0));
-    }
+	JTrologDouble(PrologProvider provider) {
+		super(DOUBLE_TYPE, provider, new Double(0));
+	}
 
-    JTrologDouble(PrologProvider provider, Number value) {
-	super(DOUBLE_TYPE, provider, new Double(value.doubleValue()));
-    }
+	JTrologDouble(PrologProvider provider, Number value) {
+		super(DOUBLE_TYPE, provider, new Double(value.doubleValue()));
+	}
 
-    public PrologInteger getPrologInteger() {
-	return new JTrologInteger(provider, getIntValue());
-    }
+	public PrologInteger getPrologInteger() {
+		return new JTrologInteger(provider, getIntValue());
+	}
 
-    public PrologFloat getPrologFloat() {
-	return new JTrologFloat(provider, getFloatValue());
-    }
+	public PrologFloat getPrologFloat() {
+		return new JTrologFloat(provider, getFloatValue());
+	}
 
-    public PrologDouble getPrologDouble() {
-	return new JTrologDouble(provider, getDoubleValue());
-    }
+	public PrologDouble getPrologDouble() {
+		return new JTrologDouble(provider, getDoubleValue());
+	}
 
-    public PrologLong getPrologLong() {
-	return new JTrologLong(provider, getLongValue());
-    }
+	public PrologLong getPrologLong() {
+		return new JTrologLong(provider, getLongValue());
+	}
 
-    public long getLongValue() {
-	return ((Double) value).longValue();
-    }
+	public long getLongValue() {
+		return ((Double) value).longValue();
+	}
 
-    public double getDoubleValue() {
-	return ((Double) value).doubleValue();
-    }
+	public double getDoubleValue() {
+		return ((Double) value).doubleValue();
+	}
 
-    public int getIntValue() {
-	return ((Double) value).intValue();
-    }
+	public int getIntValue() {
+		return ((Double) value).intValue();
+	}
 
-    public float getFloatValue() {
-	return ((Double) value).floatValue();
-    }
+	public float getFloatValue() {
+		return ((Double) value).floatValue();
+	}
 
-    @Override
-    public PrologTerm[] getArguments() {
-	return new JTrologDouble[0];
-    }
+	@Override
+	public PrologTerm[] getArguments() {
+		return new JTrologDouble[0];
+	}
 
-    @Override
-    public int getArity() {
-	throw new ArityError(this);
-    }
+	@Override
+	public int getArity() {
+		throw new ArityError(this);
+	}
 
-    @Override
-    public String getFunctor() {
-	throw new FunctorError(this);
-    }
+	@Override
+	public String getFunctor() {
+		throw new FunctorError(this);
+	}
 
-    @Override
-    public String getIndicator() {
-	throw new IndicatorError(this);
-    }
+	@Override
+	public String getIndicator() {
+		throw new IndicatorError(this);
+	}
 
-    @Override
-    public boolean hasIndicator(String functor, int arity) {
-	throw new IndicatorError(this);
-    }
+	@Override
+	public boolean hasIndicator(String functor, int arity) {
+		throw new IndicatorError(this);
+	}
 
-    @Override
-    public PrologTerm clone() {
-	double d = getDoubleValue();
-	return new JTrologDouble(provider, d);
-    }
+	@Override
+	public PrologTerm clone() {
+		double d = getDoubleValue();
+		return new JTrologDouble(provider, d);
+	}
 
 }

@@ -27,20 +27,18 @@ import org.logicware.jpi.jtrolog.JTrologProvider;
 
 public final class JPIJTrologContainers extends JPIContainers {
 
-    static final Containers instance = new JPIJTrologContainers();
+	static final Containers instance = new JPIJTrologContainers();
 
-    protected JPIJTrologContainers() {
-	super(new Properties(), new JTrologProvider());
-    }
+	protected JPIJTrologContainers() {
+		super(new Properties(), new JTrologProvider());
+	}
 
-    @Override
-    public Containers getInstance() {
-	return instance;
-    }
+	public Containers getInstance() {
+		return instance;
+	}
 
-    @Override
-    public ContainerFactory createContainerFactory() {
-	return new JPIJTrologContainerFactory(getProperties(), getProvider());
-    }
+	public ContainerFactory createContainerFactory() {
+		return new JPIJTrologContainerFactory(getProperties(), getProvider());
+	}
 
 }

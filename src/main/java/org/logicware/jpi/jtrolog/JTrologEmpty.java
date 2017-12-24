@@ -27,38 +27,38 @@ import jTrolog.terms.Struct;
 
 public class JTrologEmpty extends JTrologList implements PrologList {
 
-    JTrologEmpty(PrologProvider provider) {
-	super(provider);
-    }
+	JTrologEmpty(PrologProvider provider) {
+		super(provider);
+	}
 
-    @Override
-    public PrologTerm[] getArguments() {
-	return new PrologTerm[0];
-    }
+	@Override
+	public PrologTerm[] getArguments() {
+		return new PrologTerm[0];
+	}
 
-    @Override
-    public int getArity() {
-	return ((Struct) value).arity;
-    }
+	@Override
+	public int getArity() {
+		return ((Struct) value).arity;
+	}
 
-    @Override
-    public String getFunctor() {
-	return ((Struct) value).name;
-    }
+	@Override
+	public String getFunctor() {
+		return ((Struct) value).name;
+	}
 
-    @Override
-    public String getIndicator() {
-	return getFunctor() + "/" + getArity();
-    }
+	@Override
+	public String getIndicator() {
+		return getFunctor() + "/" + getArity();
+	}
 
-    @Override
-    public boolean hasIndicator(String functor, int arity) {
-	return getFunctor().equals(functor) && getArity() == arity;
-    }
+	@Override
+	public boolean hasIndicator(String functor, int arity) {
+		return getFunctor().equals(functor) && getArity() == arity;
+	}
 
-    @Override
-    public PrologTerm clone() {
-	return new JTrologEmpty(provider);
-    }
+	@Override
+	public PrologTerm clone() {
+		return new JTrologEmpty(provider);
+	}
 
 }
