@@ -25,7 +25,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
-import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -60,11 +59,11 @@ public final class JTrologEngine extends JavaEngine implements PrologEngine {
 
 	final Prolog engine;
 
-	JTrologEngine(PrologProvider provider) {
+	protected JTrologEngine(PrologProvider provider) {
 		this(provider, new Prolog());
 	}
 
-	JTrologEngine(PrologProvider provider, Prolog engine) {
+	protected JTrologEngine(PrologProvider provider, Prolog engine) {
 		super(provider);
 		this.engine = engine;
 	}
@@ -378,7 +377,7 @@ public final class JTrologEngine extends JavaEngine implements PrologEngine {
 		return operators;
 	}
 
-	public Enumeration<PrologClause> getProgramClauses() {
+	public Iterator<PrologClause> getProgramIterator() {
 		Collection<PrologClause> cls = new LinkedList<PrologClause>();
 		Parser parser = new Parser(engine.getTheory());
 		for (Iterator<?> iterator = parser.iterator(); iterator.hasNext();) {
@@ -395,7 +394,7 @@ public final class JTrologEngine extends JavaEngine implements PrologEngine {
 				}
 			}
 		}
-		return new JTrologClauseEnum(cls);
+		return new PrologProgramIterator(cls);
 	}
 
 	public int getProgramSize() {
