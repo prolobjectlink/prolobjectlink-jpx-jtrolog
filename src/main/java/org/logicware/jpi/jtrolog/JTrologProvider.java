@@ -180,7 +180,7 @@ public class JTrologProvider extends AbstractProvider implements PrologProvider 
 		return new JTrologStructure(this, functor, arguments);
 	}
 
-	public PrologTerm newExpression(PrologTerm left, String operator, PrologTerm right) {
+	public PrologTerm newStructure(PrologTerm left, String operator, PrologTerm right) {
 		return new JTrologStructure(this, left, operator, right);
 	}
 
