@@ -19,32 +19,28 @@
  */
 package org.logicware.jpd.jpi.jtrolog;
 
-import org.logicware.jpd.Cache;
 import org.logicware.jpd.ContainerFactory;
-import org.logicware.jpd.Documents;
 import org.logicware.jpd.Properties;
-import org.logicware.jpd.jpi.JPICache;
-import org.logicware.jpd.jpi.JPIDocuments;
+import org.logicware.jpd.jpi.PrologContainerFactory;
+import org.logicware.jpi.PrologProvider;
 import org.logicware.jpi.jtrolog.JTrologProvider;
 
-public final class JPIJTrologDocuments extends JPIDocuments {
+public final class JTrologContainerFactory extends PrologContainerFactory {
 
-	static final Documents instance = new JPIJTrologDocuments();
-
-	protected JPIJTrologDocuments() {
-		super(new Properties(), new JTrologProvider());
+	public JTrologContainerFactory() {
+		this(new Properties());
 	}
 
-	public Documents getInstance() {
-		return instance;
+	public JTrologContainerFactory(Properties properties) {
+		super(properties, new JTrologProvider());
 	}
 
-	public Cache createCache() {
-		return new JPICache(getProvider());
+	public JTrologContainerFactory(Properties properties, PrologProvider provider) {
+		super(properties, provider);
 	}
 
 	public ContainerFactory createContainerFactory() {
-		return new JPIJTrologContainerFactory(getProperties(), getProvider());
+		return this;
 	}
 
 }

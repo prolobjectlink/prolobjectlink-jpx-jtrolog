@@ -22,14 +22,14 @@ package org.logicware.jpd.jpi.jtrolog;
 import org.logicware.jpd.ContainerFactory;
 import org.logicware.jpd.Containers;
 import org.logicware.jpd.Properties;
-import org.logicware.jpd.jpi.JPIContainers;
+import org.logicware.jpd.jpi.PrologContainers;
 import org.logicware.jpi.jtrolog.JTrologProvider;
 
-public final class JPIJTrologContainers extends JPIContainers {
+public final class JTrologContainers extends PrologContainers {
 
-	static final Containers instance = new JPIJTrologContainers();
+	static final Containers instance = new JTrologContainers();
 
-	protected JPIJTrologContainers() {
+	protected JTrologContainers() {
 		super(new Properties(), new JTrologProvider());
 	}
 
@@ -38,7 +38,7 @@ public final class JPIJTrologContainers extends JPIContainers {
 	}
 
 	public ContainerFactory createContainerFactory() {
-		return new JPIJTrologContainerFactory(getProperties(), getProvider());
+		return new JTrologContainerFactory(getProperties(), getProvider());
 	}
 
 }
