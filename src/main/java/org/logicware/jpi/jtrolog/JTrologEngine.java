@@ -31,7 +31,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.logicware.jpi.JavaEngine;
+import org.logicware.jpi.AbstractEngine;
 import org.logicware.jpi.Licenses;
 import org.logicware.jpi.OperatorEntry;
 import org.logicware.jpi.PredicateIndicator;
@@ -55,7 +55,7 @@ import jTrolog.terms.Struct;
 import jTrolog.terms.StructAtom;
 import jTrolog.terms.Term;
 
-public final class JTrologEngine extends JavaEngine implements PrologEngine {
+public final class JTrologEngine extends AbstractEngine implements PrologEngine {
 
 	final Prolog engine;
 
@@ -377,7 +377,7 @@ public final class JTrologEngine extends JavaEngine implements PrologEngine {
 		return operators;
 	}
 
-	public Iterator<PrologClause> getProgramIterator() {
+	public Iterator<PrologClause> iterator() {
 		Collection<PrologClause> cls = new LinkedList<PrologClause>();
 		Parser parser = new Parser(engine.getTheory());
 		for (Iterator<?> iterator = parser.iterator(); iterator.hasNext();) {
