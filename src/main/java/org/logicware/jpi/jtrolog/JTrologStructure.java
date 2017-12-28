@@ -19,6 +19,8 @@
  */
 package org.logicware.jpi.jtrolog;
 
+import static org.logicware.jpi.PrologTermType.STRUCTURE_TYPE;
+
 import org.logicware.jpi.PrologProvider;
 import org.logicware.jpi.PrologStructure;
 import org.logicware.jpi.PrologTerm;
@@ -82,7 +84,6 @@ public class JTrologStructure extends JTrologTerm implements PrologStructure {
 		return arguments[index];
 	}
 
-	@Override
 	public PrologTerm[] getArguments() {
 		Struct structure = (Struct) value;
 		int arity = structure.arity;
@@ -93,24 +94,20 @@ public class JTrologStructure extends JTrologTerm implements PrologStructure {
 		return arguments;
 	}
 
-	@Override
 	public int getArity() {
 		Struct structure = (Struct) value;
 		return structure.arity;
 	}
 
-	@Override
 	public String getFunctor() {
 		Struct structure = (Struct) value;
 		return structure.name;
 	}
 
-	@Override
 	public String getIndicator() {
 		return getFunctor() + "/" + getArity();
 	}
 
-	@Override
 	public boolean hasIndicator(String functor, int arity) {
 		return getFunctor().equals(functor) && getArity() == arity;
 	}

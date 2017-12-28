@@ -56,9 +56,4 @@ public class JTrologEmpty extends JTrologList implements PrologList {
 		return getFunctor().equals(functor) && getArity() == arity;
 	}
 
-	@Override
-	public PrologTerm clone() {
-		return new JTrologEmpty(provider);
-	}
-
 }

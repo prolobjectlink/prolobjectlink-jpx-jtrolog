@@ -19,6 +19,21 @@
  */
 package org.logicware.jpi.jtrolog;
 
+import static org.logicware.jpi.PrologTermType.ATOM_TYPE;
+import static org.logicware.jpi.PrologTermType.CUT_TYPE;
+import static org.logicware.jpi.PrologTermType.DOUBLE_TYPE;
+import static org.logicware.jpi.PrologTermType.EMPTY_TYPE;
+import static org.logicware.jpi.PrologTermType.FAIL_TYPE;
+import static org.logicware.jpi.PrologTermType.FALSE_TYPE;
+import static org.logicware.jpi.PrologTermType.FLOAT_TYPE;
+import static org.logicware.jpi.PrologTermType.INTEGER_TYPE;
+import static org.logicware.jpi.PrologTermType.LIST_TYPE;
+import static org.logicware.jpi.PrologTermType.LONG_TYPE;
+import static org.logicware.jpi.PrologTermType.NIL_TYPE;
+import static org.logicware.jpi.PrologTermType.STRUCTURE_TYPE;
+import static org.logicware.jpi.PrologTermType.TRUE_TYPE;
+import static org.logicware.jpi.PrologTermType.VARIABLE_TYPE;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -132,29 +147,29 @@ public class JTrologConverter extends AbstractConverter<Term> implements PrologC
 
 	public Term fromTerm(PrologTerm term) {
 		switch (term.getType()) {
-		case PrologTerm.NIL_TYPE:
+		case NIL_TYPE:
 			return new StructAtom("nil");
-		case PrologTerm.CUT_TYPE:
+		case CUT_TYPE:
 			return new StructAtom("!");
-		case PrologTerm.FAIL_TYPE:
+		case FAIL_TYPE:
 			return new StructAtom("fail");
-		case PrologTerm.TRUE_TYPE:
+		case TRUE_TYPE:
 			return Term.TRUE;
-		case PrologTerm.FALSE_TYPE:
+		case FALSE_TYPE:
 			return Term.FALSE;
-		case PrologTerm.EMPTY_TYPE:
+		case EMPTY_TYPE:
 			return Term.emptyList;
-		case PrologTerm.ATOM_TYPE:
+		case ATOM_TYPE:
 			return new StructAtom(removeQuoted(((PrologAtom) term).getStringValue()));
-		case PrologTerm.FLOAT_TYPE:
+		case FLOAT_TYPE:
 			return new Float(((PrologFloat) term).getFloatValue());
-		case PrologTerm.INTEGER_TYPE:
+		case INTEGER_TYPE:
 			return new Int(((PrologInteger) term).getIntValue());
-		case PrologTerm.DOUBLE_TYPE:
+		case DOUBLE_TYPE:
 			return new Double(((PrologDouble) term).getDoubleValue());
-		case PrologTerm.LONG_TYPE:
+		case LONG_TYPE:
 			return new Long(((PrologLong) term).getLongValue());
-		case PrologTerm.VARIABLE_TYPE:
+		case VARIABLE_TYPE:
 			PrologVariable v = (PrologVariable) term;
 			String name = v.getName();
 			Term variable = sharedPrologVariables.get(name);
@@ -163,7 +178,7 @@ public class JTrologConverter extends AbstractConverter<Term> implements PrologC
 				sharedPrologVariables.put(name, variable);
 			}
 			return variable;
-		case PrologTerm.LIST_TYPE:
+		case LIST_TYPE:
 			PrologTerm[] elements = term.getArguments();
 			if (elements != null && elements.length > 0) {
 				Term list = Term.emptyList;
@@ -174,7 +189,7 @@ public class JTrologConverter extends AbstractConverter<Term> implements PrologC
 				return list;
 			}
 			return Term.emptyList;
-		case PrologTerm.STRUCTURE_TYPE:
+		case STRUCTURE_TYPE:
 			String functor = term.getFunctor();
 			Term[] arguments = fromTermArray(((PrologStructure) term).getArguments());
 			return new Struct(functor, arguments);

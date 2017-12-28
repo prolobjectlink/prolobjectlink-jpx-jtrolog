@@ -19,6 +19,8 @@
  */
 package org.logicware.jpi.jtrolog;
 
+import static org.logicware.jpi.PrologTermType.NIL_TYPE;
+
 import org.logicware.jpi.PrologProvider;
 import org.logicware.jpi.PrologTerm;
 
@@ -30,34 +32,24 @@ public final class JTrologNil extends JTrologTerm implements PrologTerm {
 		super(NIL_TYPE, provider, new StructAtom("nil"));
 	}
 
-	@Override
 	public PrologTerm[] getArguments() {
 		return new PrologTerm[0];
 	}
 
-	@Override
 	public int getArity() {
 		return 0;
 	}
 
-	@Override
 	public String getFunctor() {
 		return "" + value + "";
 	}
 
-	@Override
 	public String getIndicator() {
 		return getFunctor() + "/" + getArity();
 	}
 
-	@Override
 	public boolean hasIndicator(String functor, int arity) {
 		return getFunctor().equals(functor) && getArity() == arity;
-	}
-
-	@Override
-	public PrologTerm clone() {
-		return new JTrologNil(provider);
 	}
 
 }

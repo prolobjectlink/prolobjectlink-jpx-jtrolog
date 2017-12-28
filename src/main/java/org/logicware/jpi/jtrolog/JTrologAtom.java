@@ -19,6 +19,8 @@
  */
 package org.logicware.jpi.jtrolog;
 
+import static org.logicware.jpi.PrologTermType.ATOM_TYPE;
+
 import org.logicware.jpi.PrologAtom;
 import org.logicware.jpi.PrologProvider;
 import org.logicware.jpi.PrologTerm;
@@ -39,35 +41,24 @@ public final class JTrologAtom extends JTrologTerm implements PrologAtom {
 		this.value = new StructAtom(value);
 	}
 
-	@Override
 	public PrologTerm[] getArguments() {
 		return new JTrologAtom[0];
 	}
 
-	@Override
 	public int getArity() {
 		return 0;
 	}
 
-	@Override
 	public String getFunctor() {
 		return "" + value + "";
 	}
 
-	@Override
 	public String getIndicator() {
 		return getFunctor() + "/" + getArity();
 	}
 
-	@Override
 	public boolean hasIndicator(String functor, int arity) {
 		return getFunctor().equals(functor) && getArity() == arity;
-	}
-
-	@Override
-	public PrologTerm clone() {
-		String s = getFunctor();
-		return new JTrologAtom(provider, s);
 	}
 
 }

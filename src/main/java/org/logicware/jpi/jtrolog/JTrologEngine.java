@@ -74,12 +74,20 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 	}
 
 	public void persist(String path) {
+		FileWriter writer = null;
 		try {
-			FileWriter writer = new FileWriter(path);
+			writer = new FileWriter(path);
 			writer.write(engine.getTheory());
-			writer.close();
 		} catch (IOException e) {
 			// created but not exception is reported
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 
@@ -155,7 +163,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 
 	public void asserta(PrologTerm head, PrologTerm... body) {
 		Struct h = fromTerm(head, Struct.class);
-		Struct b[] = new Struct[body.length];
+		Struct[] b = new Struct[body.length];
 		for (int i = 0; i < body.length; i++) {
 			b[i] = fromTerm(body[i], Struct.class);
 		}
@@ -184,7 +192,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 
 	public void assertz(PrologTerm head, PrologTerm... body) {
 		Struct h = fromTerm(head, Struct.class);
-		Struct b[] = new Struct[body.length];
+		Struct[] b = new Struct[body.length];
 		for (int i = 0; i < body.length; i++) {
 			b[i] = fromTerm(body[i], Struct.class);
 		}
@@ -214,7 +222,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 
 	public boolean clause(PrologTerm head, PrologTerm... body) {
 		Struct h = fromTerm(head, Struct.class);
-		Struct b[] = new Struct[body.length];
+		Struct[] b = new Struct[body.length];
 		for (int i = 0; i < body.length; i++) {
 			b[i] = fromTerm(body[i], Struct.class);
 		}
@@ -257,7 +265,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 
 	public void retract(PrologTerm head, PrologTerm... body) {
 		Struct h = fromTerm(head, Struct.class);
-		Struct b[] = new Struct[body.length];
+		Struct[] b = new Struct[body.length];
 		for (int i = 0; i < body.length; i++) {
 			b[i] = fromTerm(body[i], Struct.class);
 		}
@@ -322,8 +330,8 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 		while (libraries.hasNext()) {
 			Object object = libraries.next();
 			if (object instanceof Library) {
-				Library library = (Library) object;
-				String theory = library.getTheory();
+				// Library library = (Library) object;
+				// String theory = library.getTheory();
 				// System.out.println(theory);
 				// Parser parser = new Parser(theory);
 				// Term term = parser.nextTerm(true);

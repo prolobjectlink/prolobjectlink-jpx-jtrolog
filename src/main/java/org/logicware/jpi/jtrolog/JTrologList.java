@@ -19,6 +19,8 @@
  */
 package org.logicware.jpi.jtrolog;
 
+import static org.logicware.jpi.PrologTermType.LIST_TYPE;
+
 import java.util.Iterator;
 
 import org.logicware.jpi.PrologList;
@@ -138,40 +140,29 @@ public class JTrologList extends JTrologTerm implements PrologList {
 		return toTerm(tail, PrologTerm.class);
 	}
 
-	@Override
 	public int getArity() {
 		return ((Struct) value).arity;
 	}
 
-	@Override
 	public String getFunctor() {
 		return ((Struct) value).name;
 	}
 
-	@Override
 	public String getIndicator() {
 		return getFunctor() + "/" + getArity();
 	}
 
-	@Override
 	public boolean hasIndicator(String functor, int arity) {
 		return getFunctor().equals(functor) && getArity() == arity;
 	}
 
-	@Override
 	public PrologTerm[] getArguments() {
 		PrologTerm[] a = new PrologTerm[size()];
 		Iterator<PrologTerm> i = iterator();
-		for (int index = 0; i.hasNext();) {
-			a[index++] = i.next();
+		for (int index = 0; i.hasNext(); index++) {
+			a[index] = i.next();
 		}
 		return a;
-	}
-
-	@Override
-	public PrologTerm clone() {
-		PrologTerm[] array = getArguments();
-		return new JTrologList(provider, array);
 	}
 
 	private class JTrologListIter implements Iterator<PrologTerm> {

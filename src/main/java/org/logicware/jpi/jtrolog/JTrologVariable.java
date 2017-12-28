@@ -19,6 +19,9 @@
  */
 package org.logicware.jpi.jtrolog;
 
+import static org.logicware.jpi.PrologTermType.ATOM_TYPE;
+import static org.logicware.jpi.PrologTermType.VARIABLE_TYPE;
+
 import org.logicware.jpi.ArityError;
 import org.logicware.jpi.FunctorError;
 import org.logicware.jpi.IndicatorError;
@@ -33,16 +36,16 @@ public class JTrologVariable extends JTrologTerm implements PrologVariable {
 
 	private String name;
 
-	private JTrologVariable(PrologProvider provider, Term var) {
+	protected JTrologVariable(PrologProvider provider, Term var) {
 		super(ATOM_TYPE, provider, var);
 	}
 
-	JTrologVariable(PrologProvider provider, int n) {
+	protected JTrologVariable(PrologProvider provider, int n) {
 		this(provider, "_", n);
 		this.name = "_";
 	}
 
-	JTrologVariable(PrologProvider provider, String name, int n) {
+	protected JTrologVariable(PrologProvider provider, String name, int n) {
 		super(VARIABLE_TYPE, provider, name, n);
 		this.name = name;
 	}
@@ -59,38 +62,28 @@ public class JTrologVariable extends JTrologTerm implements PrologVariable {
 		this.name = name;
 	}
 
-	@Override
 	public PrologTerm[] getArguments() {
 		return new JTrologVariable[0];
 	}
 
-	@Override
 	public int getArity() {
 		throw new ArityError(this);
 	}
 
-	@Override
 	public String getFunctor() {
 		throw new FunctorError(this);
 	}
 
-	@Override
 	public String getIndicator() {
 		throw new IndicatorError(this);
 	}
 
-	@Override
 	public boolean hasIndicator(String functor, int arity) {
 		throw new IndicatorError(this);
 	}
 
 	public int getPosition() {
 		return vIndex;
-	}
-
-	@Override
-	public PrologTerm clone() {
-		return new JTrologVariable(provider, value);
 	}
 
 }

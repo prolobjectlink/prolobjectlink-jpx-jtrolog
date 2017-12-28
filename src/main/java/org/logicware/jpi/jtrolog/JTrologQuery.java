@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.logicware.jpi.AbstractQuery;
 import org.logicware.jpi.PrologEngine;
@@ -84,7 +85,6 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 	}
 
 	public boolean hasSolution() {
-		// return solution.success();
 		return solution != null;
 	}
 
@@ -99,11 +99,11 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 
 	public PrologTerm[] oneSolution() {
 		int index = 0;
-		Map<String, PrologTerm> solution = oneVariablesSolution();
-		PrologTerm[] array = new PrologTerm[solution.size()];
+		Map<String, PrologTerm> solutionMap = oneVariablesSolution();
+		PrologTerm[] array = new PrologTerm[solutionMap.size()];
 		if (array.length > 0) {
 			for (Iterator<String> i = variables.iterator(); i.hasNext();) {
-				array[index++] = solution.get(i.next());
+				array[index++] = solutionMap.get(i.next());
 			}
 		}
 		return array;
@@ -152,7 +152,8 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 	public PrologTerm[][] nSolutions(int n) {
 		if (n > 0) {
 			// m:solutionSize
-			int m = 0, index = 0;
+			int m = 0;
+			int index = 0;
 			List<PrologTerm[]> all = new ArrayList<PrologTerm[]>();
 
 			PrologTerm[] array = oneSolution();
@@ -209,7 +210,8 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 
 	public PrologTerm[][] allSolutions() {
 		// n:solutionCount, m:solutionSize
-		int n = 0, m = 0;
+		int n = 0;
+		int m = 0;
 		List<PrologTerm[]> all = new ArrayList<PrologTerm[]>();
 
 		PrologTerm[] array = oneSolution();
@@ -247,17 +249,17 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 	public Map<String, PrologTerm>[] allVariablesSolutions() {
 		List<Map<String, PrologTerm>> allVariables = new ArrayList<Map<String, PrologTerm>>();
 
-		Map<String, PrologTerm> variables = oneVariablesSolution();
-		if (!variables.isEmpty()) {
-			allVariables.add(variables);
+		Map<String, PrologTerm> varMap = oneVariablesSolution();
+		if (!varMap.isEmpty()) {
+			allVariables.add(varMap);
 		}
 
 		while (hasMoreSolutions()) {
 			try {
 				solution = jtrolog.solveNext();
-				variables = oneVariablesSolution();
-				if (!variables.isEmpty()) {
-					allVariables.add(variables);
+				varMap = oneVariablesSolution();
+				if (!varMap.isEmpty()) {
+					allVariables.add(varMap);
 				}
 			} catch (Throwable e) {
 				e.printStackTrace();
@@ -279,6 +281,29 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 
 	public void dispose() {
 		solution = null;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hashCode(solution);
+		result = prime * result + Objects.hashCode(variables);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		JTrologQuery other = (JTrologQuery) obj;
+		if (!Objects.equals(solution, other.solution))
+			return false;
+		return Objects.equals(variables, other.variables);
 	}
 
 }

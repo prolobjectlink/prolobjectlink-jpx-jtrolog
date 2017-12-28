@@ -19,6 +19,8 @@
  */
 package org.logicware.jpi.jtrolog;
 
+import static org.logicware.jpi.PrologTermType.INTEGER_TYPE;
+
 import org.logicware.jpi.ArityError;
 import org.logicware.jpi.FunctorError;
 import org.logicware.jpi.IndicatorError;
@@ -73,35 +75,24 @@ public class JTrologInteger extends JTrologTerm implements PrologInteger {
 		return ((Int) value).floatValue();
 	}
 
-	@Override
 	public PrologTerm[] getArguments() {
 		return new JTrologInteger[0];
 	}
 
-	@Override
 	public int getArity() {
 		throw new ArityError(this);
 	}
 
-	@Override
 	public String getFunctor() {
 		throw new FunctorError(this);
 	}
 
-	@Override
 	public String getIndicator() {
 		throw new IndicatorError(this);
 	}
 
-	@Override
 	public boolean hasIndicator(String functor, int arity) {
 		throw new IndicatorError(this);
-	}
-
-	@Override
-	public PrologTerm clone() {
-		int i = getIntValue();
-		return new JTrologInteger(provider, i);
 	}
 
 }

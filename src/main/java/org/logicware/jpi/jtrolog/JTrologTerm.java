@@ -19,6 +19,16 @@
  */
 package org.logicware.jpi.jtrolog;
 
+import static org.logicware.jpi.PrologTermType.ATOM_TYPE;
+import static org.logicware.jpi.PrologTermType.DOUBLE_TYPE;
+import static org.logicware.jpi.PrologTermType.EMPTY_TYPE;
+import static org.logicware.jpi.PrologTermType.FLOAT_TYPE;
+import static org.logicware.jpi.PrologTermType.INTEGER_TYPE;
+import static org.logicware.jpi.PrologTermType.LIST_TYPE;
+import static org.logicware.jpi.PrologTermType.LONG_TYPE;
+import static org.logicware.jpi.PrologTermType.STRUCTURE_TYPE;
+import static org.logicware.jpi.PrologTermType.VARIABLE_TYPE;
+
 import java.util.Iterator;
 
 import org.logicware.jpi.AbstractTerm;
@@ -43,7 +53,6 @@ public abstract class JTrologTerm extends AbstractTerm implements PrologTerm {
 	// variable index
 	protected int vIndex;
 	protected Term value;
-	// protected static int vIndexer;
 
 	static final String SIMPLE_ATOM_REGEX = "\\.|\\?|#|[a-z][A-Za-z0-9_]*";
 
@@ -156,16 +165,6 @@ public abstract class JTrologTerm extends AbstractTerm implements PrologTerm {
 		return isList() || isStructure();
 	}
 
-	public abstract String getIndicator();
-
-	public abstract boolean hasIndicator(String functor, int arity);
-
-	public abstract int getArity();
-
-	public abstract String getFunctor();
-
-	public abstract PrologTerm[] getArguments();
-
 	public final boolean unify(PrologTerm term) {
 		Term otherTerm = fromTerm(term, Term.class);
 		return Prolog.match(value, otherTerm);
@@ -193,64 +192,60 @@ public abstract class JTrologTerm extends AbstractTerm implements PrologTerm {
 			}
 			break;
 
-		case FLOAT_TYPE: {
+		case FLOAT_TYPE:
 
 			checkNumberType(term);
-			float thisValue = ((Number) value).floatValue();
-			float otherValue = ((PrologNumber) term).getFloatValue();
+			float thisFloatValue = ((Number) value).floatValue();
+			float otherFloatValue = ((PrologNumber) term).getFloatValue();
 
-			if (thisValue < otherValue) {
+			if (thisFloatValue < otherFloatValue) {
 				return -1;
-			} else if (thisValue > otherValue) {
+			} else if (thisFloatValue > otherFloatValue) {
 				return 1;
 			}
 
-		}
 			break;
 
-		case LONG_TYPE: {
+		case LONG_TYPE:
 
 			checkNumberType(term);
-			long thisValue = ((Number) value).longValue();
-			long otherValue = ((PrologNumber) term).getLongValue();
+			long thisLongValue = ((Number) value).longValue();
+			long otherLongValue = ((PrologNumber) term).getLongValue();
 
-			if (thisValue < otherValue) {
+			if (thisLongValue < otherLongValue) {
 				return -1;
-			} else if (thisValue > otherValue) {
+			} else if (thisLongValue > otherLongValue) {
 				return 1;
 			}
 
-		}
 			break;
 
-		case DOUBLE_TYPE: {
+		case DOUBLE_TYPE:
 
 			checkNumberType(term);
-			double thisValue = ((Number) value).doubleValue();
-			double otherValue = ((PrologNumber) term).getDoubleValue();
+			double thisDoubleValue = ((Number) value).doubleValue();
+			double otherDoubleValue = ((PrologNumber) term).getDoubleValue();
 
-			if (thisValue < otherValue) {
+			if (thisDoubleValue < otherDoubleValue) {
 				return -1;
-			} else if (thisValue > otherValue) {
+			} else if (thisDoubleValue > otherDoubleValue) {
 				return 1;
 			}
 
-		}
 			break;
 
-		case INTEGER_TYPE: {
+		case INTEGER_TYPE:
 
 			checkNumberType(term);
-			int thisValue = ((Number) value).intValue();
-			int otherValue = ((PrologNumber) term).getIntValue();
+			int thisIntegerValue = ((Number) value).intValue();
+			int otherIntegerValue = ((PrologNumber) term).getIntValue();
 
-			if (thisValue < otherValue) {
+			if (thisIntegerValue < otherIntegerValue) {
 				return -1;
-			} else if (thisValue > otherValue) {
+			} else if (thisIntegerValue > otherIntegerValue) {
 				return 1;
 			}
 
-		}
 			break;
 
 		case LIST_TYPE:
@@ -294,7 +289,7 @@ public abstract class JTrologTerm extends AbstractTerm implements PrologTerm {
 		case VARIABLE_TYPE:
 
 			PrologTerm thisVariable = this;
-			PrologTerm otherVariable = (PrologTerm) term;
+			PrologTerm otherVariable = term;
 			if (thisVariable.hashCode() < otherVariable.hashCode()) {
 				return -1;
 			} else if (thisVariable.hashCode() > otherVariable.hashCode()) {
@@ -302,22 +297,22 @@ public abstract class JTrologTerm extends AbstractTerm implements PrologTerm {
 			}
 			break;
 
+		default:
+			return 0;
+
 		}
 
 		return 0;
 	}
 
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + type;
-		// result = prime * result + ((value == null) ? 0 : value.hashCode());
 		result = prime * result + ((value == null) ? 0 : value.toString().hashCode());
 		return result;
 	}
 
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -336,17 +331,18 @@ public abstract class JTrologTerm extends AbstractTerm implements PrologTerm {
 		return true;
 	}
 
-	@Override
 	public final String toString() {
 		if (value instanceof Struct) {
 			Struct s = (Struct) value;
 			String n = s.name;
-			if (!isEmptyList()) {
-				if (!n.startsWith("'") && !n.endsWith("'")) {
-					if (!n.matches(SIMPLE_ATOM_REGEX)) {
-						return "'" + n + "'";
-					}
-				}
+			if (!isEmptyList() &&
+
+					!n.startsWith("'") &&
+
+					!n.endsWith("'") &&
+
+					!n.matches(SIMPLE_ATOM_REGEX)) {
+				return "'" + n + "'";
 			}
 		}
 		return "" + value + "";
