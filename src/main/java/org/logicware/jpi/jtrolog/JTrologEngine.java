@@ -31,6 +31,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import org.logicware.LoggerConstants;
+import org.logicware.LoggerUtils;
+import org.logicware.SystemLogger;
 import org.logicware.jpi.AbstractEngine;
 import org.logicware.jpi.Licenses;
 import org.logicware.jpi.OperatorEntry;
@@ -58,6 +61,8 @@ import jTrolog.terms.Term;
 public final class JTrologEngine extends AbstractEngine implements PrologEngine {
 
 	final Prolog engine;
+
+	static final SystemLogger LOGGER = SystemLogger.getInstance();
 
 	protected JTrologEngine(PrologProvider provider) {
 		this(provider, new Prolog());
@@ -310,7 +315,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 					return true;
 				}
 			} catch (PrologException e) {
-				e.printStackTrace();
+				LoggerUtils.error(getClass(), LoggerConstants.INDICATOR_NOT_FOUND + key, e);
 			}
 		}
 
@@ -362,7 +367,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 					}
 				}
 			} catch (PrologException e) {
-				e.printStackTrace();
+				LoggerUtils.error(getClass(), LoggerConstants.INDICATOR_NOT_FOUND + predIndicator, e);
 			}
 		}
 		return builtins;
@@ -395,10 +400,10 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 				if (struct.name.equals(":-") && struct.arity == 2) {
 					PrologTerm head = toTerm(struct.getArg(0), PrologTerm.class);
 					PrologTerm body = toTerm(struct.getArg(1), PrologTerm.class);
-					cls.add(new JTrologClause(head, body, false, false, false));
+					cls.add(new JTrologClause(provider, head, body, false, false, false));
 				} else {
 					PrologTerm head = toTerm(struct, PrologTerm.class);
-					cls.add(new JTrologClause(head, false, false, false));
+					cls.add(new JTrologClause(provider, head, false, false, false));
 				}
 			}
 		}
@@ -414,7 +419,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 				List<?> list = engine.find(predIndicator);
 				counter += list.size();
 			} catch (PrologException e) {
-				e.printStackTrace();
+				LoggerUtils.error(getClass(), LoggerConstants.INDICATOR_NOT_FOUND + predIndicator, e);
 			}
 		}
 		return counter;

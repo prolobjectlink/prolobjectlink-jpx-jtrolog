@@ -71,4 +71,29 @@ final class JTrologOperatorSet extends AbstractSet<OperatorEntry> {
 		return operators.size();
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((operators == null) ? 0 : operators.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		JTrologOperatorSet other = (JTrologOperatorSet) obj;
+		if (operators == null) {
+			if (other.operators != null)
+				return false;
+		} else if (!operators.equals(other.operators))
+			return false;
+		return true;
+	}
+
 }
