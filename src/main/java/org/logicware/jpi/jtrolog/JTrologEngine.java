@@ -19,6 +19,13 @@
  */
 package org.logicware.jpi.jtrolog;
 
+import static org.logicware.LoggerConstants.DONT_WORRY;
+import static org.logicware.LoggerConstants.FILE_ERROR;
+import static org.logicware.LoggerConstants.FILE_NOT_FOUND;
+import static org.logicware.LoggerConstants.INDICATOR_NOT_FOUND;
+import static org.logicware.LoggerConstants.RUNTIME_ERROR;
+import static org.logicware.LoggerConstants.SYNTAX_ERROR;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -33,7 +40,6 @@ import java.util.Set;
 
 import org.logicware.LoggerConstants;
 import org.logicware.LoggerUtils;
-import org.logicware.SystemLogger;
 import org.logicware.jpi.AbstractEngine;
 import org.logicware.jpi.Licenses;
 import org.logicware.jpi.OperatorEntry;
@@ -62,8 +68,6 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 
 	final Prolog engine;
 
-	static final SystemLogger LOGGER = SystemLogger.getInstance();
-
 	protected JTrologEngine(PrologProvider provider) {
 		this(provider, new Prolog());
 	}
@@ -84,13 +88,14 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			writer = new FileWriter(path);
 			writer.write(engine.getTheory());
 		} catch (IOException e) {
-			// created but not exception is reported
+			LoggerUtils.warn(getClass(), FILE_ERROR + path, e);
+			LoggerUtils.info(getClass(), DONT_WORRY + path);
 		} finally {
 			if (writer != null) {
 				try {
 					writer.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+					LoggerUtils.warn(getClass(), FILE_ERROR + path, e);
 				}
 			}
 		}
@@ -101,11 +106,11 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			InputStream is = new FileInputStream(path);
 			engine.addTheory(IOLibrary.readStream(is));
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			LoggerUtils.warn(getClass(), FILE_NOT_FOUND + path, e);
 		} catch (PrologException e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), SYNTAX_ERROR + path, e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			LoggerUtils.warn(getClass(), FILE_ERROR + path, e);
 		}
 	}
 
@@ -114,7 +119,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 		try {
 			engine.abolish(pi);
 		} catch (PrologException e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), INDICATOR_NOT_FOUND, e);
 		}
 	}
 
@@ -150,7 +155,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 						}
 					}
 				} catch (PrologException e) {
-					e.printStackTrace();
+					LoggerUtils.error(getClass(), INDICATOR_NOT_FOUND, e);
 				}
 			}
 		}
@@ -162,7 +167,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			Term term = new Parser(stringClause).nextTerm(false);
 			asserta(BuiltIn.convertTermToClause(term));
 		} catch (PrologException e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), SYNTAX_ERROR + stringClause, e);
 		}
 	}
 
@@ -181,7 +186,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			try {
 				engine.assertA(clause);
 			} catch (PrologException e) {
-				e.printStackTrace();
+				LoggerUtils.error(getClass(), RUNTIME_ERROR + clause, e);
 			}
 		}
 	}
@@ -191,7 +196,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			Term term = new Parser(stringClause).nextTerm(false);
 			assertz(BuiltIn.convertTermToClause(term));
 		} catch (PrologException e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), SYNTAX_ERROR + stringClause, e);
 		}
 	}
 
@@ -210,7 +215,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			try {
 				engine.assertZ(clause);
 			} catch (PrologException e) {
-				e.printStackTrace();
+				LoggerUtils.error(getClass(), RUNTIME_ERROR + clause, e);
 			}
 		}
 	}
@@ -220,7 +225,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			Term term = new Parser(stringClause).nextTerm(false);
 			return clause(BuiltIn.convertTermToClause(term));
 		} catch (PrologException e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), SYNTAX_ERROR + stringClause, e);
 		}
 		return false;
 	}
@@ -252,7 +257,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 						}
 					}
 				} catch (PrologException e) {
-					e.printStackTrace();
+					LoggerUtils.error(getClass(), INDICATOR_NOT_FOUND + predIndicator, e);
 				}
 			}
 		}
@@ -264,7 +269,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			Term term = new Parser(stringClause).nextTerm(false);
 			retract(BuiltIn.convertTermToClause(term));
 		} catch (PrologException e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), SYNTAX_ERROR + stringClause, e);
 		}
 	}
 
@@ -282,7 +287,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 		try {
 			engine.retract(clause.original);
 		} catch (PrologException e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), RUNTIME_ERROR + clause, e);
 		}
 	}
 

@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import org.logicware.LoggerConstants;
+import org.logicware.LoggerUtils;
 import org.logicware.jpi.AbstractQuery;
 import org.logicware.jpi.PrologEngine;
 import org.logicware.jpi.PrologQuery;
@@ -65,7 +67,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 		try {
 			this.solution = jtrolog.solve("" + query + ".");
 		} catch (Throwable e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 		}
 	}
 
@@ -80,7 +82,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 		try {
 			this.solution = jtrolog.solve((Struct) term);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 		}
 	}
 
@@ -92,7 +94,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 		try {
 			return jtrolog.hasOpenAlternatives();
 		} catch (Throwable e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 		}
 		return false;
 	}
@@ -130,7 +132,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 				return array;
 			}
 		} catch (Throwable e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 		}
 		return array;
 	}
@@ -144,7 +146,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 			}
 			return map;
 		} catch (Throwable e) {
-			e.printStackTrace();
+			LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 		}
 		return new HashMap<String, PrologTerm>(0);
 	}
@@ -169,7 +171,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 					index++;
 					all.add(array);
 				} catch (Throwable e) {
-					e.printStackTrace();
+					LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 				}
 
 			}
@@ -200,7 +202,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 					solutionMap = oneVariablesSolution();
 					solutionMaps[index++] = solutionMap;
 				} catch (Throwable e) {
-					e.printStackTrace();
+					LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 				}
 			}
 			return solutionMaps;
@@ -231,7 +233,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 					all.add(array);
 				}
 			} catch (Throwable e) {
-				e.printStackTrace();
+				LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 			}
 
 		}
@@ -262,7 +264,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 					allVariables.add(varMap);
 				}
 			} catch (Throwable e) {
-				e.printStackTrace();
+				LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 			}
 		}
 
