@@ -35,10 +35,6 @@ import jTrolog.terms.Int;
 
 public class JTrologInteger extends JTrologTerm implements PrologInteger {
 
-	JTrologInteger(PrologProvider provider) {
-		super(INTEGER_TYPE, provider, new Int(0));
-	}
-
 	JTrologInteger(PrologProvider provider, Number value) {
 		super(INTEGER_TYPE, provider, new Int(value.intValue()));
 	}

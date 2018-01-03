@@ -26,12 +26,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import org.logicware.LoggerConstants;
-import org.logicware.LoggerUtils;
 import org.logicware.jpi.AbstractQuery;
 import org.logicware.jpi.PrologEngine;
 import org.logicware.jpi.PrologQuery;
 import org.logicware.jpi.PrologTerm;
+import org.logicware.logging.LoggerConstants;
+import org.logicware.logging.LoggerUtils;
 
 import jTrolog.engine.Prolog;
 import jTrolog.engine.Solution;

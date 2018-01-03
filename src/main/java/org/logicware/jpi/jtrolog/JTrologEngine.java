@@ -19,12 +19,12 @@
  */
 package org.logicware.jpi.jtrolog;
 
-import static org.logicware.LoggerConstants.DONT_WORRY;
-import static org.logicware.LoggerConstants.FILE_ERROR;
-import static org.logicware.LoggerConstants.FILE_NOT_FOUND;
-import static org.logicware.LoggerConstants.INDICATOR_NOT_FOUND;
-import static org.logicware.LoggerConstants.RUNTIME_ERROR;
-import static org.logicware.LoggerConstants.SYNTAX_ERROR;
+import static org.logicware.logging.LoggerConstants.DONT_WORRY;
+import static org.logicware.logging.LoggerConstants.FILE_NOT_FOUND;
+import static org.logicware.logging.LoggerConstants.INDICATOR_NOT_FOUND;
+import static org.logicware.logging.LoggerConstants.IO_ERROR;
+import static org.logicware.logging.LoggerConstants.RUNTIME_ERROR;
+import static org.logicware.logging.LoggerConstants.SYNTAX_ERROR;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,8 +38,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.logicware.LoggerConstants;
-import org.logicware.LoggerUtils;
 import org.logicware.jpi.AbstractEngine;
 import org.logicware.jpi.Licenses;
 import org.logicware.jpi.OperatorEntry;
@@ -51,6 +49,8 @@ import org.logicware.jpi.PrologOperator;
 import org.logicware.jpi.PrologProvider;
 import org.logicware.jpi.PrologQuery;
 import org.logicware.jpi.PrologTerm;
+import org.logicware.logging.LoggerConstants;
+import org.logicware.logging.LoggerUtils;
 
 import jTrolog.engine.Prolog;
 import jTrolog.errors.PrologException;
@@ -88,14 +88,14 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			writer = new FileWriter(path);
 			writer.write(engine.getTheory());
 		} catch (IOException e) {
-			LoggerUtils.warn(getClass(), FILE_ERROR + path, e);
+			LoggerUtils.warn(getClass(), IO_ERROR + path, e);
 			LoggerUtils.info(getClass(), DONT_WORRY + path);
 		} finally {
 			if (writer != null) {
 				try {
 					writer.close();
 				} catch (IOException e) {
-					LoggerUtils.warn(getClass(), FILE_ERROR + path, e);
+					LoggerUtils.warn(getClass(), IO_ERROR + path, e);
 				}
 			}
 		}
@@ -110,7 +110,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 		} catch (PrologException e) {
 			LoggerUtils.error(getClass(), SYNTAX_ERROR + path, e);
 		} catch (IOException e) {
-			LoggerUtils.warn(getClass(), FILE_ERROR + path, e);
+			LoggerUtils.warn(getClass(), IO_ERROR + path, e);
 		}
 	}
 

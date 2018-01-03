@@ -35,10 +35,6 @@ import jTrolog.terms.Float;
 
 public final class JTrologFloat extends JTrologTerm implements PrologFloat {
 
-	JTrologFloat(PrologProvider provider) {
-		super(FLOAT_TYPE, provider, new Float(0));
-	}
-
 	JTrologFloat(PrologProvider provider, Number value) {
 		super(FLOAT_TYPE, provider, new Float(value.floatValue()));
 	}

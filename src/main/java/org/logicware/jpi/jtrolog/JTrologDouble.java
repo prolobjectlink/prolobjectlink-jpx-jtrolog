@@ -35,10 +35,6 @@ import jTrolog.terms.Double;
 
 public final class JTrologDouble extends JTrologTerm implements PrologDouble {
 
-	JTrologDouble(PrologProvider provider) {
-		super(DOUBLE_TYPE, provider, new Double(0));
-	}
-
 	JTrologDouble(PrologProvider provider, Number value) {
 		super(DOUBLE_TYPE, provider, new Double(value.doubleValue()));
 	}

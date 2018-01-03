@@ -35,10 +35,6 @@ import jTrolog.terms.Long;
 
 public class JTrologLong extends JTrologTerm implements PrologLong {
 
-	JTrologLong(PrologProvider provider) {
-		super(LONG_TYPE, provider, new Long(0));
-	}
-
 	JTrologLong(PrologProvider provider, Number value) {
 		super(LONG_TYPE, provider, new Long(value.longValue()));
 	}
