@@ -187,7 +187,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			try {
 				engine.assertA(clause);
 			} catch (PrologException e) {
-				LoggerUtils.error(getClass(), RUNTIME_ERROR + clause, e);
+				LoggerUtils.error(getClass(), RUNTIME_ERROR, e);
 			}
 		}
 	}
@@ -216,7 +216,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			try {
 				engine.assertZ(clause);
 			} catch (PrologException e) {
-				LoggerUtils.error(getClass(), RUNTIME_ERROR + clause, e);
+				LoggerUtils.error(getClass(), RUNTIME_ERROR, e);
 			}
 		}
 	}
@@ -288,7 +288,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 		try {
 			engine.retract(clause.original);
 		} catch (PrologException e) {
-			LoggerUtils.error(getClass(), RUNTIME_ERROR + clause, e);
+			LoggerUtils.error(getClass(), RUNTIME_ERROR, e);
 		}
 	}
 
@@ -461,10 +461,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 		if (getClass() != obj.getClass())
 			return false;
 		JTrologEngine other = (JTrologEngine) obj;
-		if (engine == null && other.engine != null) {
-			return false;
-		}
-		return true;
+		return engine == null && other.engine != null;
 	}
 
 	public void dispose() {

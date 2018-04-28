@@ -67,7 +67,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 		try {
 			this.solution = jtrolog.solve("" + query + ".");
 		} catch (Throwable e) {
-			// LoggerUtils.debug(getClass(), LoggerConstants.NON_SOLUTION, e);
+			// do nothing
 		}
 	}
 
@@ -82,7 +82,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 		try {
 			this.solution = jtrolog.solve((Struct) term);
 		} catch (Throwable e) {
-			// LoggerUtils.debug(getClass(), LoggerConstants.NON_SOLUTION, e);
+			// do nothing
 		}
 	}
 
