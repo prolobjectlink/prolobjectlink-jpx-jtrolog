@@ -276,6 +276,29 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 		return allVariablesSolution;
 	}
 
+	public List<Map<String, PrologTerm>> all() {
+		List<Map<String, PrologTerm>> allVariables = new ArrayList<Map<String, PrologTerm>>();
+
+		Map<String, PrologTerm> varMap = oneVariablesSolution();
+		if (!varMap.isEmpty()) {
+			allVariables.add(varMap);
+		}
+
+		while (hasMoreSolutions()) {
+			try {
+				solution = jtrolog.solveNext();
+				varMap = oneVariablesSolution();
+				if (!varMap.isEmpty()) {
+					allVariables.add(varMap);
+				}
+			} catch (Throwable e) {
+				LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
+			}
+		}
+
+		return allVariables;
+	}
+
 	@Override
 	public String toString() {
 		return "" + solution + "";

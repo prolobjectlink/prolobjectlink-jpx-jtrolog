@@ -98,7 +98,7 @@ public class JTrologProvider extends AbstractProvider implements PrologProvider 
 		List<PrologTerm> list = new ArrayList<PrologTerm>();
 		Parser parser = new Parser(stringTerms);
 		Term term = parser.nextTerm(false);
-		while (term != null && term instanceof Struct) {
+		while (term instanceof Struct) {
 			Struct struct = (Struct) term;
 			if (struct.name.equals(",") && struct.arity == 2) {
 				list.add(toTerm(struct.getArg(0), PrologTerm.class));
