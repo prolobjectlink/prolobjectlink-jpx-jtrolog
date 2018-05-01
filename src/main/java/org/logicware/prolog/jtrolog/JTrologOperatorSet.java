@@ -24,7 +24,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.logicware.prolog.OperatorEntry;
+import org.logicware.pdb.prolog.OperatorEntry;
 
 import jTrolog.engine.Prolog;
 import jTrolog.terms.Int;
@@ -36,7 +36,7 @@ final class JTrologOperatorSet extends AbstractSet<OperatorEntry> {
 	protected final Set<OperatorEntry> operators;
 
 	public JTrologOperatorSet() {
-		Prolog engine = new Prolog();
+		Prolog engine = Prolog.defaultMachine;
 		operators = new HashSet<OperatorEntry>();
 		Iterator<?> i = engine.getCurrentOperators();
 		while (i.hasNext()) {

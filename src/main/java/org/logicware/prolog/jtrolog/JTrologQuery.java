@@ -20,18 +20,19 @@
 package org.logicware.prolog.jtrolog;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import org.logicware.logging.LoggerConstants;
-import org.logicware.logging.LoggerUtils;
-import org.logicware.prolog.AbstractQuery;
-import org.logicware.prolog.PrologEngine;
-import org.logicware.prolog.PrologQuery;
-import org.logicware.prolog.PrologTerm;
+import org.logicware.pdb.logging.LoggerConstants;
+import org.logicware.pdb.logging.LoggerUtils;
+import org.logicware.pdb.prolog.AbstractEngine;
+import org.logicware.pdb.prolog.AbstractQuery;
+import org.logicware.pdb.prolog.PrologQuery;
+import org.logicware.pdb.prolog.PrologTerm;
 
 import jTrolog.engine.Prolog;
 import jTrolog.engine.Solution;
@@ -60,7 +61,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 		}
 	}
 
-	JTrologQuery(PrologEngine engine, String query) {
+	JTrologQuery(AbstractEngine engine, String query) {
 		super(engine);
 		jtrolog = engine.unwrap(JTrologEngine.class).engine;
 		enumerateVariables(variables, new Parser(query).nextTerm(false));
@@ -71,16 +72,17 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 		}
 	}
 
-	JTrologQuery(PrologEngine engine, PrologTerm[] terms) {
+	JTrologQuery(AbstractEngine engine, PrologTerm[] terms) {
 		super(engine);
 		jtrolog = engine.unwrap(JTrologEngine.class).engine;
-		Term term = fromTerm(terms[terms.length - 1], Term.class);
+		enumerateVariables(variables, fromTerm(terms[terms.length - 1], Term.class));
 		for (int i = terms.length; i > 1; i--) {
-			term = new Struct(",", new Term[] { fromTerm(terms[i - 2], Term.class), term });
+			enumerateVariables(variables, fromTerm(terms[i - 2], Term.class));
 		}
-		enumerateVariables(variables, term);
+		String str = Arrays.toString(terms).substring(1);
+		str = str.substring(0, str.length() - 1) + '.';
 		try {
-			this.solution = jtrolog.solve((Struct) term);
+			this.solution = jtrolog.solve(str);
 		} catch (Throwable e) {
 			// do nothing
 		}
@@ -94,7 +96,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 		try {
 			return jtrolog.hasOpenAlternatives();
 		} catch (Throwable e) {
-			LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
+			// do nothing
 		}
 		return false;
 	}
@@ -115,10 +117,12 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 		Map<String, PrologTerm> map = new HashMap<String, PrologTerm>();
 		for (Iterator<String> i = variables.iterator(); i.hasNext();) {
 			String vName = i.next();
-			Term vtTerm = solution.getBinding(vName);
-			if (vtTerm != null) {
-				PrologTerm pTerm = toTerm(vtTerm, PrologTerm.class);
-				map.put(vName, pTerm);
+			if (solution != null) {
+				Term vtTerm = solution.getBinding(vName);
+				if (vtTerm != null) {
+					PrologTerm pTerm = toTerm(vtTerm, PrologTerm.class);
+					map.put(vName, pTerm);
+				}
 			}
 		}
 		return map;
@@ -277,11 +281,11 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 	}
 
 	public List<Map<String, PrologTerm>> all() {
-		List<Map<String, PrologTerm>> allVariables = new ArrayList<Map<String, PrologTerm>>();
+		List<Map<String, PrologTerm>> all = new ArrayList<Map<String, PrologTerm>>();
 
 		Map<String, PrologTerm> varMap = oneVariablesSolution();
 		if (!varMap.isEmpty()) {
-			allVariables.add(varMap);
+			all.add(varMap);
 		}
 
 		while (hasMoreSolutions()) {
@@ -289,14 +293,14 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 				solution = jtrolog.solveNext();
 				varMap = oneVariablesSolution();
 				if (!varMap.isEmpty()) {
-					allVariables.add(varMap);
+					all.add(varMap);
 				}
 			} catch (Throwable e) {
 				LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 			}
 		}
 
-		return allVariables;
+		return all;
 	}
 
 	@Override

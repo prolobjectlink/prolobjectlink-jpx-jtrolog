@@ -19,12 +19,12 @@
  */
 package org.logicware.prolog.jtrolog;
 
-import static org.logicware.logging.LoggerConstants.DONT_WORRY;
-import static org.logicware.logging.LoggerConstants.FILE_NOT_FOUND;
-import static org.logicware.logging.LoggerConstants.INDICATOR_NOT_FOUND;
-import static org.logicware.logging.LoggerConstants.IO_ERROR;
-import static org.logicware.logging.LoggerConstants.RUNTIME_ERROR;
-import static org.logicware.logging.LoggerConstants.SYNTAX_ERROR;
+import static org.logicware.pdb.logging.LoggerConstants.DONT_WORRY;
+import static org.logicware.pdb.logging.LoggerConstants.FILE_NOT_FOUND;
+import static org.logicware.pdb.logging.LoggerConstants.INDICATOR_NOT_FOUND;
+import static org.logicware.pdb.logging.LoggerConstants.IO;
+import static org.logicware.pdb.logging.LoggerConstants.RUNTIME_ERROR;
+import static org.logicware.pdb.logging.LoggerConstants.SYNTAX_ERROR;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -39,19 +39,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.logicware.logging.LoggerConstants;
-import org.logicware.logging.LoggerUtils;
-import org.logicware.prolog.AbstractEngine;
-import org.logicware.prolog.Licenses;
-import org.logicware.prolog.OperatorEntry;
-import org.logicware.prolog.PredicateIndicator;
-import org.logicware.prolog.PrologClause;
-import org.logicware.prolog.PrologEngine;
-import org.logicware.prolog.PrologIndicator;
-import org.logicware.prolog.PrologOperator;
-import org.logicware.prolog.PrologProvider;
-import org.logicware.prolog.PrologQuery;
-import org.logicware.prolog.PrologTerm;
+import org.logicware.pdb.Licenses;
+import org.logicware.pdb.logging.LoggerConstants;
+import org.logicware.pdb.logging.LoggerUtils;
+import org.logicware.pdb.prolog.AbstractEngine;
+import org.logicware.pdb.prolog.OperatorEntry;
+import org.logicware.pdb.prolog.PredicateIndicator;
+import org.logicware.pdb.prolog.PrologClause;
+import org.logicware.pdb.prolog.PrologEngine;
+import org.logicware.pdb.prolog.PrologIndicator;
+import org.logicware.pdb.prolog.PrologOperator;
+import org.logicware.pdb.prolog.PrologProvider;
+import org.logicware.pdb.prolog.PrologQuery;
+import org.logicware.pdb.prolog.PrologTerm;
 
 import jTrolog.engine.Prolog;
 import jTrolog.errors.PrologException;
@@ -89,14 +89,14 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 			writer = new FileWriter(path);
 			writer.write(engine.getTheory());
 		} catch (IOException e) {
-			LoggerUtils.warn(getClass(), IO_ERROR + path, e);
+			LoggerUtils.warn(getClass(), IO + path, e);
 			LoggerUtils.info(getClass(), DONT_WORRY + path);
 		} finally {
 			if (writer != null) {
 				try {
 					writer.close();
 				} catch (IOException e) {
-					LoggerUtils.warn(getClass(), IO_ERROR + path, e);
+					LoggerUtils.warn(getClass(), IO + path, e);
 				}
 			}
 		}
@@ -111,7 +111,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 		} catch (PrologException e) {
 			LoggerUtils.error(getClass(), SYNTAX_ERROR + path, e);
 		} catch (IOException e) {
-			LoggerUtils.warn(getClass(), IO_ERROR + path, e);
+			LoggerUtils.warn(getClass(), IO + path, e);
 		}
 	}
 
@@ -305,11 +305,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 	}
 
 	public boolean currentPredicate(String functor, int arity) {
-		String key = functor.matches(JTrologTerm.SIMPLE_ATOM_REGEX) ?
-
-				functor + "/" + arity
-
-				: "'" + functor + "'/" + arity;
+		String key = Parser.wrapAtom(functor) + "/" + arity;
 
 		// supported built-ins
 		boolean isBuiltin = engine.hasPrimitive(key) || engine.hasPrimitiveExp(key);
@@ -461,7 +457,7 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 		if (getClass() != obj.getClass())
 			return false;
 		JTrologEngine other = (JTrologEngine) obj;
-		return engine == null && other.engine != null;
+		return engine != null && other.engine != null;
 	}
 
 	public void dispose() {
