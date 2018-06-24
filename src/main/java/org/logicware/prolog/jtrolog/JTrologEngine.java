@@ -125,7 +125,9 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 	}
 
 	private boolean exist(Clause clause) {
-		String key = clause.head.name + "/" + clause.head.arity;
+		String name = clause.head.name;
+		StructAtom functor = new StructAtom(name);
+		String key = functor + "/" + clause.head.arity;
 		Iterator<?> i = engine.dynamicPredicateIndicators();
 		while (i.hasNext()) {
 			String predIndicator = (String) i.next();
@@ -134,18 +136,20 @@ public final class JTrologEngine extends AbstractEngine implements PrologEngine 
 					List<?> list = engine.find(predIndicator);
 					for (Object object : list) {
 						if (object instanceof Clause) {
-							Clause c = (Clause) object;
-							if (c.head.equals(clause.head)) {
+							Clause iclause = (Clause) object;
+							if (iclause.head.equals(clause.head)) {
 
-								Struct[] ctail = c.tail;
-								Struct[] clausetail = clause.tail;
+								Struct[] xclausetail = iclause.tail.length > 0 ? iclause.tail
+										: new Struct[] { (Struct) Term.TRUE };
+								Struct[] yclausetail = clause.tail.length > 0 ? clause.tail
+										: new Struct[] { (Struct) Term.TRUE };
 
-								if (ctail.length != clausetail.length) {
+								if (xclausetail.length != yclausetail.length) {
 									return false;
 								}
 
-								for (int j = 0; j < clausetail.length; j++) {
-									if (!ctail[j].equals(clausetail[j])) {
+								for (int j = 0; j < yclausetail.length; j++) {
+									if (!xclausetail[j].equals(yclausetail[j])) {
 										return false;
 									}
 

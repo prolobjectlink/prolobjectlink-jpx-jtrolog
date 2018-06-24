@@ -171,9 +171,11 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 				try {
 					solution = jtrolog.solveNext();
 					array = oneSolution();
-					m = array.length > m ? array.length : m;
-					index++;
-					all.add(array);
+					if (array.length > 0 && !contains(all, array)) {
+						m = array.length > m ? array.length : m;
+						index++;
+						all.add(array);
+					}
 				} catch (Throwable e) {
 					LoggerUtils.error(getClass(), LoggerConstants.NON_SOLUTION, e);
 				}
@@ -231,7 +233,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 			try {
 				solution = jtrolog.solveNext();
 				array = oneSolution();
-				if (array.length > 0) {
+				if (array.length > 0 && !contains(all, array)) {
 					m = array.length > m ? array.length : m;
 					n++;
 					all.add(array);
@@ -264,7 +266,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 			try {
 				solution = jtrolog.solveNext();
 				varMap = oneVariablesSolution();
-				if (!varMap.isEmpty()) {
+				if (!varMap.isEmpty() && !contains(allVariables, varMap)) {
 					allVariables.add(varMap);
 				}
 			} catch (Throwable e) {
@@ -292,7 +294,7 @@ public class JTrologQuery extends AbstractQuery implements PrologQuery {
 			try {
 				solution = jtrolog.solveNext();
 				varMap = oneVariablesSolution();
-				if (!varMap.isEmpty()) {
+				if (!varMap.isEmpty() && !contains(all, varMap)) {
 					all.add(varMap);
 				}
 			} catch (Throwable e) {
