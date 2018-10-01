@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.logicware</groupId>
-	<artifactId>prolobjectlink-db-jtrolog</artifactId>
+	<artifactId>prolobjectlink-jpp-jtrolog</artifactId>
 	<version>1.0.0</version>
 	<name>prolobjectlink-db-jtrolog</name>
 	<description>prolobjectlink-jtrolog</description>
@@ -62,7 +62,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.logicware</groupId>
-			<artifactId>prolobjectlink-db</artifactId>
+			<artifactId>prolobjectlink-jpp</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
@@ -73,7 +73,7 @@
 		<dependency>
 			<groupId>org.logicware</groupId>
 			<artifactId>prolobjectlink-jpi-jtrolog</artifactId>
-			<version>1.0.0</version>
+			<version>[1.0.0, )</version>
 		</dependency>
 	</dependencies>
 
