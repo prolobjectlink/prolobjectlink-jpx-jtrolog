@@ -26,7 +26,7 @@ import org.logicware.pdb.prolog.PrologContainerFactory;
 public final class JTrologContainerFactory extends PrologContainerFactory {
 
 	public JTrologContainerFactory(Settings settings) {
-		super(settings, new JTrologProvider());
+		super(settings, new JTrolog());
 	}
 
 	public HierarchicalCache createHierarchicalCache() {
