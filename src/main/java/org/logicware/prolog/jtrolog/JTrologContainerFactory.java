@@ -20,7 +20,7 @@
 package org.logicware.prolog.jtrolog;
 
 import org.logicware.database.HierarchicalCache;
-import org.logicware.database.Settings;
+import org.logicware.database.etc.Settings;
 import org.logicware.database.prolog.PrologContainerFactory;
 
 public final class JTrologContainerFactory extends PrologContainerFactory {
