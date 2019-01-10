@@ -17,35 +17,35 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.jtrolog;
+package org.worklogic.prolog.jtrolog;
 
-import static org.logicware.db.XmlParser.XML;
+import static org.worklogic.db.XmlParser.XML;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Map.Entry;
+import java.util.Properties;
 
 import javax.persistence.spi.PersistenceProvider;
 import javax.persistence.spi.PersistenceUnitInfo;
 
-import org.logicware.db.DatabaseEngine;
-import org.logicware.db.DatabaseSchema;
-import org.logicware.db.DatabaseUser;
-import org.logicware.db.Protocol;
-import org.logicware.db.Schema;
-import org.logicware.db.etc.Settings;
-import org.logicware.db.jpa.JpaAbstractProvider;
-import org.logicware.db.jpa.JpaEntityManagerFactory;
-import org.logicware.db.jpa.JpaProperties;
-import org.logicware.db.jpa.spi.JPAPersistenceXmlParser;
-import org.logicware.db.memory.MemoryHierarchical;
-import org.logicware.db.persistent.EmbeddedHierarchical;
-import org.logicware.db.persistent.RemoteHierarchical;
-import org.logicware.db.util.JavaReflect;
-import org.logicware.logging.LoggerConstants;
-import org.logicware.logging.LoggerUtils;
+import org.worklogic.db.DatabaseEngine;
+import org.worklogic.db.DatabaseSchema;
+import org.worklogic.db.DatabaseUser;
+import org.worklogic.db.Protocol;
+import org.worklogic.db.Schema;
+import org.worklogic.db.etc.Settings;
+import org.worklogic.db.jpa.JpaAbstractProvider;
+import org.worklogic.db.jpa.JpaEntityManagerFactory;
+import org.worklogic.db.jpa.JpaProperties;
+import org.worklogic.db.jpa.spi.JPAPersistenceXmlParser;
+import org.worklogic.db.memory.MemoryHierarchical;
+import org.worklogic.db.persistent.EmbeddedHierarchical;
+import org.worklogic.db.persistent.RemoteHierarchical;
+import org.worklogic.db.util.JavaReflect;
+import org.worklogic.logging.LoggerConstants;
+import org.worklogic.logging.LoggerUtils;
 
 public class JTrologPersistenceProvider extends JpaAbstractProvider implements PersistenceProvider {
 

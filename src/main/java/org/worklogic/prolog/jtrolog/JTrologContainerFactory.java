@@ -17,11 +17,12 @@
  * limitations under the License.
  * #L%
  */
-package org.logicware.prolog.jtrolog;
+package org.worklogic.prolog.jtrolog;
 
-import org.logicware.db.HierarchicalCache;
-import org.logicware.db.etc.Settings;
-import org.logicware.db.prolog.PrologContainerFactory;
+import org.logicware.prolog.jtrolog.JTrolog;
+import org.worklogic.db.HierarchicalCache;
+import org.worklogic.db.etc.Settings;
+import org.worklogic.db.prolog.PrologContainerFactory;
 
 public final class JTrologContainerFactory extends PrologContainerFactory {
 
