@@ -1,0 +1,11 @@
+'org.worklogic.domain.geometry.Tetragon'(tetragon, 'org.worklogic.domain.geometry.Segment'(ab, 'org.worklogic.domain.geometry.Point'(a, 3, 14), 'org.worklogic.domain.geometry.Point'(b, 3, 14)), 'org.worklogic.domain.geometry.Segment'(bc, 'org.worklogic.domain.geometry.Point'(b, 3, 14), 'org.worklogic.domain.geometry.Point'(c, 3, 14)), 'org.worklogic.domain.geometry.Segment'(cd, 'org.worklogic.domain.geometry.Point'(c, 3, 14), 'org.worklogic.domain.geometry.Point'(d, 3, 14)), 'org.worklogic.domain.geometry.Segment'(da, 'org.worklogic.domain.geometry.Point'(d, 3, 14), 'org.worklogic.domain.geometry.Point'(a, 3, 14))).
+'org.worklogic.domain.geometry.Point'(a, 3, 14).
+'org.worklogic.domain.geometry.Point'(b, 3, 14).
+'org.worklogic.domain.geometry.Point'(c, 3, 14).
+'org.worklogic.domain.geometry.Point'(d, 3, 14).
+'org.worklogic.domain.geometry.Segment'(ab, 'org.worklogic.domain.geometry.Point'(a, 3, 14), 'org.worklogic.domain.geometry.Point'(b, 3, 14)).
+'org.worklogic.domain.geometry.Segment'(bc, 'org.worklogic.domain.geometry.Point'(b, 3, 14), 'org.worklogic.domain.geometry.Point'(c, 3, 14)).
+'org.worklogic.domain.geometry.Segment'(ca, 'org.worklogic.domain.geometry.Point'(c, 3, 14), 'org.worklogic.domain.geometry.Point'(a, 3, 14)).
+'org.worklogic.domain.geometry.Segment'(cd, 'org.worklogic.domain.geometry.Point'(c, 3, 14), 'org.worklogic.domain.geometry.Point'(d, 3, 14)).
+'org.worklogic.domain.geometry.Segment'(da, 'org.worklogic.domain.geometry.Point'(d, 3, 14), 'org.worklogic.domain.geometry.Point'(a, 3, 14)).
+'org.worklogic.domain.geometry.Polygon'(triangle, 'org.worklogic.domain.geometry.Segment'(ab, 'org.worklogic.domain.geometry.Point'(a, 3, 14), 'org.worklogic.domain.geometry.Point'(b, 3, 14)), 'org.worklogic.domain.geometry.Segment'(bc, 'org.worklogic.domain.geometry.Point'(b, 3, 14), 'org.worklogic.domain.geometry.Point'(c, 3, 14)), 'org.worklogic.domain.geometry.Segment'(ca, 'org.worklogic.domain.geometry.Point'(c, 3, 14), 'org.worklogic.domain.geometry.Point'(a, 3, 14))).
