@@ -23,17 +23,17 @@
 		transaction-type="RESOURCE_LOCAL">
 
 		<description>This is an implementation of JPA</description>
-		<provider>org.logicware.provider.TuPrologPersistenceProvider
+		<provider>org.worklogic.provider.TuPrologPersistenceProvider
 		</provider>
 
 		<jta-data-source>jdbc/sample</jta-data-source>
 
-		<class>org.logicware.domain.geometry.Point</class>
-		<class>org.logicware.domain.geometry.Segment</class>
-		<class>org.logicware.domain.geometry.Polygon</class>
-		<class>org.logicware.domain.geometry.Tetragon</class>
-		<class>org.logicware.domain.model.Person</class>
-		<class>org.logicware.domain.model.Department</class>
+		<class>org.worklogic.domain.geometry.Point</class>
+		<class>org.worklogic.domain.geometry.Segment</class>
+		<class>org.worklogic.domain.geometry.Polygon</class>
+		<class>org.worklogic.domain.geometry.Tetragon</class>
+		<class>org.worklogic.domain.model.Person</class>
+		<class>org.worklogic.domain.model.Department</class>
 
 		<properties>
 
