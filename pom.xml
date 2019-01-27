@@ -5,7 +5,7 @@
 	<groupId>org.worklogic</groupId>
 	<artifactId>prolobjectlink-jpp-jtrolog</artifactId>
 	<version>1.0.0</version>
-	<name>prolobjectlink-db-jtrolog</name>
+	<name>prolobjectlink-jpp-jtrolog</name>
 	<description>prolobjectlink-jtrolog</description>
 
 	<url>https://github.com/prolobjectlink/${project.name}</url>
