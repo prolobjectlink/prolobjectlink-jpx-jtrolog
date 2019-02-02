@@ -1,3 +1,3 @@
-'org.worklogic.domain.geometry.Point'(a, 3, 14).
-'org.worklogic.domain.geometry.Point'(b, 3, 14).
-'org.worklogic.domain.geometry.Point'(c, 3, 14).
+'org.prolobjectlink.domain.geometry.Point'(a, 3, 14).
+'org.prolobjectlink.domain.geometry.Point'(b, 3, 14).
+'org.prolobjectlink.domain.geometry.Point'(c, 3, 14).

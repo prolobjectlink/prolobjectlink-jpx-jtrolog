@@ -1,11 +1,11 @@
-'org.worklogic.domain.geometry.Tetragon'(tetragon, 'org.worklogic.domain.geometry.Segment'(ab, 'org.worklogic.domain.geometry.Point'(a, 3, 14), 'org.worklogic.domain.geometry.Point'(b, 3, 14)), 'org.worklogic.domain.geometry.Segment'(bc, 'org.worklogic.domain.geometry.Point'(b, 3, 14), 'org.worklogic.domain.geometry.Point'(c, 3, 14)), 'org.worklogic.domain.geometry.Segment'(cd, 'org.worklogic.domain.geometry.Point'(c, 3, 14), 'org.worklogic.domain.geometry.Point'(d, 3, 14)), 'org.worklogic.domain.geometry.Segment'(da, 'org.worklogic.domain.geometry.Point'(d, 3, 14), 'org.worklogic.domain.geometry.Point'(a, 3, 14))).
-'org.worklogic.domain.geometry.Point'(a, 3, 14).
-'org.worklogic.domain.geometry.Point'(b, 3, 14).
-'org.worklogic.domain.geometry.Point'(c, 3, 14).
-'org.worklogic.domain.geometry.Point'(d, 3, 14).
-'org.worklogic.domain.geometry.Segment'(ab, 'org.worklogic.domain.geometry.Point'(a, 3, 14), 'org.worklogic.domain.geometry.Point'(b, 3, 14)).
-'org.worklogic.domain.geometry.Segment'(bc, 'org.worklogic.domain.geometry.Point'(b, 3, 14), 'org.worklogic.domain.geometry.Point'(c, 3, 14)).
-'org.worklogic.domain.geometry.Segment'(ca, 'org.worklogic.domain.geometry.Point'(c, 3, 14), 'org.worklogic.domain.geometry.Point'(a, 3, 14)).
-'org.worklogic.domain.geometry.Segment'(cd, 'org.worklogic.domain.geometry.Point'(c, 3, 14), 'org.worklogic.domain.geometry.Point'(d, 3, 14)).
-'org.worklogic.domain.geometry.Segment'(da, 'org.worklogic.domain.geometry.Point'(d, 3, 14), 'org.worklogic.domain.geometry.Point'(a, 3, 14)).
-'org.worklogic.domain.geometry.Polygon'(triangle, 'org.worklogic.domain.geometry.Segment'(ab, 'org.worklogic.domain.geometry.Point'(a, 3, 14), 'org.worklogic.domain.geometry.Point'(b, 3, 14)), 'org.worklogic.domain.geometry.Segment'(bc, 'org.worklogic.domain.geometry.Point'(b, 3, 14), 'org.worklogic.domain.geometry.Point'(c, 3, 14)), 'org.worklogic.domain.geometry.Segment'(ca, 'org.worklogic.domain.geometry.Point'(c, 3, 14), 'org.worklogic.domain.geometry.Point'(a, 3, 14))).
+'org.prolobjectlink.domain.geometry.Tetragon'(tetragon, 'org.prolobjectlink.domain.geometry.Segment'(ab, 'org.prolobjectlink.domain.geometry.Point'(a, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(b, 3, 14)), 'org.prolobjectlink.domain.geometry.Segment'(bc, 'org.prolobjectlink.domain.geometry.Point'(b, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(c, 3, 14)), 'org.prolobjectlink.domain.geometry.Segment'(cd, 'org.prolobjectlink.domain.geometry.Point'(c, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(d, 3, 14)), 'org.prolobjectlink.domain.geometry.Segment'(da, 'org.prolobjectlink.domain.geometry.Point'(d, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(a, 3, 14))).
+'org.prolobjectlink.domain.geometry.Point'(a, 3, 14).
+'org.prolobjectlink.domain.geometry.Point'(b, 3, 14).
+'org.prolobjectlink.domain.geometry.Point'(c, 3, 14).
+'org.prolobjectlink.domain.geometry.Point'(d, 3, 14).
+'org.prolobjectlink.domain.geometry.Segment'(ab, 'org.prolobjectlink.domain.geometry.Point'(a, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(b, 3, 14)).
+'org.prolobjectlink.domain.geometry.Segment'(bc, 'org.prolobjectlink.domain.geometry.Point'(b, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(c, 3, 14)).
+'org.prolobjectlink.domain.geometry.Segment'(ca, 'org.prolobjectlink.domain.geometry.Point'(c, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(a, 3, 14)).
+'org.prolobjectlink.domain.geometry.Segment'(cd, 'org.prolobjectlink.domain.geometry.Point'(c, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(d, 3, 14)).
+'org.prolobjectlink.domain.geometry.Segment'(da, 'org.prolobjectlink.domain.geometry.Point'(d, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(a, 3, 14)).
+'org.prolobjectlink.domain.geometry.Polygon'(triangle, 'org.prolobjectlink.domain.geometry.Segment'(ab, 'org.prolobjectlink.domain.geometry.Point'(a, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(b, 3, 14)), 'org.prolobjectlink.domain.geometry.Segment'(bc, 'org.prolobjectlink.domain.geometry.Point'(b, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(c, 3, 14)), 'org.prolobjectlink.domain.geometry.Segment'(ca, 'org.prolobjectlink.domain.geometry.Point'(c, 3, 14), 'org.prolobjectlink.domain.geometry.Point'(a, 3, 14))).

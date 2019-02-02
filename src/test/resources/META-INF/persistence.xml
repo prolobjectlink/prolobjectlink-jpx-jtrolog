@@ -23,22 +23,22 @@
 		transaction-type="RESOURCE_LOCAL">
 
 		<description>This is an implementation of JPA</description>
-		<provider>org.worklogic.provider.TuPrologPersistenceProvider
+		<provider>org.prolobjectlink.provider.TuPrologPersistenceProvider
 		</provider>
 
 		<jta-data-source>jdbc/sample</jta-data-source>
 
-		<class>org.worklogic.domain.geometry.Point</class>
-		<class>org.worklogic.domain.geometry.Segment</class>
-		<class>org.worklogic.domain.geometry.Polygon</class>
-		<class>org.worklogic.domain.geometry.Tetragon</class>
-		<class>org.worklogic.domain.model.Person</class>
-		<class>org.worklogic.domain.model.Department</class>
+		<class>org.prolobjectlink.domain.geometry.Point</class>
+		<class>org.prolobjectlink.domain.geometry.Segment</class>
+		<class>org.prolobjectlink.domain.geometry.Polygon</class>
+		<class>org.prolobjectlink.domain.geometry.Tetragon</class>
+		<class>org.prolobjectlink.domain.model.Person</class>
+		<class>org.prolobjectlink.domain.model.Department</class>
 
 		<properties>
 
 			<property name="javax.persistence.jdbc.driver"
-				value="org.worklogic.prolog.jtrolog.JTrologContainerFactory" />
+				value="org.prolobjectlink.prolog.jtrolog.JTrologContainerFactory" />
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:prolobjectlink:mempdb:~/test" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
