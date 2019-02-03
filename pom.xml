@@ -84,25 +84,19 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.worklogic</groupId>
+			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpp</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
-			<groupId>org.worklogic</groupId>
+			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jtrolog</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
-			<groupId>org.worklogic</groupId>
+			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpi-jtrolog</artifactId>
 			<version>[1.0.0, )</version>
-		</dependency>
-		<dependency>
-			<groupId>org.logicware.database.explorer</groupId>
-			<artifactId>prolobjectlink-dbe</artifactId>
-			<version>[1.0.0, )</version>
-			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
