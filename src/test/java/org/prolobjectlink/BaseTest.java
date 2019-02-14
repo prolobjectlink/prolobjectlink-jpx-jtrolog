@@ -128,7 +128,7 @@ public abstract class BaseTest {
 	protected final Map<String, Object> properties = new HashMap<String, Object>(5);
 
 	protected static final Class<? extends ContainerFactory> driver = JTrologContainerFactory.class;
-	protected static final PrologProvider provider = Prolog.newProvider(JTrolog.class);
+	protected static final PrologProvider provider = Prolog.getProvider(JTrolog.class);
 
 	protected static final PrologInteger zero = provider.newInteger(0);
 	protected static final PrologInteger one = provider.newInteger(1);

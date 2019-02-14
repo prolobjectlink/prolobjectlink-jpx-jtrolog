@@ -34,7 +34,7 @@ public class StoragePoolPerformanceTest {
 
 	static final Class<? extends ContainerFactory> driver = JTrologContainerFactory.class;
 	static final Class<? extends PrologProvider> engine = JTrolog.class;
-	static final PrologProvider prolog = Prolog.newProvider(engine);
+	static final PrologProvider prolog = Prolog.getProvider(engine);
 
 	public static void main(String[] args) {
 
