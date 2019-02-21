@@ -5,7 +5,7 @@
 	<groupId>org.prolobjectlink</groupId>
 	<artifactId>prolobjectlink-jpx-jtrolog</artifactId>
 	<version>1.0.0</version>
-	<name>prolobjectlink-jpp-jtrolog</name>
+	<name>prolobjectlink-jpx-jtrolog</name>
 	<description>prolobjectlink-jtrolog</description>
 
 	<url>https://github.com/prolobjectlink/${project.name}</url>
@@ -44,7 +44,7 @@
 		<developerConnection>scm:git:https://github.com/prolobjectlink/${project.name}.git</developerConnection>
 		<connection>scm:git:https://github.com/prolobjectlink/${project.name}.git</connection>
 		<url>https://github.com/prolobjectlink/${project.name}</url>
-		
+
 	</scm>
 
 	<ciManagement>
@@ -85,17 +85,22 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
+			<artifactId>prolobjectlink-jpi-jtrolog</artifactId>
+			<version>[1.0.0, )</version>
+		</dependency>
+		<dependency>
+			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpp</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
-			<artifactId>prolobjectlink-jtrolog</artifactId>
+			<artifactId>prolobjectlink-jpp-javax</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
-			<artifactId>prolobjectlink-jpi-jtrolog</artifactId>
+			<artifactId>prolobjectlink-jps-jetty</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
