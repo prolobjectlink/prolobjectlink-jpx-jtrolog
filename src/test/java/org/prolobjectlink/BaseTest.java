@@ -36,6 +36,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.Expression;
 
 import org.junit.After;
@@ -197,13 +198,13 @@ public abstract class BaseTest {
 		memoryURL = new URL("mempdb:~/test");
 		remoteURL = new URL("rempdb://localhost:5370/test");
 
-		properties.put("javax.persistence.jdbc.driver", "org.logicware.pdb.prolog.jtrolog.JTrologContainerFactory");
+		properties.put("javax.persistence.jdbc.driver", "org.logicware.prolog.jtrolog.JTrologContainerFactory");
 		properties.put("javax.persistence.jdbc.url", "jdbc:prolobjectlink:mempdb:~/test");
 		properties.put("javax.persistence.jdbc.user", "sa");
 		properties.put("javax.persistence.jdbc.password", "");
 
-//		JPA_EMF = Persistence.createEntityManagerFactory("test");
-//		JPA_EM = JPA_EMF.createEntityManager();
+		JPA_EMF = Persistence.createEntityManagerFactory("test");
+		JPA_EM = JPA_EMF.createEntityManager();
 
 //		JDO_PMF = JDOHelper.getPersistenceManagerFactory("test");
 //		JDO_PM = JDO_PMF.getPersistenceManager();
