@@ -229,6 +229,151 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>
+								org.prolobjectlink.prolog.jtrolog.JTrologDatabaseConsole
+							</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Built-By>Prolobjectlink Project</Built-By>
+						</manifestEntries>
+						<manifestSections>
+							<manifestSection>
+								<name>Prolobjectlink-JPX-JTrolog</name>
+								<manifestEntries>
+									<Specification-Title>Prolobjectlink-JPX-JTrolog Library</Specification-Title>
+									<Specification-Version>${project.version}</Specification-Version>
+									<Specification-Vendor>Prolobjectlink Project</Specification-Vendor>
+									<Implementation-Title>Prolobjectlink-JPX-JTrolog</Implementation-Title>
+									<Implementation-Version>${project.version}</Implementation-Version>
+									<Implementation-Vendor>Prolobjectlink Project</Implementation-Vendor>
+								</manifestEntries>
+							</manifestSection>
+						</manifestSections>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<!-- Creation of the bin file (bat and sh) -->
+				<!-- A filter property file must be created in src/build/filters and 
+					given for each execution -->
+				<executions>
+					<execution>
+						<!-- Create the bin for the XML Update Class -->
+						<id>createXmlUpdateBin</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}/bin</outputDirectory>
+							<overwrite>true</overwrite>
+							<fileNameFiltering>true</fileNameFiltering>
+							<useBuildFilters>false</useBuildFilters>
+							<filters>
+								<filter>${project.basedir}/src/build/filters/bin.properties</filter>
+							</filters>
+							<resources>
+								<resource>
+									<filtering>true</filtering>
+									<directory>${project.basedir}/src/build/filters</directory>
+									<includes>
+										<include>*.bat</include>
+										<include>*.sh</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.jacoco</groupId> -->
+<!-- 				<artifactId>jacoco-maven-plugin</artifactId> -->
+<!-- 				<version>0.7.5.201505241946</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>prepare-agent</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>prepare-agent</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 					<execution> -->
+<!-- 						<id>report</id> -->
+<!-- 						<phase>prepare-package</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>report</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 					<execution> -->
+<!-- 						<id>post-unit-test</id> -->
+<!-- 						<phase>test</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>report</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<dataFile>target/jacoco.exec</dataFile> -->
+<!-- 							<outputDirectory>target/jacoco-ut</outputDirectory> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 				<configuration> -->
+<!-- 					<systemPropertyVariables> -->
+<!-- 						<jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile> -->
+<!-- 					</systemPropertyVariables> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<threshold>Normal</threshold>
+					<effort>Default</effort>
+					<excludeFilterFile>${basedir}/findbugs-exclude-filter.xml</excludeFilterFile>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<tags>
+						<tag>TODO</tag>
+						<tag>FIXME</tag>
+					</tags>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>javancss-maven-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>clirr-maven-plugin</artifactId>
+				<version>2.2.2</version>
+				<configuration>
+					<comparisonArtifacts>
+						<comparisonArtifact>
+							<groupId>commons-lang</groupId>
+							<artifactId>commons-lang</artifactId>
+							<version>2.6</version>
+						</comparisonArtifact>
+					</comparisonArtifacts>
+					<minSeverity>info</minSeverity>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

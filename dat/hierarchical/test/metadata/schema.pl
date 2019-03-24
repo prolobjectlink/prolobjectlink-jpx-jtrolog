@@ -12,3 +12,4 @@
 'org.prolobjectlink.db.DatabaseSequence'(polygon_sequence, '', 0, 'org.prolobjectlink.domain.geometry.Polygon', 1).
 'org.prolobjectlink.db.DatabaseSequence'(tetragon_sequence, '', 0, 'org.prolobjectlink.domain.geometry.Tetragon', 1).
 'org.prolobjectlink.db.prolog.PrologDatabaseView'('org.prolobjectlink.domain.geometry.view.SamePoint', '', 'dat/hierarchical/test/views.pl', 'org.prolobjectlink.db.prolog.PrologArrayList'(3, ['Idp', 'X', 'Y'])).
+'org.prolobjectlink.db.prolog.PrologDatabaseView'('org.prolobjectlink.domain.geometry.view.SamePoint', '', 'dat/hierarchical/test/views.pl', 'org.prolobjectlink.db.prolog.PrologArrayList'(5, ['$jacocoData', 'Idp', 'X', 'Y', '$jacocoData'])).
