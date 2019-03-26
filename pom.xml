@@ -100,7 +100,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
-			<artifactId>prolobjectlink-jpp-jetty</artifactId>
+			<artifactId>prolobjectlink-jps-jetty</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
