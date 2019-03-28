@@ -21,8 +21,22 @@
  */
 package org.prolobjectlink.prolog.jtrolog;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.prolobjectlink.db.DatabaseConsole;
+import org.prolobjectlink.db.DatabaseServer;
+import org.prolobjectlink.db.platform.linux.LinuxDatabaseServer;
+import org.prolobjectlink.db.platform.macosx.MacosxDatabaseServer;
+import org.prolobjectlink.db.platform.win32.Win32DatabaseServer;
 import org.prolobjectlink.db.prolog.AbstractDatabaseConsole;
+import org.prolobjectlink.web.platform.UndertowServerControl;
+import org.prolobjectlink.web.platform.UndertowWebServer;
+import org.prolobjectlink.web.platform.WebPlatformUtil;
+import org.prolobjectlink.web.platform.WebServerControl;
+import org.prolobjectlink.web.platform.linux.undertow.LinuxUndertowWebServer;
+import org.prolobjectlink.web.platform.macosx.undertow.MacosxUndertowWebServer;
+import org.prolobjectlink.web.platform.win32.undertow.Win32UndertowWebServer;
 
 /**
  * 
@@ -37,6 +51,25 @@ public class JTrologDatabaseConsole extends AbstractDatabaseConsole implements D
 
 	public static void main(String[] args) {
 		new JTrologDatabaseConsole().run(args);
+	}
+
+	public WebServerControl getWebServerControl(int port) {
+		UndertowWebServer server = null;
+		DatabaseServer database = null;
+		if (WebPlatformUtil.runOnWindows()) {
+			database = new Win32DatabaseServer();
+			server = new Win32UndertowWebServer(port);
+		} else if (WebPlatformUtil.runOnOsX()) {
+			database = new MacosxDatabaseServer();
+			server = new MacosxUndertowWebServer(port);
+		} else if (WebPlatformUtil.runOnLinux()) {
+			database = new LinuxDatabaseServer();
+			server = new LinuxUndertowWebServer(port);
+		} else {
+			Logger.getLogger(UndertowServerControl.class.getName()).log(Level.SEVERE, null, "Not supported platfor");
+			System.exit(1);
+		}
+		return new UndertowServerControl(server, database);
 	}
 
 }
