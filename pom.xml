@@ -238,7 +238,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<mainClass>
-								org.prolobjectlink.prolog.jtrolog.JTrologDatabaseConsole
+								org.prolobjectlink.db.prolog.jtrolog.JTrologDatabaseConsole
 							</mainClass>
 						</manifest>
 						<manifestEntries>

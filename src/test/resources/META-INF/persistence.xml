@@ -44,7 +44,7 @@
 		<properties>
 
 			<property name="javax.persistence.jdbc.driver"
-				value="org.prolobjectlink.prolog.jtrolog.JTrologContainerFactory" />
+				value="org.prolobjectlink.db.prolog.jtrolog.JTrologContainerFactory" />
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:prolobjectlink:mempdb:~/test" />
 			<property name="javax.persistence.jdbc.user" value="sa" />

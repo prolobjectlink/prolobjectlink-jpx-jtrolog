@@ -19,21 +19,25 @@
  * <http://www.gnu.org/licenses/lgpl-2.1.html>.
  * #L%
  */
-package org.prolobjectlink.prolog.jtrolog;
+package org.prolobjectlink.db.prolog.jtrolog;
 
+import org.prolobjectlink.db.ContainerFactory;
 import org.prolobjectlink.db.HierarchicalCache;
+import org.prolobjectlink.db.ObjectConverter;
 import org.prolobjectlink.db.etc.Settings;
-import org.prolobjectlink.db.prolog.PrologContainerFactory;
-import org.prolobjectlink.prolog.jtrolog.JTrolog;
+import org.prolobjectlink.db.prolog.PrologHierarchicalCache;
+import org.prolobjectlink.prolog.PrologProvider;
+import org.prolobjectlink.prolog.PrologTerm;
 
-public final class JTrologContainerFactory extends PrologContainerFactory {
+public class JTrologHierarchicalCache extends PrologHierarchicalCache implements HierarchicalCache {
 
-	public JTrologContainerFactory(Settings settings) {
-		super(settings, new JTrolog());
+	public JTrologHierarchicalCache(PrologProvider provider, Settings settings, ContainerFactory containerFactory) {
+		super(provider, settings, new JTrologContainerFactory(settings));
 	}
 
-	public HierarchicalCache createHierarchicalCache() {
-		return new JTrologHierarchicalCache(getProvider(), getSettings(), this);
+	public JTrologHierarchicalCache(PrologProvider provider, Settings settings, ObjectConverter<PrologTerm> converter,
+			ContainerFactory containerFactory) {
+		super(provider, settings, converter, new JTrologContainerFactory(settings));
 	}
 
 }
