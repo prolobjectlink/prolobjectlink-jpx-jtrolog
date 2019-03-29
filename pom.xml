@@ -18,8 +18,8 @@
 
 	<licenses>
 		<license>
-			<name>GNU LGPL 2.1</name>
-			<url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
@@ -80,6 +80,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.5</maven.compiler.source>
 		<maven.compiler.target>1.5</maven.compiler.target>
+		<openjpa.version>2.4.3</openjpa.version>
 	</properties>
 
 	<dependencies>
@@ -102,6 +103,11 @@
 			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jps-undertow</artifactId>
 			<version>[1.0.0, )</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.openjpa</groupId>
+			<artifactId>openjpa</artifactId>
+			<version>${openjpa.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
