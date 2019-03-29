@@ -80,7 +80,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.5</maven.compiler.source>
 		<maven.compiler.target>1.5</maven.compiler.target>
-		<openjpa.version>2.4.3</openjpa.version>
+		<hibernate.version>4.3.9.Final</hibernate.version>
 	</properties>
 
 	<dependencies>
@@ -105,9 +105,9 @@
 			<version>[1.0.0, )</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.openjpa</groupId>
-			<artifactId>openjpa</artifactId>
-			<version>${openjpa.version}</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

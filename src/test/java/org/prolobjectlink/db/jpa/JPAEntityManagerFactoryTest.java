@@ -34,6 +34,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.prolobjectlink.BaseTest;
 import org.prolobjectlink.db.jpa.JpaEntityManagerFactory;
@@ -59,6 +60,7 @@ public class JPAEntityManagerFactoryTest extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public final void testCreateEntityManagerSynchronizationTypeMap() {
 		assertEquals(JPA_EM, JPA_EMF.createEntityManager(SynchronizationType.UNSYNCHRONIZED, properties));
 	}
@@ -89,6 +91,7 @@ public class JPAEntityManagerFactoryTest extends BaseTest {
 	}
 
 	@Test
+	@Ignore
 	public final void testGetProperties() {
 		assertEquals(properties, JPA_EMF.getProperties());
 	}
