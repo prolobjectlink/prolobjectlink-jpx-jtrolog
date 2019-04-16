@@ -30,7 +30,6 @@ import org.prolobjectlink.db.platform.linux.LinuxDatabaseServer;
 import org.prolobjectlink.db.platform.macosx.MacosxDatabaseServer;
 import org.prolobjectlink.db.platform.win32.Win32DatabaseServer;
 import org.prolobjectlink.db.prolog.AbstractDatabaseConsole;
-import org.prolobjectlink.prolog.jtrolog.JTrolog;
 import org.prolobjectlink.web.platform.UndertowServerControl;
 import org.prolobjectlink.web.platform.UndertowWebServer;
 import org.prolobjectlink.web.platform.WebPlatformUtil;
@@ -47,7 +46,7 @@ import org.prolobjectlink.web.platform.win32.undertow.Win32UndertowWebServer;
 public class JTrologDatabaseConsole extends AbstractDatabaseConsole implements DatabaseConsole {
 
 	public JTrologDatabaseConsole() {
-		super(new JTrolog());
+		super(new JTrologDatabaseProvider());
 	}
 
 	public static void main(String[] args) {
