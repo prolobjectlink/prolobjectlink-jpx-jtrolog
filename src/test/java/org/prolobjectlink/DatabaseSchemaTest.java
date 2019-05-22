@@ -50,7 +50,6 @@ public class DatabaseSchemaTest extends BaseTest {
 	}
 
 	@Test
-	@Ignore
 	public void testCompile() {
 		assertEquals(4, hschema.compile().size());
 		assertEquals(4, rschema.compile().size());
