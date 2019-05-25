@@ -26,7 +26,6 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.prolobjectlink.BaseTest;
-import org.prolobjectlink.db.jpa.JpaTupleElement;
 import org.prolobjectlink.domain.geometry.Point;
 import org.prolobjectlink.domain.geometry.Segment;
 

@@ -32,8 +32,6 @@ import javax.persistence.TupleElement;
 
 import org.junit.Test;
 import org.prolobjectlink.BaseTest;
-import org.prolobjectlink.db.jpa.JpaTuple;
-import org.prolobjectlink.db.jpa.JpaTupleElement;
 import org.prolobjectlink.domain.geometry.Point;
 import org.prolobjectlink.domain.geometry.Polygon;
 import org.prolobjectlink.domain.geometry.Segment;

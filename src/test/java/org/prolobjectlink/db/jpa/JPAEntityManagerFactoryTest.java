@@ -37,7 +37,6 @@ import javax.persistence.criteria.Root;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.prolobjectlink.BaseTest;
-import org.prolobjectlink.db.jpa.JpaEntityManagerFactory;
 import org.prolobjectlink.domain.model.Person;
 
 public class JPAEntityManagerFactoryTest extends BaseTest {

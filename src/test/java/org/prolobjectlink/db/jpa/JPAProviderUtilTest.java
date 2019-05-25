@@ -28,7 +28,6 @@ import javax.persistence.spi.ProviderUtil;
 
 import org.junit.Test;
 import org.prolobjectlink.BaseTest;
-import org.prolobjectlink.db.jpa.JpaProviderUtil;
 
 public class JPAProviderUtilTest extends BaseTest {
 
