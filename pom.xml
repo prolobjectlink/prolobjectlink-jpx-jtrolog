@@ -89,12 +89,12 @@
 			<artifactId>prolobjectlink-jpi-jtrolog</artifactId>
 			<version>[1.0.0, )</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.prolobjectlink</groupId> -->
-		<!-- <artifactId>prolobjectlink-jtrolog</artifactId> -->
-		<!-- <version>[1.0.0, )</version> -->
-		<!-- <scope>provided</scope> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.prolobjectlink</groupId>
+			<artifactId>prolobjectlink-jtrolog</artifactId>
+			<version>[1.0.0, )</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpp</artifactId>
