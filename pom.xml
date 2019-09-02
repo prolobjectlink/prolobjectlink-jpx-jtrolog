@@ -58,27 +58,27 @@
 	</issueManagement>
 
 	<repositories>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/repositories/central_bundles-18442/content/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-	
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/repositories/central_bundles-18442/content/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 	<distributionManagement>
 		<snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
 		<repository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
 		<site>
 			<id>website</id>
 			<url>dav:http://deploy.delnet.cu/webdav/sites/${project.name}</url>
@@ -89,8 +89,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<hibernate.version>4.3.9.Final</hibernate.version>
 	</properties>
 
@@ -130,7 +130,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>[4.10, )</version>
-			<scope>test</scope>
+			
 		</dependency>
 	</dependencies>
 
@@ -155,21 +155,17 @@
 
 		<plugins>
 			<plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.8</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-				<skipStaging>true</skipStaging>
-                        </configuration>
-                    </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<nohelp>true</nohelp>
+				</configuration>
+			</plugin>
 			<!-- <plugin> -->
 			<!-- <groupId>org.apache.maven.plugins</groupId> -->
 			<!-- <artifactId>maven-javadoc-plugin</artifactId> -->
-			<!-- <version>2.10.4</version> -->
+			<!-- <version>3.0.0</version> -->
 			<!-- <configuration> -->
 			<!-- <nohelp>true</nohelp> -->
 			<!-- </configuration> -->
@@ -191,41 +187,6 @@
 						<id>attach-sources</id>
 						<goals>
 							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<version>1.16</version>
-				<configuration>
-					<canUpdateDescription>true</canUpdateDescription>
-					<failOnMissingHeader>true</failOnMissingHeader>
-					<acceptPomPackaging>true</acceptPomPackaging>
-					<licenseName>apache_v2</licenseName>
-					<!-- <dryRun>true</dryRun> -->
-					<licenseFile>LICENSE.md</licenseFile>
-					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
-					<roots>
-						<root>src/main</root>
-						<root>src/test</root>
-						<root>src/site</root>
-					</roots>
-				</configuration>
-				<executions>
-					<execution>
-						<id>update-file-header</id>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>update-file-header</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>add-license</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>update-project-license</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -334,42 +295,41 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.jacoco</groupId> -->
-			<!-- <artifactId>jacoco-maven-plugin</artifactId> -->
-			<!-- <version>0.7.5.201505241946</version> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <id>prepare-agent</id> -->
-			<!-- <goals> -->
-			<!-- <goal>prepare-agent</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- <execution> -->
-			<!-- <id>report</id> -->
-			<!-- <phase>prepare-package</phase> -->
-			<!-- <goals> -->
-			<!-- <goal>report</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- <execution> -->
-			<!-- <id>post-unit-test</id> -->
-			<!-- <phase>test</phase> -->
-			<!-- <goals> -->
-			<!-- <goal>report</goal> -->
-			<!-- </goals> -->
-			<!-- <configuration> -->
-			<!-- <dataFile>target/jacoco.exec</dataFile> -->
-			<!-- <outputDirectory>target/jacoco-ut</outputDirectory> -->
-			<!-- </configuration> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- <configuration> -->
-			<!-- <systemPropertyVariables> -->
-			<!-- <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile> -->
-			<!-- </systemPropertyVariables> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>1.16</version>
+				<configuration>
+					<canUpdateDescription>true</canUpdateDescription>
+					<failOnMissingHeader>true</failOnMissingHeader>
+					<acceptPomPackaging>true</acceptPomPackaging>
+					<licenseName>apache_v2</licenseName>
+					<!-- <dryRun>true</dryRun> -->
+					<licenseFile>LICENSE.md</licenseFile>
+					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+					<roots>
+						<root>src/main</root>
+						<root>src/test</root>
+						<root>src/site</root>
+					</roots>
+				</configuration>
+				<executions>
+					<execution>
+						<id>update-file-header</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>update-file-header</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>add-license</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>update-project-license</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
@@ -409,6 +369,54 @@
 						</comparisonArtifact>
 					</comparisonArtifacts>
 					<minSeverity>info</minSeverity>
+				</configuration>
+			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>org.jacoco</groupId> -->
+			<!-- <artifactId>jacoco-maven-plugin</artifactId> -->
+			<!-- <version>0.7.5.201505241946</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>prepare-agent</id> -->
+			<!-- <goals> -->
+			<!-- <goal>prepare-agent</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- <execution> -->
+			<!-- <id>report</id> -->
+			<!-- <phase>prepare-package</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>report</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- <execution> -->
+			<!-- <id>post-unit-test</id> -->
+			<!-- <phase>test</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>report</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <dataFile>target/jacoco.exec</dataFile> -->
+			<!-- <outputDirectory>target/jacoco-ut</outputDirectory> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- <configuration> -->
+			<!-- <systemPropertyVariables> -->
+			<!-- <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile> -->
+			<!-- </systemPropertyVariables> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+					<skipStaging>true</skipStaging>
 				</configuration>
 			</plugin>
 		</plugins>

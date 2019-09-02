@@ -1,3 +1,22 @@
+/*-
+ * #%L
+ * prolobjectlink-jpx-jtrolog
+ * %%
+ * Copyright (C) 2012 - 2019 Prolobjectlink Project
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
 package org.prolobjectlink.db.modelgen;
 
 import static org.junit.Assert.assertEquals;
@@ -18,6 +37,7 @@ import org.prolobjectlink.db.StorageMode;
 import org.prolobjectlink.domain.model.Address;
 import org.prolobjectlink.domain.model.Department;
 import org.prolobjectlink.domain.model.Employee;
+import org.prolobjectlink.web.application.WebApplication;
 
 public class ModelGeneratorTest extends BaseTest {
 
@@ -60,7 +80,7 @@ public class ModelGeneratorTest extends BaseTest {
 		department.addField("employeesByCubicle", "", 2, Map.class, Employee.class);
 //		rschema.addSequence("department_sequence", "", Department.class, 1);
 
-		ModelGenerator rg = new ModelGenerator(rdb);
+		ModelGenerator rg = new ModelGenerator(rdb, WebApplication.ROOT + "/webpro/model.pl");
 		assertEquals(4, rg.createSchema().countClasses());
 		assertEquals(rschema, rg.createSchema());
 	}
@@ -68,7 +88,7 @@ public class ModelGeneratorTest extends BaseTest {
 	@Test
 	public void testGenerateSchema() {
 
-		ModelGenerator rg = new ModelGenerator(rdb);
+		ModelGenerator rg = new ModelGenerator(rdb, WebApplication.ROOT + "/webpro/model.pl");
 		assertEquals(4, rg.createSchema().countClasses());
 		assertFalse(rg.generateSchema().isEmpty());
 
@@ -78,7 +98,7 @@ public class ModelGeneratorTest extends BaseTest {
 //	@Ignore
 	public void testCompileSchema() {
 
-		ModelGenerator rg = new ModelGenerator(rdb);
+		ModelGenerator rg = new ModelGenerator(rdb, WebApplication.ROOT + "/webpro/model.pl");
 		assertEquals(4, rg.createSchema().countClasses());
 		System.out.println(rg.compileSchema());
 

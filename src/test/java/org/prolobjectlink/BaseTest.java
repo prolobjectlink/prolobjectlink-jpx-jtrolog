@@ -4,19 +4,17 @@
  * %%
  * Copyright (C) 2019 Prolobjectlink Project
  * %%
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation, either version 2.1 of the
- * License, or (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Lesser Public License for more details.
+ *      http://www.apache.org/licenses/LICENSE-2.0
  * 
- * You should have received a copy of the GNU General Lesser Public
- * License along with this program.  If not, see
- * <http://www.gnu.org/licenses/lgpl-2.1.html>.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  * #L%
  */
 package org.prolobjectlink;
@@ -56,6 +54,7 @@ import org.prolobjectlink.db.jpa.criteria.JpaObject;
 import org.prolobjectlink.db.jpa.spi.JPAPersistenceSchemaVersion;
 import org.prolobjectlink.db.jpa.spi.JPAPersistenceVersion;
 import org.prolobjectlink.db.prolog.jtrolog.JTrologContainerFactory;
+import org.prolobjectlink.db.prolog.jtrolog.JTrologDatabaseProvider;
 import org.prolobjectlink.db.savepoint.SavePointManager;
 import org.prolobjectlink.domain.geometry.Point;
 import org.prolobjectlink.domain.geometry.Polygon;
@@ -123,7 +122,7 @@ public abstract class BaseTest {
 	protected final Map<String, Object> properties = new HashMap<String, Object>(5);
 
 	protected static final Class<? extends ContainerFactory> driver = JTrologContainerFactory.class;
-	protected static final PrologProvider provider = Prolog.getProvider(JTrolog.class);
+	protected static final PrologProvider provider = Prolog.getProvider(JTrologDatabaseProvider.class);
 
 	protected static final PrologInteger zero = provider.newInteger(0);
 	protected static final PrologInteger one = provider.newInteger(1);
