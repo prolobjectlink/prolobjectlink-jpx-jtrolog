@@ -28,6 +28,8 @@ import org.prolobjectlink.db.platform.linux.LinuxDatabaseServer;
 import org.prolobjectlink.db.platform.macosx.MacosxDatabaseServer;
 import org.prolobjectlink.db.platform.win32.Win32DatabaseServer;
 import org.prolobjectlink.db.prolog.AbstractDatabaseConsole;
+import org.prolobjectlink.web.application.ModelGenerator;
+import org.prolobjectlink.web.application.UndertowModelGenerator;
 import org.prolobjectlink.web.platform.UndertowServerControl;
 import org.prolobjectlink.web.platform.UndertowWebServer;
 import org.prolobjectlink.web.platform.WebPlatformUtil;
@@ -68,6 +70,10 @@ public class JTrologDatabaseConsole extends AbstractDatabaseConsole implements D
 			System.exit(1);
 		}
 		return new UndertowServerControl(server, database);
+	}
+
+	public ModelGenerator getModelGeneratorInstance() {
+		return new UndertowModelGenerator();
 	}
 
 }

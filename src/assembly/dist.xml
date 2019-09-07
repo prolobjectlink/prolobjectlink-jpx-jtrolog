@@ -97,6 +97,7 @@
 			<outputDirectory>/</outputDirectory>
 			<includes>
 				<include>install.*</include>
+				<include>model.*</include>
 			</includes>
 		</fileSet>
 
