@@ -1,4 +1,1 @@
-entity('weblog.model.Person', compound, [key(id, integer),field(firstName, atom), field(middleName, atom), field(lastName, atom),oneToOne(address, 'weblog.model.Address'),field(phones, list(atom)),field(emails, list(atom)),field(nickNames, list(atom)),field(birthDate, date),field(joinDate, date),field(lastLoginDate, date),field(loginCount, integer)]).
-entity('weblog.model.Address', compound, [key(id, integer),field(street, atom), field(city, atom), field(state, atom), field(zip, atom), field(country, atom)]).
-entity('weblog.model.Department', compound, [key(id, integer), field(name, atom), field(employeesByCubicle, map(atom,'webpro.model.Person'))]).
-entity('weblog.model.Employee', compound, [key(id, integer),field(salary, long), field(department, 'weblog.model.Department')]).
+entity('weblog.model.WeblogAddress', compound, [key(id, integer),field(street, atom), field(city, atom), field(state, atom), field(zip, atom), field(country, atom)]).
