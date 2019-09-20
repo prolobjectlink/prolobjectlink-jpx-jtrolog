@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.prolobjectlink</groupId>
 	<artifactId>prolobjectlink-jpx-jtrolog</artifactId>
-	<version>1.0.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>prolobjectlink-jpx-jtrolog</name>
 	<description>prolobjectlink-jtrolog</description>
 
@@ -98,33 +98,33 @@
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpi-jtrolog</artifactId>
-			<version>[1.0.0, )</version>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<!-- <dependency> -->
 		<!-- <groupId>org.prolobjectlink</groupId> -->
 		<!-- <artifactId>prolobjectlink-jtrolog</artifactId> -->
-		<!-- <version>[1.0.0, )</version> -->
+		<!-- <version>1.0-SNAPSHOT</version> -->
 		<!-- <scope>provided</scope> -->
 		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpp</artifactId>
-			<version>[1.0.0, )</version>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpp-javax</artifactId>
-			<version>[1.0.0, )</version>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jps-undertow</artifactId>
-			<version>[1.0.0, )</version>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.prolobjectlink</groupId>
 			<artifactId>prolobjectlink-jpt-model</artifactId>
-			<version>[1.0.0, )</version>
+			<version>1.0-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
