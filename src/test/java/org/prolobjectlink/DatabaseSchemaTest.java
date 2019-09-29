@@ -1,8 +1,8 @@
-/*
+/*-
  * #%L
  * prolobjectlink-jpx-jtrolog
  * %%
- * Copyright (C) 2019 Prolobjectlink Project
+ * Copyright (C) 2012 - 2019 Prolobjectlink Project
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -374,7 +374,7 @@ public class DatabaseSchemaTest extends BaseTest {
 
 	@Test
 	public void testGetLocation() {
-		assertEquals("dat" + File.separator + "relational" + File.separator + "test" + File.separator + "database",
+		assertEquals("db/pdb/relational" + File.separator + "test" + File.separator + "database",
 				rdb.getLocation());
 	}
 

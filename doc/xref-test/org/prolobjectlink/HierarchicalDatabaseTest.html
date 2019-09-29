@@ -8,11 +8,11 @@
 <body>
 <div id="overview"><a href="../../../testapidocs/org/prolobjectlink/HierarchicalDatabaseTest.html">View Javadoc</a></div><pre>
 
-<a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="1" href="#1">1</a>   <em class="jxr_comment">/*<em class="jxr_comment">-</em></em>
 <a class="jxr_linenumber" name="2" href="#2">2</a>   <em class="jxr_comment"> * #%L</em>
 <a class="jxr_linenumber" name="3" href="#3">3</a>   <em class="jxr_comment"> * prolobjectlink-jpx-jtrolog</em>
 <a class="jxr_linenumber" name="4" href="#4">4</a>   <em class="jxr_comment"> * %%</em>
-<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * Copyright (C) 2019 Prolobjectlink Project</em>
+<a class="jxr_linenumber" name="5" href="#5">5</a>   <em class="jxr_comment"> * Copyright (C) 2012 - 2019 Prolobjectlink Project</em>
 <a class="jxr_linenumber" name="6" href="#6">6</a>   <em class="jxr_comment"> * %%</em>
 <a class="jxr_linenumber" name="7" href="#7">7</a>   <em class="jxr_comment"> * Licensed under the Apache License, Version 2.0 (the "License");</em>
 <a class="jxr_linenumber" name="8" href="#8">8</a>   <em class="jxr_comment"> * you may not use this file except in compliance with the License.</em>
@@ -778,377 +778,379 @@
 <a class="jxr_linenumber" name="768" href="#768">768</a> 	@Test
 <a class="jxr_linenumber" name="769" href="#769">769</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testLocationOf() {
 <a class="jxr_linenumber" name="770" href="#770">770</a> 
-<a class="jxr_linenumber" name="771" href="#771">771</a> 		assertEquals(<span class="jxr_string">"dat"</span> + SEPARATOR + <span class="jxr_string">"hierarchical"</span> + SEPARATOR + hdb.getName() + SEPARATOR + <span class="jxr_string">"database"</span> + SEPARATOR
-<a class="jxr_linenumber" name="772" href="#772">772</a> 				+ Point.<strong class="jxr_keyword">class</strong>.getPackage().getName().replace('.', SEPARATOR), hdb.locationOf(Point.<strong class="jxr_keyword">class</strong>));
-<a class="jxr_linenumber" name="773" href="#773">773</a> 		assertEquals(<span class="jxr_string">"dat"</span> + SEPARATOR + <span class="jxr_string">"hierarchical"</span> + SEPARATOR + hdb.getName() + SEPARATOR + <span class="jxr_string">"database"</span> + SEPARATOR
-<a class="jxr_linenumber" name="774" href="#774">774</a> 				+ Segment.<strong class="jxr_keyword">class</strong>.getPackage().getName().replace('.', SEPARATOR), hdb.locationOf(Segment.<strong class="jxr_keyword">class</strong>));
-<a class="jxr_linenumber" name="775" href="#775">775</a> 		assertEquals(<span class="jxr_string">"dat"</span> + SEPARATOR + <span class="jxr_string">"hierarchical"</span> + SEPARATOR + hdb.getName() + SEPARATOR + <span class="jxr_string">"database"</span> + SEPARATOR
-<a class="jxr_linenumber" name="776" href="#776">776</a> 				+ Polygon.<strong class="jxr_keyword">class</strong>.getPackage().getName().replace('.', SEPARATOR), hdb.locationOf(Polygon.<strong class="jxr_keyword">class</strong>));
-<a class="jxr_linenumber" name="777" href="#777">777</a> 
-<a class="jxr_linenumber" name="778" href="#778">778</a> 	}
+<a class="jxr_linenumber" name="771" href="#771">771</a> 		assertEquals(<span class="jxr_string">"db/pdb"</span> + SEPARATOR + <span class="jxr_string">"hierarchical"</span> + SEPARATOR + hdb.getName() + SEPARATOR + <span class="jxr_string">"database"</span>
+<a class="jxr_linenumber" name="772" href="#772">772</a> 				+ SEPARATOR + Point.<strong class="jxr_keyword">class</strong>.getPackage().getName().replace('.', SEPARATOR), hdb.locationOf(Point.<strong class="jxr_keyword">class</strong>));
+<a class="jxr_linenumber" name="773" href="#773">773</a> 		assertEquals(<span class="jxr_string">"db/pdb"</span> + SEPARATOR + <span class="jxr_string">"hierarchical"</span> + SEPARATOR + hdb.getName() + SEPARATOR + <span class="jxr_string">"database"</span>
+<a class="jxr_linenumber" name="774" href="#774">774</a> 				+ SEPARATOR + Segment.<strong class="jxr_keyword">class</strong>.getPackage().getName().replace('.', SEPARATOR),
+<a class="jxr_linenumber" name="775" href="#775">775</a> 				hdb.locationOf(Segment.<strong class="jxr_keyword">class</strong>));
+<a class="jxr_linenumber" name="776" href="#776">776</a> 		assertEquals(<span class="jxr_string">"db/pdb"</span> + SEPARATOR + <span class="jxr_string">"hierarchical"</span> + SEPARATOR + hdb.getName() + SEPARATOR + <span class="jxr_string">"database"</span>
+<a class="jxr_linenumber" name="777" href="#777">777</a> 				+ SEPARATOR + Polygon.<strong class="jxr_keyword">class</strong>.getPackage().getName().replace('.', SEPARATOR),
+<a class="jxr_linenumber" name="778" href="#778">778</a> 				hdb.locationOf(Polygon.<strong class="jxr_keyword">class</strong>));
 <a class="jxr_linenumber" name="779" href="#779">779</a> 
-<a class="jxr_linenumber" name="780" href="#780">780</a> 	@Test
-<a class="jxr_linenumber" name="781" href="#781">781</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetSchema() {
-<a class="jxr_linenumber" name="782" href="#782">782</a> 		assertNotNull(hdb.getSchema());
-<a class="jxr_linenumber" name="783" href="#783">783</a> 	}
-<a class="jxr_linenumber" name="784" href="#784">784</a> 
-<a class="jxr_linenumber" name="785" href="#785">785</a> 	@Test
-<a class="jxr_linenumber" name="786" href="#786">786</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetName() {
-<a class="jxr_linenumber" name="787" href="#787">787</a> 		assertEquals(<span class="jxr_string">"test"</span>, hdb.getName());
-<a class="jxr_linenumber" name="788" href="#788">788</a> 	}
-<a class="jxr_linenumber" name="789" href="#789">789</a> 
-<a class="jxr_linenumber" name="790" href="#790">790</a> 	@Test
-<a class="jxr_linenumber" name="791" href="#791">791</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testFlush() {
-<a class="jxr_linenumber" name="792" href="#792">792</a> 
-<a class="jxr_linenumber" name="793" href="#793">793</a> 		hdb.getTransaction().begin();
-<a class="jxr_linenumber" name="794" href="#794">794</a> 		hdb.delete(Point.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="795" href="#795">795</a> 		hdb.delete(Segment.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="796" href="#796">796</a> 		hdb.delete(Polygon.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="797" href="#797">797</a> 		hdb.getTransaction().commit();
-<a class="jxr_linenumber" name="798" href="#798">798</a> 
-<a class="jxr_linenumber" name="799" href="#799">799</a> 		assertFalse(hdb.contains(a));
-<a class="jxr_linenumber" name="800" href="#800">800</a> 		assertFalse(hdb.contains(b));
-<a class="jxr_linenumber" name="801" href="#801">801</a> 		assertFalse(hdb.contains(c));
-<a class="jxr_linenumber" name="802" href="#802">802</a> 		assertFalse(hdb.contains(d));
-<a class="jxr_linenumber" name="803" href="#803">803</a> 		assertFalse(hdb.contains(ab));
-<a class="jxr_linenumber" name="804" href="#804">804</a> 		assertFalse(hdb.contains(bc));
-<a class="jxr_linenumber" name="805" href="#805">805</a> 		assertFalse(hdb.contains(ca));
-<a class="jxr_linenumber" name="806" href="#806">806</a> 		assertFalse(hdb.contains(triangle));
-<a class="jxr_linenumber" name="807" href="#807">807</a> 
-<a class="jxr_linenumber" name="808" href="#808">808</a> 		hdb.insert(a, b, c, d);
-<a class="jxr_linenumber" name="809" href="#809">809</a> 		hdb.insert(ab, bc, ca, cd, da);
-<a class="jxr_linenumber" name="810" href="#810">810</a> 		hdb.insert(triangle, tetragon);
-<a class="jxr_linenumber" name="811" href="#811">811</a> 
-<a class="jxr_linenumber" name="812" href="#812">812</a> 		hdb.flush();
+<a class="jxr_linenumber" name="780" href="#780">780</a> 	}
+<a class="jxr_linenumber" name="781" href="#781">781</a> 
+<a class="jxr_linenumber" name="782" href="#782">782</a> 	@Test
+<a class="jxr_linenumber" name="783" href="#783">783</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetSchema() {
+<a class="jxr_linenumber" name="784" href="#784">784</a> 		assertNotNull(hdb.getSchema());
+<a class="jxr_linenumber" name="785" href="#785">785</a> 	}
+<a class="jxr_linenumber" name="786" href="#786">786</a> 
+<a class="jxr_linenumber" name="787" href="#787">787</a> 	@Test
+<a class="jxr_linenumber" name="788" href="#788">788</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetName() {
+<a class="jxr_linenumber" name="789" href="#789">789</a> 		assertEquals(<span class="jxr_string">"test"</span>, hdb.getName());
+<a class="jxr_linenumber" name="790" href="#790">790</a> 	}
+<a class="jxr_linenumber" name="791" href="#791">791</a> 
+<a class="jxr_linenumber" name="792" href="#792">792</a> 	@Test
+<a class="jxr_linenumber" name="793" href="#793">793</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testFlush() {
+<a class="jxr_linenumber" name="794" href="#794">794</a> 
+<a class="jxr_linenumber" name="795" href="#795">795</a> 		hdb.getTransaction().begin();
+<a class="jxr_linenumber" name="796" href="#796">796</a> 		hdb.delete(Point.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="797" href="#797">797</a> 		hdb.delete(Segment.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="798" href="#798">798</a> 		hdb.delete(Polygon.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="799" href="#799">799</a> 		hdb.getTransaction().commit();
+<a class="jxr_linenumber" name="800" href="#800">800</a> 
+<a class="jxr_linenumber" name="801" href="#801">801</a> 		assertFalse(hdb.contains(a));
+<a class="jxr_linenumber" name="802" href="#802">802</a> 		assertFalse(hdb.contains(b));
+<a class="jxr_linenumber" name="803" href="#803">803</a> 		assertFalse(hdb.contains(c));
+<a class="jxr_linenumber" name="804" href="#804">804</a> 		assertFalse(hdb.contains(d));
+<a class="jxr_linenumber" name="805" href="#805">805</a> 		assertFalse(hdb.contains(ab));
+<a class="jxr_linenumber" name="806" href="#806">806</a> 		assertFalse(hdb.contains(bc));
+<a class="jxr_linenumber" name="807" href="#807">807</a> 		assertFalse(hdb.contains(ca));
+<a class="jxr_linenumber" name="808" href="#808">808</a> 		assertFalse(hdb.contains(triangle));
+<a class="jxr_linenumber" name="809" href="#809">809</a> 
+<a class="jxr_linenumber" name="810" href="#810">810</a> 		hdb.insert(a, b, c, d);
+<a class="jxr_linenumber" name="811" href="#811">811</a> 		hdb.insert(ab, bc, ca, cd, da);
+<a class="jxr_linenumber" name="812" href="#812">812</a> 		hdb.insert(triangle, tetragon);
 <a class="jxr_linenumber" name="813" href="#813">813</a> 
-<a class="jxr_linenumber" name="814" href="#814">814</a> 		assertTrue(hdb.contains(a));
-<a class="jxr_linenumber" name="815" href="#815">815</a> 		assertTrue(hdb.contains(b));
-<a class="jxr_linenumber" name="816" href="#816">816</a> 		assertTrue(hdb.contains(c));
-<a class="jxr_linenumber" name="817" href="#817">817</a> 		assertTrue(hdb.contains(d));
-<a class="jxr_linenumber" name="818" href="#818">818</a> 		assertTrue(hdb.contains(ab));
-<a class="jxr_linenumber" name="819" href="#819">819</a> 		assertTrue(hdb.contains(bc));
-<a class="jxr_linenumber" name="820" href="#820">820</a> 		assertTrue(hdb.contains(ca));
-<a class="jxr_linenumber" name="821" href="#821">821</a> 		assertTrue(hdb.contains(triangle));
-<a class="jxr_linenumber" name="822" href="#822">822</a> 
-<a class="jxr_linenumber" name="823" href="#823">823</a> 		hdb.getTransaction().close();
+<a class="jxr_linenumber" name="814" href="#814">814</a> 		hdb.flush();
+<a class="jxr_linenumber" name="815" href="#815">815</a> 
+<a class="jxr_linenumber" name="816" href="#816">816</a> 		assertTrue(hdb.contains(a));
+<a class="jxr_linenumber" name="817" href="#817">817</a> 		assertTrue(hdb.contains(b));
+<a class="jxr_linenumber" name="818" href="#818">818</a> 		assertTrue(hdb.contains(c));
+<a class="jxr_linenumber" name="819" href="#819">819</a> 		assertTrue(hdb.contains(d));
+<a class="jxr_linenumber" name="820" href="#820">820</a> 		assertTrue(hdb.contains(ab));
+<a class="jxr_linenumber" name="821" href="#821">821</a> 		assertTrue(hdb.contains(bc));
+<a class="jxr_linenumber" name="822" href="#822">822</a> 		assertTrue(hdb.contains(ca));
+<a class="jxr_linenumber" name="823" href="#823">823</a> 		assertTrue(hdb.contains(triangle));
 <a class="jxr_linenumber" name="824" href="#824">824</a> 
-<a class="jxr_linenumber" name="825" href="#825">825</a> 	}
+<a class="jxr_linenumber" name="825" href="#825">825</a> 		hdb.getTransaction().close();
 <a class="jxr_linenumber" name="826" href="#826">826</a> 
-<a class="jxr_linenumber" name="827" href="#827">827</a> 	@Test
-<a class="jxr_linenumber" name="828" href="#828">828</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClose() {
-<a class="jxr_linenumber" name="829" href="#829">829</a> 
-<a class="jxr_linenumber" name="830" href="#830">830</a> 		assertTrue(hdb.isOpen());
-<a class="jxr_linenumber" name="831" href="#831">831</a> 		hdb.close();
-<a class="jxr_linenumber" name="832" href="#832">832</a> 		assertFalse(hdb.isOpen());
-<a class="jxr_linenumber" name="833" href="#833">833</a> 
-<a class="jxr_linenumber" name="834" href="#834">834</a> 	}
+<a class="jxr_linenumber" name="827" href="#827">827</a> 	}
+<a class="jxr_linenumber" name="828" href="#828">828</a> 
+<a class="jxr_linenumber" name="829" href="#829">829</a> 	@Test
+<a class="jxr_linenumber" name="830" href="#830">830</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClose() {
+<a class="jxr_linenumber" name="831" href="#831">831</a> 
+<a class="jxr_linenumber" name="832" href="#832">832</a> 		assertTrue(hdb.isOpen());
+<a class="jxr_linenumber" name="833" href="#833">833</a> 		hdb.close();
+<a class="jxr_linenumber" name="834" href="#834">834</a> 		assertFalse(hdb.isOpen());
 <a class="jxr_linenumber" name="835" href="#835">835</a> 
-<a class="jxr_linenumber" name="836" href="#836">836</a> 	@Test
-<a class="jxr_linenumber" name="837" href="#837">837</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClear() {
-<a class="jxr_linenumber" name="838" href="#838">838</a> 
-<a class="jxr_linenumber" name="839" href="#839">839</a> <em class="jxr_comment">//		hdb.begin();</em>
-<a class="jxr_linenumber" name="840" href="#840">840</a> 		hdb.getTransaction().begin();
-<a class="jxr_linenumber" name="841" href="#841">841</a> 		hdb.delete(Point.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="842" href="#842">842</a> 		hdb.delete(Segment.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="843" href="#843">843</a> 		hdb.delete(Polygon.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="844" href="#844">844</a> 		hdb.getTransaction().commit();
-<a class="jxr_linenumber" name="845" href="#845">845</a> <em class="jxr_comment">//		hdb.commit();</em>
-<a class="jxr_linenumber" name="846" href="#846">846</a> 
-<a class="jxr_linenumber" name="847" href="#847">847</a> 		assertFalse(hdb.contains(a));
-<a class="jxr_linenumber" name="848" href="#848">848</a> 		assertFalse(hdb.contains(b));
-<a class="jxr_linenumber" name="849" href="#849">849</a> 		assertFalse(hdb.contains(c));
-<a class="jxr_linenumber" name="850" href="#850">850</a> 		assertFalse(hdb.contains(d));
-<a class="jxr_linenumber" name="851" href="#851">851</a> 
-<a class="jxr_linenumber" name="852" href="#852">852</a> 		hdb.insert(a);
-<a class="jxr_linenumber" name="853" href="#853">853</a> 		hdb.insert(b);
-<a class="jxr_linenumber" name="854" href="#854">854</a> 		hdb.insert(c);
-<a class="jxr_linenumber" name="855" href="#855">855</a> 		hdb.insert(d);
-<a class="jxr_linenumber" name="856" href="#856">856</a> 		hdb.getTransaction().commit();
-<a class="jxr_linenumber" name="857" href="#857">857</a> 
-<a class="jxr_linenumber" name="858" href="#858">858</a> 		assertTrue(hdb.contains(a));
-<a class="jxr_linenumber" name="859" href="#859">859</a> 		assertTrue(hdb.contains(b));
-<a class="jxr_linenumber" name="860" href="#860">860</a> 		assertTrue(hdb.contains(c));
-<a class="jxr_linenumber" name="861" href="#861">861</a> 		assertTrue(hdb.contains(d));
-<a class="jxr_linenumber" name="862" href="#862">862</a> 
-<a class="jxr_linenumber" name="863" href="#863">863</a> 		hdb.clear();
-<a class="jxr_linenumber" name="864" href="#864">864</a> 		hdb.getTransaction().commit();
-<a class="jxr_linenumber" name="865" href="#865">865</a> 
-<a class="jxr_linenumber" name="866" href="#866">866</a> 		assertFalse(hdb.contains(a));
-<a class="jxr_linenumber" name="867" href="#867">867</a> 		assertFalse(hdb.contains(b));
-<a class="jxr_linenumber" name="868" href="#868">868</a> 		assertFalse(hdb.contains(c));
-<a class="jxr_linenumber" name="869" href="#869">869</a> 		assertFalse(hdb.contains(d));
-<a class="jxr_linenumber" name="870" href="#870">870</a> 
-<a class="jxr_linenumber" name="871" href="#871">871</a> 	}
+<a class="jxr_linenumber" name="836" href="#836">836</a> 	}
+<a class="jxr_linenumber" name="837" href="#837">837</a> 
+<a class="jxr_linenumber" name="838" href="#838">838</a> 	@Test
+<a class="jxr_linenumber" name="839" href="#839">839</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClear() {
+<a class="jxr_linenumber" name="840" href="#840">840</a> 
+<a class="jxr_linenumber" name="841" href="#841">841</a> <em class="jxr_comment">//		hdb.begin();</em>
+<a class="jxr_linenumber" name="842" href="#842">842</a> 		hdb.getTransaction().begin();
+<a class="jxr_linenumber" name="843" href="#843">843</a> 		hdb.delete(Point.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="844" href="#844">844</a> 		hdb.delete(Segment.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="845" href="#845">845</a> 		hdb.delete(Polygon.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="846" href="#846">846</a> 		hdb.getTransaction().commit();
+<a class="jxr_linenumber" name="847" href="#847">847</a> <em class="jxr_comment">//		hdb.commit();</em>
+<a class="jxr_linenumber" name="848" href="#848">848</a> 
+<a class="jxr_linenumber" name="849" href="#849">849</a> 		assertFalse(hdb.contains(a));
+<a class="jxr_linenumber" name="850" href="#850">850</a> 		assertFalse(hdb.contains(b));
+<a class="jxr_linenumber" name="851" href="#851">851</a> 		assertFalse(hdb.contains(c));
+<a class="jxr_linenumber" name="852" href="#852">852</a> 		assertFalse(hdb.contains(d));
+<a class="jxr_linenumber" name="853" href="#853">853</a> 
+<a class="jxr_linenumber" name="854" href="#854">854</a> 		hdb.insert(a);
+<a class="jxr_linenumber" name="855" href="#855">855</a> 		hdb.insert(b);
+<a class="jxr_linenumber" name="856" href="#856">856</a> 		hdb.insert(c);
+<a class="jxr_linenumber" name="857" href="#857">857</a> 		hdb.insert(d);
+<a class="jxr_linenumber" name="858" href="#858">858</a> 		hdb.getTransaction().commit();
+<a class="jxr_linenumber" name="859" href="#859">859</a> 
+<a class="jxr_linenumber" name="860" href="#860">860</a> 		assertTrue(hdb.contains(a));
+<a class="jxr_linenumber" name="861" href="#861">861</a> 		assertTrue(hdb.contains(b));
+<a class="jxr_linenumber" name="862" href="#862">862</a> 		assertTrue(hdb.contains(c));
+<a class="jxr_linenumber" name="863" href="#863">863</a> 		assertTrue(hdb.contains(d));
+<a class="jxr_linenumber" name="864" href="#864">864</a> 
+<a class="jxr_linenumber" name="865" href="#865">865</a> 		hdb.clear();
+<a class="jxr_linenumber" name="866" href="#866">866</a> 		hdb.getTransaction().commit();
+<a class="jxr_linenumber" name="867" href="#867">867</a> 
+<a class="jxr_linenumber" name="868" href="#868">868</a> 		assertFalse(hdb.contains(a));
+<a class="jxr_linenumber" name="869" href="#869">869</a> 		assertFalse(hdb.contains(b));
+<a class="jxr_linenumber" name="870" href="#870">870</a> 		assertFalse(hdb.contains(c));
+<a class="jxr_linenumber" name="871" href="#871">871</a> 		assertFalse(hdb.contains(d));
 <a class="jxr_linenumber" name="872" href="#872">872</a> 
-<a class="jxr_linenumber" name="873" href="#873">873</a> 	@Test
-<a class="jxr_linenumber" name="874" href="#874">874</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetContainerFactory() {
-<a class="jxr_linenumber" name="875" href="#875">875</a> 		assertNotNull(hdb.getContainerFactory());
-<a class="jxr_linenumber" name="876" href="#876">876</a> 	}
-<a class="jxr_linenumber" name="877" href="#877">877</a> 
-<a class="jxr_linenumber" name="878" href="#878">878</a> 	@Test
-<a class="jxr_linenumber" name="879" href="#879">879</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testBackupAndRestore() {
-<a class="jxr_linenumber" name="880" href="#880">880</a> 
-<a class="jxr_linenumber" name="881" href="#881">881</a> 		hdb.begin();
-<a class="jxr_linenumber" name="882" href="#882">882</a> 		hdb.insert(a);
-<a class="jxr_linenumber" name="883" href="#883">883</a> 		hdb.insert(b);
-<a class="jxr_linenumber" name="884" href="#884">884</a> 		hdb.insert(c);
-<a class="jxr_linenumber" name="885" href="#885">885</a> 		hdb.insert(d);
-<a class="jxr_linenumber" name="886" href="#886">886</a> 		hdb.insert(ab);
-<a class="jxr_linenumber" name="887" href="#887">887</a> 		hdb.insert(bc);
-<a class="jxr_linenumber" name="888" href="#888">888</a> 		hdb.insert(ca);
-<a class="jxr_linenumber" name="889" href="#889">889</a> 		hdb.insert(cd);
-<a class="jxr_linenumber" name="890" href="#890">890</a> 		hdb.insert(da);
-<a class="jxr_linenumber" name="891" href="#891">891</a> 		hdb.insert(triangle);
-<a class="jxr_linenumber" name="892" href="#892">892</a> 		hdb.commit();
-<a class="jxr_linenumber" name="893" href="#893">893</a> 
-<a class="jxr_linenumber" name="894" href="#894">894</a> 		<em class="jxr_comment">// make backup</em>
-<a class="jxr_linenumber" name="895" href="#895">895</a> 		hdb.backup(BACKUP_DIRECTORY, BACKUP_ZIP_FILE_NAME_4);
-<a class="jxr_linenumber" name="896" href="#896">896</a> 
-<a class="jxr_linenumber" name="897" href="#897">897</a> 		<em class="jxr_comment">// Physic existence test</em>
-<a class="jxr_linenumber" name="898" href="#898">898</a> 		File file = <strong class="jxr_keyword">new</strong> File(BACKUP_ZIP_FILE_PATH_4);
-<a class="jxr_linenumber" name="899" href="#899">899</a> 		assertTrue(file.exists());
-<a class="jxr_linenumber" name="900" href="#900">900</a> 		assertTrue(file.length() &gt; 0);
-<a class="jxr_linenumber" name="901" href="#901">901</a> 
-<a class="jxr_linenumber" name="902" href="#902">902</a> 		<em class="jxr_comment">// restore the created backup</em>
-<a class="jxr_linenumber" name="903" href="#903">903</a> 		hdb.restore(<span class="jxr_string">""</span>, BACKUP_ZIP_FILE_PATH_4);
-<a class="jxr_linenumber" name="904" href="#904">904</a> 
-<a class="jxr_linenumber" name="905" href="#905">905</a> 		<em class="jxr_comment">// Logical program saved</em>
-<a class="jxr_linenumber" name="906" href="#906">906</a> 		PrologEngine engine = provider.newEngine();
-<a class="jxr_linenumber" name="907" href="#907">907</a> 		String name = Point.<strong class="jxr_keyword">class</strong>.getSimpleName();
-<a class="jxr_linenumber" name="908" href="#908">908</a> 		PersistentContainer pc = hdb.containerOf(Point.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="909" href="#909">909</a> 		String location = pc.locationOf(Point.<strong class="jxr_keyword">class</strong>) + SEPARATOR + name + '.' + 0;
-<a class="jxr_linenumber" name="910" href="#910">910</a> 		engine.consult(location);
-<a class="jxr_linenumber" name="911" href="#911">911</a> 		assertFalse(engine.isProgramEmpty());
-<a class="jxr_linenumber" name="912" href="#912">912</a> 		assertEquals(4, engine.getProgramSize());
-<a class="jxr_linenumber" name="913" href="#913">913</a> 		engine.dispose();
-<a class="jxr_linenumber" name="914" href="#914">914</a> 
-<a class="jxr_linenumber" name="915" href="#915">915</a> 		name = Segment.<strong class="jxr_keyword">class</strong>.getSimpleName();
-<a class="jxr_linenumber" name="916" href="#916">916</a> 		pc = hdb.containerOf(Segment.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="917" href="#917">917</a> 		location = pc.locationOf(Segment.<strong class="jxr_keyword">class</strong>) + SEPARATOR + name + '.' + 0;
-<a class="jxr_linenumber" name="918" href="#918">918</a> 		engine.consult(location);
-<a class="jxr_linenumber" name="919" href="#919">919</a> 		assertFalse(engine.isProgramEmpty());
-<a class="jxr_linenumber" name="920" href="#920">920</a> 		assertEquals(5, engine.getProgramSize());
-<a class="jxr_linenumber" name="921" href="#921">921</a> 		engine.dispose();
-<a class="jxr_linenumber" name="922" href="#922">922</a> 
-<a class="jxr_linenumber" name="923" href="#923">923</a> 		name = Polygon.<strong class="jxr_keyword">class</strong>.getSimpleName();
-<a class="jxr_linenumber" name="924" href="#924">924</a> 		pc = hdb.containerOf(Polygon.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="925" href="#925">925</a> 		location = pc.locationOf(Polygon.<strong class="jxr_keyword">class</strong>) + SEPARATOR + name + '.' + 0;
-<a class="jxr_linenumber" name="926" href="#926">926</a> 		engine.consult(location);
-<a class="jxr_linenumber" name="927" href="#927">927</a> 		assertFalse(engine.isProgramEmpty());
-<a class="jxr_linenumber" name="928" href="#928">928</a> 		assertEquals(2, engine.getProgramSize());
-<a class="jxr_linenumber" name="929" href="#929">929</a> 		engine.dispose();
-<a class="jxr_linenumber" name="930" href="#930">930</a> 
-<a class="jxr_linenumber" name="931" href="#931">931</a> 	}
+<a class="jxr_linenumber" name="873" href="#873">873</a> 	}
+<a class="jxr_linenumber" name="874" href="#874">874</a> 
+<a class="jxr_linenumber" name="875" href="#875">875</a> 	@Test
+<a class="jxr_linenumber" name="876" href="#876">876</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetContainerFactory() {
+<a class="jxr_linenumber" name="877" href="#877">877</a> 		assertNotNull(hdb.getContainerFactory());
+<a class="jxr_linenumber" name="878" href="#878">878</a> 	}
+<a class="jxr_linenumber" name="879" href="#879">879</a> 
+<a class="jxr_linenumber" name="880" href="#880">880</a> 	@Test
+<a class="jxr_linenumber" name="881" href="#881">881</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testBackupAndRestore() {
+<a class="jxr_linenumber" name="882" href="#882">882</a> 
+<a class="jxr_linenumber" name="883" href="#883">883</a> 		hdb.begin();
+<a class="jxr_linenumber" name="884" href="#884">884</a> 		hdb.insert(a);
+<a class="jxr_linenumber" name="885" href="#885">885</a> 		hdb.insert(b);
+<a class="jxr_linenumber" name="886" href="#886">886</a> 		hdb.insert(c);
+<a class="jxr_linenumber" name="887" href="#887">887</a> 		hdb.insert(d);
+<a class="jxr_linenumber" name="888" href="#888">888</a> 		hdb.insert(ab);
+<a class="jxr_linenumber" name="889" href="#889">889</a> 		hdb.insert(bc);
+<a class="jxr_linenumber" name="890" href="#890">890</a> 		hdb.insert(ca);
+<a class="jxr_linenumber" name="891" href="#891">891</a> 		hdb.insert(cd);
+<a class="jxr_linenumber" name="892" href="#892">892</a> 		hdb.insert(da);
+<a class="jxr_linenumber" name="893" href="#893">893</a> 		hdb.insert(triangle);
+<a class="jxr_linenumber" name="894" href="#894">894</a> 		hdb.commit();
+<a class="jxr_linenumber" name="895" href="#895">895</a> 
+<a class="jxr_linenumber" name="896" href="#896">896</a> 		<em class="jxr_comment">// make backup</em>
+<a class="jxr_linenumber" name="897" href="#897">897</a> 		hdb.backup(BACKUP_DIRECTORY, BACKUP_ZIP_FILE_NAME_4);
+<a class="jxr_linenumber" name="898" href="#898">898</a> 
+<a class="jxr_linenumber" name="899" href="#899">899</a> 		<em class="jxr_comment">// Physic existence test</em>
+<a class="jxr_linenumber" name="900" href="#900">900</a> 		File file = <strong class="jxr_keyword">new</strong> File(BACKUP_ZIP_FILE_PATH_4);
+<a class="jxr_linenumber" name="901" href="#901">901</a> 		assertTrue(file.exists());
+<a class="jxr_linenumber" name="902" href="#902">902</a> 		assertTrue(file.length() &gt; 0);
+<a class="jxr_linenumber" name="903" href="#903">903</a> 
+<a class="jxr_linenumber" name="904" href="#904">904</a> 		<em class="jxr_comment">// restore the created backup</em>
+<a class="jxr_linenumber" name="905" href="#905">905</a> 		hdb.restore(<span class="jxr_string">""</span>, BACKUP_ZIP_FILE_PATH_4);
+<a class="jxr_linenumber" name="906" href="#906">906</a> 
+<a class="jxr_linenumber" name="907" href="#907">907</a> 		<em class="jxr_comment">// Logical program saved</em>
+<a class="jxr_linenumber" name="908" href="#908">908</a> 		PrologEngine engine = provider.newEngine();
+<a class="jxr_linenumber" name="909" href="#909">909</a> 		String name = Point.<strong class="jxr_keyword">class</strong>.getSimpleName();
+<a class="jxr_linenumber" name="910" href="#910">910</a> 		PersistentContainer pc = hdb.containerOf(Point.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="911" href="#911">911</a> 		String location = pc.locationOf(Point.<strong class="jxr_keyword">class</strong>) + SEPARATOR + name + '.' + 0;
+<a class="jxr_linenumber" name="912" href="#912">912</a> 		engine.consult(location);
+<a class="jxr_linenumber" name="913" href="#913">913</a> 		assertFalse(engine.isProgramEmpty());
+<a class="jxr_linenumber" name="914" href="#914">914</a> 		assertEquals(4, engine.getProgramSize());
+<a class="jxr_linenumber" name="915" href="#915">915</a> 		engine.dispose();
+<a class="jxr_linenumber" name="916" href="#916">916</a> 
+<a class="jxr_linenumber" name="917" href="#917">917</a> 		name = Segment.<strong class="jxr_keyword">class</strong>.getSimpleName();
+<a class="jxr_linenumber" name="918" href="#918">918</a> 		pc = hdb.containerOf(Segment.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="919" href="#919">919</a> 		location = pc.locationOf(Segment.<strong class="jxr_keyword">class</strong>) + SEPARATOR + name + '.' + 0;
+<a class="jxr_linenumber" name="920" href="#920">920</a> 		engine.consult(location);
+<a class="jxr_linenumber" name="921" href="#921">921</a> 		assertFalse(engine.isProgramEmpty());
+<a class="jxr_linenumber" name="922" href="#922">922</a> 		assertEquals(5, engine.getProgramSize());
+<a class="jxr_linenumber" name="923" href="#923">923</a> 		engine.dispose();
+<a class="jxr_linenumber" name="924" href="#924">924</a> 
+<a class="jxr_linenumber" name="925" href="#925">925</a> 		name = Polygon.<strong class="jxr_keyword">class</strong>.getSimpleName();
+<a class="jxr_linenumber" name="926" href="#926">926</a> 		pc = hdb.containerOf(Polygon.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="927" href="#927">927</a> 		location = pc.locationOf(Polygon.<strong class="jxr_keyword">class</strong>) + SEPARATOR + name + '.' + 0;
+<a class="jxr_linenumber" name="928" href="#928">928</a> 		engine.consult(location);
+<a class="jxr_linenumber" name="929" href="#929">929</a> 		assertFalse(engine.isProgramEmpty());
+<a class="jxr_linenumber" name="930" href="#930">930</a> 		assertEquals(2, engine.getProgramSize());
+<a class="jxr_linenumber" name="931" href="#931">931</a> 		engine.dispose();
 <a class="jxr_linenumber" name="932" href="#932">932</a> 
-<a class="jxr_linenumber" name="933" href="#933">933</a> 	@Test
-<a class="jxr_linenumber" name="934" href="#934">934</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetLocation() {
-<a class="jxr_linenumber" name="935" href="#935">935</a> 		assertEquals(<span class="jxr_string">"dat"</span> + SEPARATOR + <span class="jxr_string">"hierarchical"</span> + SEPARATOR + hdb.getName() + SEPARATOR + <span class="jxr_string">"database"</span>,
-<a class="jxr_linenumber" name="936" href="#936">936</a> 				hdb.getLocation());
-<a class="jxr_linenumber" name="937" href="#937">937</a> 	}
-<a class="jxr_linenumber" name="938" href="#938">938</a> 
-<a class="jxr_linenumber" name="939" href="#939">939</a> 	@Test
-<a class="jxr_linenumber" name="940" href="#940">940</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testBegin() {
-<a class="jxr_linenumber" name="941" href="#941">941</a> 		assertFalse(hdb.getTransaction().isActive());
-<a class="jxr_linenumber" name="942" href="#942">942</a> 		hdb.getTransaction().begin();
-<a class="jxr_linenumber" name="943" href="#943">943</a> 		assertTrue(hdb.getTransaction().isActive());
-<a class="jxr_linenumber" name="944" href="#944">944</a> 		hdb.getTransaction().close();
-<a class="jxr_linenumber" name="945" href="#945">945</a> 		assertFalse(hdb.getTransaction().isActive());
-<a class="jxr_linenumber" name="946" href="#946">946</a> 	}
-<a class="jxr_linenumber" name="947" href="#947">947</a> 
-<a class="jxr_linenumber" name="948" href="#948">948</a> 	@Test
-<a class="jxr_linenumber" name="949" href="#949">949</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testCommit() {
-<a class="jxr_linenumber" name="950" href="#950">950</a> 
-<a class="jxr_linenumber" name="951" href="#951">951</a> <em class="jxr_comment">//		hdb.begin();</em>
-<a class="jxr_linenumber" name="952" href="#952">952</a> 		hdb.getTransaction().begin();
-<a class="jxr_linenumber" name="953" href="#953">953</a> 		hdb.delete(Point.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="954" href="#954">954</a> 		hdb.delete(Segment.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="955" href="#955">955</a> 		hdb.delete(Polygon.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="956" href="#956">956</a> 		hdb.getTransaction().commit();
-<a class="jxr_linenumber" name="957" href="#957">957</a> <em class="jxr_comment">//		hdb.commit();</em>
-<a class="jxr_linenumber" name="958" href="#958">958</a> 
-<a class="jxr_linenumber" name="959" href="#959">959</a> 		assertFalse(hdb.contains(a));
-<a class="jxr_linenumber" name="960" href="#960">960</a> 		assertFalse(hdb.contains(b));
-<a class="jxr_linenumber" name="961" href="#961">961</a> 		assertFalse(hdb.contains(c));
-<a class="jxr_linenumber" name="962" href="#962">962</a> 		assertFalse(hdb.contains(d));
-<a class="jxr_linenumber" name="963" href="#963">963</a> 		assertFalse(hdb.contains(ab));
-<a class="jxr_linenumber" name="964" href="#964">964</a> 		assertFalse(hdb.contains(bc));
-<a class="jxr_linenumber" name="965" href="#965">965</a> 		assertFalse(hdb.contains(ca));
-<a class="jxr_linenumber" name="966" href="#966">966</a> 		assertFalse(hdb.contains(triangle));
-<a class="jxr_linenumber" name="967" href="#967">967</a> 
-<a class="jxr_linenumber" name="968" href="#968">968</a> 		hdb.insert(a, b, c, d);
-<a class="jxr_linenumber" name="969" href="#969">969</a> 		hdb.insert(ab, bc, ca, cd, da);
-<a class="jxr_linenumber" name="970" href="#970">970</a> 		hdb.insert(triangle, tetragon);
-<a class="jxr_linenumber" name="971" href="#971">971</a> 		hdb.getTransaction().commit();
-<a class="jxr_linenumber" name="972" href="#972">972</a> <em class="jxr_comment">//		hdb.commit();</em>
-<a class="jxr_linenumber" name="973" href="#973">973</a> 
-<a class="jxr_linenumber" name="974" href="#974">974</a> 		assertTrue(hdb.contains(a));
-<a class="jxr_linenumber" name="975" href="#975">975</a> 		assertTrue(hdb.contains(b));
-<a class="jxr_linenumber" name="976" href="#976">976</a> 		assertTrue(hdb.contains(c));
-<a class="jxr_linenumber" name="977" href="#977">977</a> 		assertTrue(hdb.contains(d));
-<a class="jxr_linenumber" name="978" href="#978">978</a> 		assertTrue(hdb.contains(ab));
-<a class="jxr_linenumber" name="979" href="#979">979</a> 		assertTrue(hdb.contains(bc));
-<a class="jxr_linenumber" name="980" href="#980">980</a> 		assertTrue(hdb.contains(ca));
-<a class="jxr_linenumber" name="981" href="#981">981</a> 		assertTrue(hdb.contains(triangle));
-<a class="jxr_linenumber" name="982" href="#982">982</a> 
-<a class="jxr_linenumber" name="983" href="#983">983</a> 		hdb.getTransaction().close();
+<a class="jxr_linenumber" name="933" href="#933">933</a> 	}
+<a class="jxr_linenumber" name="934" href="#934">934</a> 
+<a class="jxr_linenumber" name="935" href="#935">935</a> 	@Test
+<a class="jxr_linenumber" name="936" href="#936">936</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetLocation() {
+<a class="jxr_linenumber" name="937" href="#937">937</a> 		assertEquals(<span class="jxr_string">"db/pdb"</span> + SEPARATOR + <span class="jxr_string">"hierarchical"</span> + SEPARATOR + hdb.getName() + SEPARATOR + <span class="jxr_string">"database"</span>,
+<a class="jxr_linenumber" name="938" href="#938">938</a> 				hdb.getLocation());
+<a class="jxr_linenumber" name="939" href="#939">939</a> 	}
+<a class="jxr_linenumber" name="940" href="#940">940</a> 
+<a class="jxr_linenumber" name="941" href="#941">941</a> 	@Test
+<a class="jxr_linenumber" name="942" href="#942">942</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testBegin() {
+<a class="jxr_linenumber" name="943" href="#943">943</a> 		assertFalse(hdb.getTransaction().isActive());
+<a class="jxr_linenumber" name="944" href="#944">944</a> 		hdb.getTransaction().begin();
+<a class="jxr_linenumber" name="945" href="#945">945</a> 		assertTrue(hdb.getTransaction().isActive());
+<a class="jxr_linenumber" name="946" href="#946">946</a> 		hdb.getTransaction().close();
+<a class="jxr_linenumber" name="947" href="#947">947</a> 		assertFalse(hdb.getTransaction().isActive());
+<a class="jxr_linenumber" name="948" href="#948">948</a> 	}
+<a class="jxr_linenumber" name="949" href="#949">949</a> 
+<a class="jxr_linenumber" name="950" href="#950">950</a> 	@Test
+<a class="jxr_linenumber" name="951" href="#951">951</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testCommit() {
+<a class="jxr_linenumber" name="952" href="#952">952</a> 
+<a class="jxr_linenumber" name="953" href="#953">953</a> <em class="jxr_comment">//		hdb.begin();</em>
+<a class="jxr_linenumber" name="954" href="#954">954</a> 		hdb.getTransaction().begin();
+<a class="jxr_linenumber" name="955" href="#955">955</a> 		hdb.delete(Point.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="956" href="#956">956</a> 		hdb.delete(Segment.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="957" href="#957">957</a> 		hdb.delete(Polygon.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="958" href="#958">958</a> 		hdb.getTransaction().commit();
+<a class="jxr_linenumber" name="959" href="#959">959</a> <em class="jxr_comment">//		hdb.commit();</em>
+<a class="jxr_linenumber" name="960" href="#960">960</a> 
+<a class="jxr_linenumber" name="961" href="#961">961</a> 		assertFalse(hdb.contains(a));
+<a class="jxr_linenumber" name="962" href="#962">962</a> 		assertFalse(hdb.contains(b));
+<a class="jxr_linenumber" name="963" href="#963">963</a> 		assertFalse(hdb.contains(c));
+<a class="jxr_linenumber" name="964" href="#964">964</a> 		assertFalse(hdb.contains(d));
+<a class="jxr_linenumber" name="965" href="#965">965</a> 		assertFalse(hdb.contains(ab));
+<a class="jxr_linenumber" name="966" href="#966">966</a> 		assertFalse(hdb.contains(bc));
+<a class="jxr_linenumber" name="967" href="#967">967</a> 		assertFalse(hdb.contains(ca));
+<a class="jxr_linenumber" name="968" href="#968">968</a> 		assertFalse(hdb.contains(triangle));
+<a class="jxr_linenumber" name="969" href="#969">969</a> 
+<a class="jxr_linenumber" name="970" href="#970">970</a> 		hdb.insert(a, b, c, d);
+<a class="jxr_linenumber" name="971" href="#971">971</a> 		hdb.insert(ab, bc, ca, cd, da);
+<a class="jxr_linenumber" name="972" href="#972">972</a> 		hdb.insert(triangle, tetragon);
+<a class="jxr_linenumber" name="973" href="#973">973</a> 		hdb.getTransaction().commit();
+<a class="jxr_linenumber" name="974" href="#974">974</a> <em class="jxr_comment">//		hdb.commit();</em>
+<a class="jxr_linenumber" name="975" href="#975">975</a> 
+<a class="jxr_linenumber" name="976" href="#976">976</a> 		assertTrue(hdb.contains(a));
+<a class="jxr_linenumber" name="977" href="#977">977</a> 		assertTrue(hdb.contains(b));
+<a class="jxr_linenumber" name="978" href="#978">978</a> 		assertTrue(hdb.contains(c));
+<a class="jxr_linenumber" name="979" href="#979">979</a> 		assertTrue(hdb.contains(d));
+<a class="jxr_linenumber" name="980" href="#980">980</a> 		assertTrue(hdb.contains(ab));
+<a class="jxr_linenumber" name="981" href="#981">981</a> 		assertTrue(hdb.contains(bc));
+<a class="jxr_linenumber" name="982" href="#982">982</a> 		assertTrue(hdb.contains(ca));
+<a class="jxr_linenumber" name="983" href="#983">983</a> 		assertTrue(hdb.contains(triangle));
 <a class="jxr_linenumber" name="984" href="#984">984</a> 
-<a class="jxr_linenumber" name="985" href="#985">985</a> 	}
+<a class="jxr_linenumber" name="985" href="#985">985</a> 		hdb.getTransaction().close();
 <a class="jxr_linenumber" name="986" href="#986">986</a> 
-<a class="jxr_linenumber" name="987" href="#987">987</a> 	@Test
-<a class="jxr_linenumber" name="988" href="#988">988</a> 	@Ignore
-<a class="jxr_linenumber" name="989" href="#989">989</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRollback() {
-<a class="jxr_linenumber" name="990" href="#990">990</a> 
-<a class="jxr_linenumber" name="991" href="#991">991</a> 		Point p = <strong class="jxr_keyword">new</strong> Point(<span class="jxr_string">"p"</span>);
+<a class="jxr_linenumber" name="987" href="#987">987</a> 	}
+<a class="jxr_linenumber" name="988" href="#988">988</a> 
+<a class="jxr_linenumber" name="989" href="#989">989</a> 	@Test
+<a class="jxr_linenumber" name="990" href="#990">990</a> 	@Ignore
+<a class="jxr_linenumber" name="991" href="#991">991</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRollback() {
 <a class="jxr_linenumber" name="992" href="#992">992</a> 
-<a class="jxr_linenumber" name="993" href="#993">993</a> <em class="jxr_comment">//		hdb.begin();</em>
-<a class="jxr_linenumber" name="994" href="#994">994</a> 		hdb.getTransaction().begin();
-<a class="jxr_linenumber" name="995" href="#995">995</a> 		hdb.delete(Point.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="996" href="#996">996</a> 		hdb.delete(Segment.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="997" href="#997">997</a> 		hdb.delete(Polygon.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="998" href="#998">998</a> 		hdb.getTransaction().commit();
-<a class="jxr_linenumber" name="999" href="#999">999</a> <em class="jxr_comment">//		hdb.commit();</em>
-<a class="jxr_linenumber" name="1000" href="#1000">1000</a> 
-<a class="jxr_linenumber" name="1001" href="#1001">1001</a> 		assertFalse(hdb.contains(a));
-<a class="jxr_linenumber" name="1002" href="#1002">1002</a> 		assertFalse(hdb.contains(b));
-<a class="jxr_linenumber" name="1003" href="#1003">1003</a> 		assertFalse(hdb.contains(c));
-<a class="jxr_linenumber" name="1004" href="#1004">1004</a> 		assertFalse(hdb.contains(d));
-<a class="jxr_linenumber" name="1005" href="#1005">1005</a> 		assertFalse(hdb.contains(ab));
-<a class="jxr_linenumber" name="1006" href="#1006">1006</a> 		assertFalse(hdb.contains(bc));
-<a class="jxr_linenumber" name="1007" href="#1007">1007</a> 		assertFalse(hdb.contains(ca));
-<a class="jxr_linenumber" name="1008" href="#1008">1008</a> 		assertFalse(hdb.contains(triangle));
-<a class="jxr_linenumber" name="1009" href="#1009">1009</a> 
-<a class="jxr_linenumber" name="1010" href="#1010">1010</a> 		hdb.insert(p);
+<a class="jxr_linenumber" name="993" href="#993">993</a> 		Point p = <strong class="jxr_keyword">new</strong> Point(<span class="jxr_string">"p"</span>);
+<a class="jxr_linenumber" name="994" href="#994">994</a> 
+<a class="jxr_linenumber" name="995" href="#995">995</a> <em class="jxr_comment">//		hdb.begin();</em>
+<a class="jxr_linenumber" name="996" href="#996">996</a> 		hdb.getTransaction().begin();
+<a class="jxr_linenumber" name="997" href="#997">997</a> 		hdb.delete(Point.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="998" href="#998">998</a> 		hdb.delete(Segment.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="999" href="#999">999</a> 		hdb.delete(Polygon.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="1000" href="#1000">1000</a> 		hdb.getTransaction().commit();
+<a class="jxr_linenumber" name="1001" href="#1001">1001</a> <em class="jxr_comment">//		hdb.commit();</em>
+<a class="jxr_linenumber" name="1002" href="#1002">1002</a> 
+<a class="jxr_linenumber" name="1003" href="#1003">1003</a> 		assertFalse(hdb.contains(a));
+<a class="jxr_linenumber" name="1004" href="#1004">1004</a> 		assertFalse(hdb.contains(b));
+<a class="jxr_linenumber" name="1005" href="#1005">1005</a> 		assertFalse(hdb.contains(c));
+<a class="jxr_linenumber" name="1006" href="#1006">1006</a> 		assertFalse(hdb.contains(d));
+<a class="jxr_linenumber" name="1007" href="#1007">1007</a> 		assertFalse(hdb.contains(ab));
+<a class="jxr_linenumber" name="1008" href="#1008">1008</a> 		assertFalse(hdb.contains(bc));
+<a class="jxr_linenumber" name="1009" href="#1009">1009</a> 		assertFalse(hdb.contains(ca));
+<a class="jxr_linenumber" name="1010" href="#1010">1010</a> 		assertFalse(hdb.contains(triangle));
 <a class="jxr_linenumber" name="1011" href="#1011">1011</a> 
-<a class="jxr_linenumber" name="1012" href="#1012">1012</a> 		assertTrue(hdb.contains(p));
+<a class="jxr_linenumber" name="1012" href="#1012">1012</a> 		hdb.insert(p);
 <a class="jxr_linenumber" name="1013" href="#1013">1013</a> 
-<a class="jxr_linenumber" name="1014" href="#1014">1014</a> 		hdb.rollback();
+<a class="jxr_linenumber" name="1014" href="#1014">1014</a> 		assertTrue(hdb.contains(p));
 <a class="jxr_linenumber" name="1015" href="#1015">1015</a> 
-<a class="jxr_linenumber" name="1016" href="#1016">1016</a> 		assertFalse(hdb.contains(p));
+<a class="jxr_linenumber" name="1016" href="#1016">1016</a> 		hdb.rollback();
 <a class="jxr_linenumber" name="1017" href="#1017">1017</a> 
-<a class="jxr_linenumber" name="1018" href="#1018">1018</a> 	}
+<a class="jxr_linenumber" name="1018" href="#1018">1018</a> 		assertFalse(hdb.contains(p));
 <a class="jxr_linenumber" name="1019" href="#1019">1019</a> 
-<a class="jxr_linenumber" name="1020" href="#1020">1020</a> 	@Test
-<a class="jxr_linenumber" name="1021" href="#1021">1021</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsOpen() {
-<a class="jxr_linenumber" name="1022" href="#1022">1022</a> 
-<a class="jxr_linenumber" name="1023" href="#1023">1023</a> 		assertTrue(hdb.isOpen());
+<a class="jxr_linenumber" name="1020" href="#1020">1020</a> 	}
+<a class="jxr_linenumber" name="1021" href="#1021">1021</a> 
+<a class="jxr_linenumber" name="1022" href="#1022">1022</a> 	@Test
+<a class="jxr_linenumber" name="1023" href="#1023">1023</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsOpen() {
 <a class="jxr_linenumber" name="1024" href="#1024">1024</a> 
-<a class="jxr_linenumber" name="1025" href="#1025">1025</a> 		hdb.close();
+<a class="jxr_linenumber" name="1025" href="#1025">1025</a> 		assertTrue(hdb.isOpen());
 <a class="jxr_linenumber" name="1026" href="#1026">1026</a> 
-<a class="jxr_linenumber" name="1027" href="#1027">1027</a> 		assertFalse(hdb.isOpen());
+<a class="jxr_linenumber" name="1027" href="#1027">1027</a> 		hdb.close();
 <a class="jxr_linenumber" name="1028" href="#1028">1028</a> 
-<a class="jxr_linenumber" name="1029" href="#1029">1029</a> 	}
+<a class="jxr_linenumber" name="1029" href="#1029">1029</a> 		assertFalse(hdb.isOpen());
 <a class="jxr_linenumber" name="1030" href="#1030">1030</a> 
-<a class="jxr_linenumber" name="1031" href="#1031">1031</a> 	@Test
-<a class="jxr_linenumber" name="1032" href="#1032">1032</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetEngine() {
-<a class="jxr_linenumber" name="1033" href="#1033">1033</a> 		assertNotNull(hdb.getEngine());
-<a class="jxr_linenumber" name="1034" href="#1034">1034</a> 	}
-<a class="jxr_linenumber" name="1035" href="#1035">1035</a> 
-<a class="jxr_linenumber" name="1036" href="#1036">1036</a> 	@Test
-<a class="jxr_linenumber" name="1037" href="#1037">1037</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetProvider() {
-<a class="jxr_linenumber" name="1038" href="#1038">1038</a> 		assertNotNull(hdb.getProvider());
-<a class="jxr_linenumber" name="1039" href="#1039">1039</a> 	}
-<a class="jxr_linenumber" name="1040" href="#1040">1040</a> 
-<a class="jxr_linenumber" name="1041" href="#1041">1041</a> 	@Test
-<a class="jxr_linenumber" name="1042" href="#1042">1042</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetConverter() {
-<a class="jxr_linenumber" name="1043" href="#1043">1043</a> 		assertEquals(<strong class="jxr_keyword">new</strong> PrologObjectConverter(provider), hdb.getConverter());
-<a class="jxr_linenumber" name="1044" href="#1044">1044</a> 		assertNotNull(hdb.getConverter());
-<a class="jxr_linenumber" name="1045" href="#1045">1045</a> 	}
-<a class="jxr_linenumber" name="1046" href="#1046">1046</a> 
-<a class="jxr_linenumber" name="1047" href="#1047">1047</a> 	@Test
-<a class="jxr_linenumber" name="1048" href="#1048">1048</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClassOfO() {
-<a class="jxr_linenumber" name="1049" href="#1049">1049</a> 
-<a class="jxr_linenumber" name="1050" href="#1050">1050</a> 		assertEquals(Point.<strong class="jxr_keyword">class</strong>, hdb.classOf(a));
-<a class="jxr_linenumber" name="1051" href="#1051">1051</a> 		assertEquals(Segment.<strong class="jxr_keyword">class</strong>, hdb.classOf(ab));
-<a class="jxr_linenumber" name="1052" href="#1052">1052</a> 		assertEquals(Polygon.<strong class="jxr_keyword">class</strong>, hdb.classOf(triangle));
-<a class="jxr_linenumber" name="1053" href="#1053">1053</a> 
-<a class="jxr_linenumber" name="1054" href="#1054">1054</a> 	}
+<a class="jxr_linenumber" name="1031" href="#1031">1031</a> 	}
+<a class="jxr_linenumber" name="1032" href="#1032">1032</a> 
+<a class="jxr_linenumber" name="1033" href="#1033">1033</a> 	@Test
+<a class="jxr_linenumber" name="1034" href="#1034">1034</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetEngine() {
+<a class="jxr_linenumber" name="1035" href="#1035">1035</a> 		assertNotNull(hdb.getEngine());
+<a class="jxr_linenumber" name="1036" href="#1036">1036</a> 	}
+<a class="jxr_linenumber" name="1037" href="#1037">1037</a> 
+<a class="jxr_linenumber" name="1038" href="#1038">1038</a> 	@Test
+<a class="jxr_linenumber" name="1039" href="#1039">1039</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetProvider() {
+<a class="jxr_linenumber" name="1040" href="#1040">1040</a> 		assertNotNull(hdb.getProvider());
+<a class="jxr_linenumber" name="1041" href="#1041">1041</a> 	}
+<a class="jxr_linenumber" name="1042" href="#1042">1042</a> 
+<a class="jxr_linenumber" name="1043" href="#1043">1043</a> 	@Test
+<a class="jxr_linenumber" name="1044" href="#1044">1044</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetConverter() {
+<a class="jxr_linenumber" name="1045" href="#1045">1045</a> 		assertEquals(<strong class="jxr_keyword">new</strong> PrologObjectConverter(provider), hdb.getConverter());
+<a class="jxr_linenumber" name="1046" href="#1046">1046</a> 		assertNotNull(hdb.getConverter());
+<a class="jxr_linenumber" name="1047" href="#1047">1047</a> 	}
+<a class="jxr_linenumber" name="1048" href="#1048">1048</a> 
+<a class="jxr_linenumber" name="1049" href="#1049">1049</a> 	@Test
+<a class="jxr_linenumber" name="1050" href="#1050">1050</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClassOfO() {
+<a class="jxr_linenumber" name="1051" href="#1051">1051</a> 
+<a class="jxr_linenumber" name="1052" href="#1052">1052</a> 		assertEquals(Point.<strong class="jxr_keyword">class</strong>, hdb.classOf(a));
+<a class="jxr_linenumber" name="1053" href="#1053">1053</a> 		assertEquals(Segment.<strong class="jxr_keyword">class</strong>, hdb.classOf(ab));
+<a class="jxr_linenumber" name="1054" href="#1054">1054</a> 		assertEquals(Polygon.<strong class="jxr_keyword">class</strong>, hdb.classOf(triangle));
 <a class="jxr_linenumber" name="1055" href="#1055">1055</a> 
-<a class="jxr_linenumber" name="1056" href="#1056">1056</a> 	@Test
-<a class="jxr_linenumber" name="1057" href="#1057">1057</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClassOfStringInt() {
-<a class="jxr_linenumber" name="1058" href="#1058">1058</a> 
-<a class="jxr_linenumber" name="1059" href="#1059">1059</a> 		assertEquals(Point.<strong class="jxr_keyword">class</strong>, hdb.classOf(Point.<strong class="jxr_keyword">class</strong>.getName(), 3));
-<a class="jxr_linenumber" name="1060" href="#1060">1060</a> 		assertEquals(Segment.<strong class="jxr_keyword">class</strong>, hdb.classOf(Segment.<strong class="jxr_keyword">class</strong>.getName(), 3));
-<a class="jxr_linenumber" name="1061" href="#1061">1061</a> 		assertEquals(Polygon.<strong class="jxr_keyword">class</strong>, hdb.classOf(Polygon.<strong class="jxr_keyword">class</strong>.getName(), 4));
-<a class="jxr_linenumber" name="1062" href="#1062">1062</a> 
-<a class="jxr_linenumber" name="1063" href="#1063">1063</a> 	}
+<a class="jxr_linenumber" name="1056" href="#1056">1056</a> 	}
+<a class="jxr_linenumber" name="1057" href="#1057">1057</a> 
+<a class="jxr_linenumber" name="1058" href="#1058">1058</a> 	@Test
+<a class="jxr_linenumber" name="1059" href="#1059">1059</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClassOfStringInt() {
+<a class="jxr_linenumber" name="1060" href="#1060">1060</a> 
+<a class="jxr_linenumber" name="1061" href="#1061">1061</a> 		assertEquals(Point.<strong class="jxr_keyword">class</strong>, hdb.classOf(Point.<strong class="jxr_keyword">class</strong>.getName(), 3));
+<a class="jxr_linenumber" name="1062" href="#1062">1062</a> 		assertEquals(Segment.<strong class="jxr_keyword">class</strong>, hdb.classOf(Segment.<strong class="jxr_keyword">class</strong>.getName(), 3));
+<a class="jxr_linenumber" name="1063" href="#1063">1063</a> 		assertEquals(Polygon.<strong class="jxr_keyword">class</strong>, hdb.classOf(Polygon.<strong class="jxr_keyword">class</strong>.getName(), 4));
 <a class="jxr_linenumber" name="1064" href="#1064">1064</a> 
-<a class="jxr_linenumber" name="1065" href="#1065">1065</a> 	@Test
-<a class="jxr_linenumber" name="1066" href="#1066">1066</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClassOfPredicateOfO() {
-<a class="jxr_linenumber" name="1067" href="#1067">1067</a> 
-<a class="jxr_linenumber" name="1068" href="#1068">1068</a> 		assertEquals(Point.<strong class="jxr_keyword">class</strong>, hdb.classOf(<strong class="jxr_keyword">new</strong> Predicate&lt;Point&gt;() {
+<a class="jxr_linenumber" name="1065" href="#1065">1065</a> 	}
+<a class="jxr_linenumber" name="1066" href="#1066">1066</a> 
+<a class="jxr_linenumber" name="1067" href="#1067">1067</a> 	@Test
+<a class="jxr_linenumber" name="1068" href="#1068">1068</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClassOfPredicateOfO() {
 <a class="jxr_linenumber" name="1069" href="#1069">1069</a> 
-<a class="jxr_linenumber" name="1070" href="#1070">1070</a> 			<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> serialVersionUID = -4018100887741066860L;
+<a class="jxr_linenumber" name="1070" href="#1070">1070</a> 		assertEquals(Point.<strong class="jxr_keyword">class</strong>, hdb.classOf(<strong class="jxr_keyword">new</strong> Predicate&lt;Point&gt;() {
 <a class="jxr_linenumber" name="1071" href="#1071">1071</a> 
-<a class="jxr_linenumber" name="1072" href="#1072">1072</a> 			<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> evaluate(Point p) {
-<a class="jxr_linenumber" name="1073" href="#1073">1073</a> 				<strong class="jxr_keyword">return</strong> a.equals(p);
-<a class="jxr_linenumber" name="1074" href="#1074">1074</a> 			}
-<a class="jxr_linenumber" name="1075" href="#1075">1075</a> 
-<a class="jxr_linenumber" name="1076" href="#1076">1076</a> 		}));
+<a class="jxr_linenumber" name="1072" href="#1072">1072</a> 			<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> serialVersionUID = -4018100887741066860L;
+<a class="jxr_linenumber" name="1073" href="#1073">1073</a> 
+<a class="jxr_linenumber" name="1074" href="#1074">1074</a> 			<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> evaluate(Point p) {
+<a class="jxr_linenumber" name="1075" href="#1075">1075</a> 				<strong class="jxr_keyword">return</strong> a.equals(p);
+<a class="jxr_linenumber" name="1076" href="#1076">1076</a> 			}
 <a class="jxr_linenumber" name="1077" href="#1077">1077</a> 
-<a class="jxr_linenumber" name="1078" href="#1078">1078</a> 		assertEquals(Segment.<strong class="jxr_keyword">class</strong>, hdb.classOf(<strong class="jxr_keyword">new</strong> Predicate&lt;Segment&gt;() {
+<a class="jxr_linenumber" name="1078" href="#1078">1078</a> 		}));
 <a class="jxr_linenumber" name="1079" href="#1079">1079</a> 
-<a class="jxr_linenumber" name="1080" href="#1080">1080</a> 			<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> serialVersionUID = 4166804501726650718L;
+<a class="jxr_linenumber" name="1080" href="#1080">1080</a> 		assertEquals(Segment.<strong class="jxr_keyword">class</strong>, hdb.classOf(<strong class="jxr_keyword">new</strong> Predicate&lt;Segment&gt;() {
 <a class="jxr_linenumber" name="1081" href="#1081">1081</a> 
-<a class="jxr_linenumber" name="1082" href="#1082">1082</a> 			<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> evaluate(Segment s) {
-<a class="jxr_linenumber" name="1083" href="#1083">1083</a> 				<strong class="jxr_keyword">return</strong> ab.equals(s);
-<a class="jxr_linenumber" name="1084" href="#1084">1084</a> 			}
-<a class="jxr_linenumber" name="1085" href="#1085">1085</a> 
-<a class="jxr_linenumber" name="1086" href="#1086">1086</a> 		}));
+<a class="jxr_linenumber" name="1082" href="#1082">1082</a> 			<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> serialVersionUID = 4166804501726650718L;
+<a class="jxr_linenumber" name="1083" href="#1083">1083</a> 
+<a class="jxr_linenumber" name="1084" href="#1084">1084</a> 			<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> evaluate(Segment s) {
+<a class="jxr_linenumber" name="1085" href="#1085">1085</a> 				<strong class="jxr_keyword">return</strong> ab.equals(s);
+<a class="jxr_linenumber" name="1086" href="#1086">1086</a> 			}
 <a class="jxr_linenumber" name="1087" href="#1087">1087</a> 
-<a class="jxr_linenumber" name="1088" href="#1088">1088</a> 		assertEquals(Polygon.<strong class="jxr_keyword">class</strong>, hdb.classOf(<strong class="jxr_keyword">new</strong> Predicate&lt;Polygon&gt;() {
+<a class="jxr_linenumber" name="1088" href="#1088">1088</a> 		}));
 <a class="jxr_linenumber" name="1089" href="#1089">1089</a> 
-<a class="jxr_linenumber" name="1090" href="#1090">1090</a> 			<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> serialVersionUID = -6708308685793944730L;
+<a class="jxr_linenumber" name="1090" href="#1090">1090</a> 		assertEquals(Polygon.<strong class="jxr_keyword">class</strong>, hdb.classOf(<strong class="jxr_keyword">new</strong> Predicate&lt;Polygon&gt;() {
 <a class="jxr_linenumber" name="1091" href="#1091">1091</a> 
-<a class="jxr_linenumber" name="1092" href="#1092">1092</a> 			<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> evaluate(Polygon p) {
-<a class="jxr_linenumber" name="1093" href="#1093">1093</a> 				<strong class="jxr_keyword">return</strong> triangle.equals(p);
-<a class="jxr_linenumber" name="1094" href="#1094">1094</a> 			}
-<a class="jxr_linenumber" name="1095" href="#1095">1095</a> 
-<a class="jxr_linenumber" name="1096" href="#1096">1096</a> 		}));
+<a class="jxr_linenumber" name="1092" href="#1092">1092</a> 			<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> serialVersionUID = -6708308685793944730L;
+<a class="jxr_linenumber" name="1093" href="#1093">1093</a> 
+<a class="jxr_linenumber" name="1094" href="#1094">1094</a> 			<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> evaluate(Polygon p) {
+<a class="jxr_linenumber" name="1095" href="#1095">1095</a> 				<strong class="jxr_keyword">return</strong> triangle.equals(p);
+<a class="jxr_linenumber" name="1096" href="#1096">1096</a> 			}
 <a class="jxr_linenumber" name="1097" href="#1097">1097</a> 
-<a class="jxr_linenumber" name="1098" href="#1098">1098</a> 	}
+<a class="jxr_linenumber" name="1098" href="#1098">1098</a> 		}));
 <a class="jxr_linenumber" name="1099" href="#1099">1099</a> 
-<a class="jxr_linenumber" name="1100" href="#1100">1100</a> 	@Test
-<a class="jxr_linenumber" name="1101" href="#1101">1101</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClassesOfString() {
-<a class="jxr_linenumber" name="1102" href="#1102">1102</a> 		assertArrayEquals(<strong class="jxr_keyword">new</strong> Class[] { Segment.<strong class="jxr_keyword">class</strong>, Point.<strong class="jxr_keyword">class</strong> },
-<a class="jxr_linenumber" name="1103" href="#1103">1103</a> 				hdb.classesOf(<span class="jxr_string">"'"</span> + Segment.<strong class="jxr_keyword">class</strong>.getName() + <span class="jxr_string">"'(Ids, Point0, Point1), Point0 == '"</span>
-<a class="jxr_linenumber" name="1104" href="#1104">1104</a> 						+ Point.<strong class="jxr_keyword">class</strong>.getName() + <span class="jxr_string">"'(a, 3,14), Point1 == '"</span> + Point.<strong class="jxr_keyword">class</strong>.getName() + <span class="jxr_string">"'(b, 3,14)"</span>)
-<a class="jxr_linenumber" name="1105" href="#1105">1105</a> 						.toArray());
-<a class="jxr_linenumber" name="1106" href="#1106">1106</a> 	}
-<a class="jxr_linenumber" name="1107" href="#1107">1107</a> 
-<a class="jxr_linenumber" name="1108" href="#1108">1108</a> 	@Test
-<a class="jxr_linenumber" name="1109" href="#1109">1109</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClassesOfPrologTermArray() {
-<a class="jxr_linenumber" name="1110" href="#1110">1110</a> 		ObjectConverter&lt;PrologTerm&gt; converter = <strong class="jxr_keyword">new</strong> PrologObjectConverter(provider);
-<a class="jxr_linenumber" name="1111" href="#1111">1111</a> 		assertArrayEquals(<strong class="jxr_keyword">new</strong> Class[] { Point.<strong class="jxr_keyword">class</strong>, Segment.<strong class="jxr_keyword">class</strong>, Polygon.<strong class="jxr_keyword">class</strong> },
-<a class="jxr_linenumber" name="1112" href="#1112">1112</a> 				hdb.classesOf(
-<a class="jxr_linenumber" name="1113" href="#1113">1113</a> 						<strong class="jxr_keyword">new</strong> PrologTerm[] { converter.toTerm(a), converter.toTerm(ab), converter.toTerm(triangle) })
-<a class="jxr_linenumber" name="1114" href="#1114">1114</a> 						.toArray());
-<a class="jxr_linenumber" name="1115" href="#1115">1115</a> 	}
-<a class="jxr_linenumber" name="1116" href="#1116">1116</a> 
-<a class="jxr_linenumber" name="1117" href="#1117">1117</a> 	@Test
-<a class="jxr_linenumber" name="1118" href="#1118">1118</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testUnwrapClassOfK() {
-<a class="jxr_linenumber" name="1119" href="#1119">1119</a> 		assertEquals(PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>.getName(),
-<a class="jxr_linenumber" name="1120" href="#1120">1120</a> 				hdb.unwrap(PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>).getClass().getName());
-<a class="jxr_linenumber" name="1121" href="#1121">1121</a> 	}
-<a class="jxr_linenumber" name="1122" href="#1122">1122</a> 
-<a class="jxr_linenumber" name="1123" href="#1123">1123</a> 	@Test
-<a class="jxr_linenumber" name="1124" href="#1124">1124</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testUnwrapObjectClassOfK() {
-<a class="jxr_linenumber" name="1125" href="#1125">1125</a> 		assertEquals(PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>.getName(),
-<a class="jxr_linenumber" name="1126" href="#1126">1126</a> 				hdb.unwrap(hdb, PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>).getClass().getName());
-<a class="jxr_linenumber" name="1127" href="#1127">1127</a> 	}
-<a class="jxr_linenumber" name="1128" href="#1128">1128</a> 
-<a class="jxr_linenumber" name="1129" href="#1129">1129</a> 	@Test
-<a class="jxr_linenumber" name="1130" href="#1130">1130</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsWrappedByClassOfQ() {
-<a class="jxr_linenumber" name="1131" href="#1131">1131</a> 		assertTrue(hdb.isWrappedFor(AbstractHierarchicalDatabase.<strong class="jxr_keyword">class</strong>));
-<a class="jxr_linenumber" name="1132" href="#1132">1132</a> 		assertTrue(hdb.isWrappedFor(PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>));
-<a class="jxr_linenumber" name="1133" href="#1133">1133</a> 	}
-<a class="jxr_linenumber" name="1134" href="#1134">1134</a> 
-<a class="jxr_linenumber" name="1135" href="#1135">1135</a> 	@Test
-<a class="jxr_linenumber" name="1136" href="#1136">1136</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsWrappedByObjectClassOfQ() {
-<a class="jxr_linenumber" name="1137" href="#1137">1137</a> 		assertTrue(hdb.isWrappedFor(hdb, AbstractHierarchicalDatabase.<strong class="jxr_keyword">class</strong>));
-<a class="jxr_linenumber" name="1138" href="#1138">1138</a> 		assertTrue(hdb.isWrappedFor(hdb, PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>));
-<a class="jxr_linenumber" name="1139" href="#1139">1139</a> 	}
-<a class="jxr_linenumber" name="1140" href="#1140">1140</a> 
-<a class="jxr_linenumber" name="1141" href="#1141">1141</a> }
+<a class="jxr_linenumber" name="1100" href="#1100">1100</a> 	}
+<a class="jxr_linenumber" name="1101" href="#1101">1101</a> 
+<a class="jxr_linenumber" name="1102" href="#1102">1102</a> 	@Test
+<a class="jxr_linenumber" name="1103" href="#1103">1103</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClassesOfString() {
+<a class="jxr_linenumber" name="1104" href="#1104">1104</a> 		assertArrayEquals(<strong class="jxr_keyword">new</strong> Class[] { Segment.<strong class="jxr_keyword">class</strong>, Point.<strong class="jxr_keyword">class</strong> },
+<a class="jxr_linenumber" name="1105" href="#1105">1105</a> 				hdb.classesOf(<span class="jxr_string">"'"</span> + Segment.<strong class="jxr_keyword">class</strong>.getName() + <span class="jxr_string">"'(Ids, Point0, Point1), Point0 == '"</span>
+<a class="jxr_linenumber" name="1106" href="#1106">1106</a> 						+ Point.<strong class="jxr_keyword">class</strong>.getName() + <span class="jxr_string">"'(a, 3,14), Point1 == '"</span> + Point.<strong class="jxr_keyword">class</strong>.getName() + <span class="jxr_string">"'(b, 3,14)"</span>)
+<a class="jxr_linenumber" name="1107" href="#1107">1107</a> 						.toArray());
+<a class="jxr_linenumber" name="1108" href="#1108">1108</a> 	}
+<a class="jxr_linenumber" name="1109" href="#1109">1109</a> 
+<a class="jxr_linenumber" name="1110" href="#1110">1110</a> 	@Test
+<a class="jxr_linenumber" name="1111" href="#1111">1111</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testClassesOfPrologTermArray() {
+<a class="jxr_linenumber" name="1112" href="#1112">1112</a> 		ObjectConverter&lt;PrologTerm&gt; converter = <strong class="jxr_keyword">new</strong> PrologObjectConverter(provider);
+<a class="jxr_linenumber" name="1113" href="#1113">1113</a> 		assertArrayEquals(<strong class="jxr_keyword">new</strong> Class[] { Point.<strong class="jxr_keyword">class</strong>, Segment.<strong class="jxr_keyword">class</strong>, Polygon.<strong class="jxr_keyword">class</strong> },
+<a class="jxr_linenumber" name="1114" href="#1114">1114</a> 				hdb.classesOf(
+<a class="jxr_linenumber" name="1115" href="#1115">1115</a> 						<strong class="jxr_keyword">new</strong> PrologTerm[] { converter.toTerm(a), converter.toTerm(ab), converter.toTerm(triangle) })
+<a class="jxr_linenumber" name="1116" href="#1116">1116</a> 						.toArray());
+<a class="jxr_linenumber" name="1117" href="#1117">1117</a> 	}
+<a class="jxr_linenumber" name="1118" href="#1118">1118</a> 
+<a class="jxr_linenumber" name="1119" href="#1119">1119</a> 	@Test
+<a class="jxr_linenumber" name="1120" href="#1120">1120</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testUnwrapClassOfK() {
+<a class="jxr_linenumber" name="1121" href="#1121">1121</a> 		assertEquals(PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>.getName(),
+<a class="jxr_linenumber" name="1122" href="#1122">1122</a> 				hdb.unwrap(PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>).getClass().getName());
+<a class="jxr_linenumber" name="1123" href="#1123">1123</a> 	}
+<a class="jxr_linenumber" name="1124" href="#1124">1124</a> 
+<a class="jxr_linenumber" name="1125" href="#1125">1125</a> 	@Test
+<a class="jxr_linenumber" name="1126" href="#1126">1126</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testUnwrapObjectClassOfK() {
+<a class="jxr_linenumber" name="1127" href="#1127">1127</a> 		assertEquals(PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>.getName(),
+<a class="jxr_linenumber" name="1128" href="#1128">1128</a> 				hdb.unwrap(hdb, PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>).getClass().getName());
+<a class="jxr_linenumber" name="1129" href="#1129">1129</a> 	}
+<a class="jxr_linenumber" name="1130" href="#1130">1130</a> 
+<a class="jxr_linenumber" name="1131" href="#1131">1131</a> 	@Test
+<a class="jxr_linenumber" name="1132" href="#1132">1132</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsWrappedByClassOfQ() {
+<a class="jxr_linenumber" name="1133" href="#1133">1133</a> 		assertTrue(hdb.isWrappedFor(AbstractHierarchicalDatabase.<strong class="jxr_keyword">class</strong>));
+<a class="jxr_linenumber" name="1134" href="#1134">1134</a> 		assertTrue(hdb.isWrappedFor(PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>));
+<a class="jxr_linenumber" name="1135" href="#1135">1135</a> 	}
+<a class="jxr_linenumber" name="1136" href="#1136">1136</a> 
+<a class="jxr_linenumber" name="1137" href="#1137">1137</a> 	@Test
+<a class="jxr_linenumber" name="1138" href="#1138">1138</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIsWrappedByObjectClassOfQ() {
+<a class="jxr_linenumber" name="1139" href="#1139">1139</a> 		assertTrue(hdb.isWrappedFor(hdb, AbstractHierarchicalDatabase.<strong class="jxr_keyword">class</strong>));
+<a class="jxr_linenumber" name="1140" href="#1140">1140</a> 		assertTrue(hdb.isWrappedFor(hdb, PrologHierarchicalDatabase.<strong class="jxr_keyword">class</strong>));
+<a class="jxr_linenumber" name="1141" href="#1141">1141</a> 	}
+<a class="jxr_linenumber" name="1142" href="#1142">1142</a> 
+<a class="jxr_linenumber" name="1143" href="#1143">1143</a> }
 </pre>
 <hr/><div id="footer">This page was automatically generated by <a href="http://maven.apache.org/">Maven</a></div></body>
 </html>

@@ -1,8 +1,8 @@
-/*
+/*-
  * #%L
  * prolobjectlink-jpx-jtrolog
  * %%
- * Copyright (C) 2019 Prolobjectlink Project
+ * Copyright (C) 2012 - 2019 Prolobjectlink Project
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -768,12 +768,14 @@ public class HierarchicalDatabaseTest extends BaseTest {
 	@Test
 	public void testLocationOf() {
 
-		assertEquals("dat" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database" + SEPARATOR
-				+ Point.class.getPackage().getName().replace('.', SEPARATOR), hdb.locationOf(Point.class));
-		assertEquals("dat" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database" + SEPARATOR
-				+ Segment.class.getPackage().getName().replace('.', SEPARATOR), hdb.locationOf(Segment.class));
-		assertEquals("dat" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database" + SEPARATOR
-				+ Polygon.class.getPackage().getName().replace('.', SEPARATOR), hdb.locationOf(Polygon.class));
+		assertEquals("db/pdb" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database"
+				+ SEPARATOR + Point.class.getPackage().getName().replace('.', SEPARATOR), hdb.locationOf(Point.class));
+		assertEquals("db/pdb" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database"
+				+ SEPARATOR + Segment.class.getPackage().getName().replace('.', SEPARATOR),
+				hdb.locationOf(Segment.class));
+		assertEquals("db/pdb" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database"
+				+ SEPARATOR + Polygon.class.getPackage().getName().replace('.', SEPARATOR),
+				hdb.locationOf(Polygon.class));
 
 	}
 
@@ -932,7 +934,7 @@ public class HierarchicalDatabaseTest extends BaseTest {
 
 	@Test
 	public void testGetLocation() {
-		assertEquals("dat" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database",
+		assertEquals("db/pdb" + SEPARATOR + "hierarchical" + SEPARATOR + hdb.getName() + SEPARATOR + "database",
 				hdb.getLocation());
 	}
 

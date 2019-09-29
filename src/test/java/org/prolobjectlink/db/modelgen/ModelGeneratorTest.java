@@ -79,7 +79,7 @@ public class ModelGeneratorTest extends BaseTest {
 //		rschema.addSequence("department_sequence", "", Department.class, 1);
 
 		ModelGenerator rg = new ModelGenerator(rdb, WebApplication.ROOT + "/webpro/model.pl");
-		assertEquals(4, rg.createSchema().countClasses());
+		assertEquals(1, rg.createSchema().countClasses());
 //		assertEquals(rschema, rg.createSchema());
 	}
 
@@ -87,7 +87,7 @@ public class ModelGeneratorTest extends BaseTest {
 	public void testGenerateSchema() {
 
 		ModelGenerator rg = new ModelGenerator(rdb, WebApplication.ROOT + "/webpro/model.pl");
-		assertEquals(4, rg.createSchema().countClasses());
+		assertEquals(1, rg.createSchema().countClasses());
 		assertFalse(rg.generateSchema().isEmpty());
 
 	}
@@ -96,7 +96,7 @@ public class ModelGeneratorTest extends BaseTest {
 	public void testCompileSchema() {
 
 		ModelGenerator rg = new ModelGenerator(rdb, WebApplication.ROOT + "/webpro/model.pl");
-		assertEquals(4, rg.createSchema().countClasses());
+		assertEquals(1, rg.createSchema().countClasses());
 //		System.out.println(rg.compileSchema());
 
 	}

@@ -1,8 +1,8 @@
-/*
+/*-
  * #%L
  * prolobjectlink-jpx-jtrolog
  * %%
- * Copyright (C) 2019 Prolobjectlink Project
+ * Copyright (C) 2012 - 2019 Prolobjectlink Project
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ public class DatabaseFunctionTest extends BaseTest {
 	@Test
 	public void testGetPath() {
 		DatabaseFunction f = rdb.getSchema().addFunction("pitagoras", "");
-		assertEquals("dat/relational/test/functions.pl", f.getPath());
+		assertEquals("db/pdb/relational/test/functions.pl", f.getPath());
 	}
 
 	@Test
