@@ -57,13 +57,13 @@ public class JTrologDatabaseConsole extends AbstractDatabaseConsole implements D
 		UndertowWebServer server = null;
 		DatabaseServer database = null;
 		if (WebPlatformUtil.runOnWindows()) {
-			database = new Win32DatabaseServer();
+//			database = new Win32DatabaseServer();
 			server = new Win32UndertowWebServer(port);
 		} else if (WebPlatformUtil.runOnOsX()) {
-			database = new MacosxDatabaseServer();
+//			database = new MacosxDatabaseServer();
 			server = new MacosxUndertowWebServer(port);
 		} else if (WebPlatformUtil.runOnLinux()) {
-			database = new LinuxDatabaseServer();
+//			database = new LinuxDatabaseServer();
 			server = new LinuxUndertowWebServer(port);
 		} else {
 			Logger.getLogger(UndertowServerControl.class.getName()).log(Level.SEVERE, null, "Not supported platfor");
