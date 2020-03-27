@@ -67,13 +67,13 @@
 <a class="jxr_linenumber" name="57" href="#57">57</a>  		UndertowWebServer server = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="58" href="#58">58</a>  		DatabaseServer database = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="59" href="#59">59</a>  		<strong class="jxr_keyword">if</strong> (WebPlatformUtil.runOnWindows()) {
-<a class="jxr_linenumber" name="60" href="#60">60</a>  			database = <strong class="jxr_keyword">new</strong> Win32DatabaseServer();
+<a class="jxr_linenumber" name="60" href="#60">60</a>  <em class="jxr_comment">//			database = new Win32DatabaseServer();</em>
 <a class="jxr_linenumber" name="61" href="#61">61</a>  			server = <strong class="jxr_keyword">new</strong> Win32UndertowWebServer(port);
 <a class="jxr_linenumber" name="62" href="#62">62</a>  		} <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (WebPlatformUtil.runOnOsX()) {
-<a class="jxr_linenumber" name="63" href="#63">63</a>  			database = <strong class="jxr_keyword">new</strong> MacosxDatabaseServer();
+<a class="jxr_linenumber" name="63" href="#63">63</a>  <em class="jxr_comment">//			database = new MacosxDatabaseServer();</em>
 <a class="jxr_linenumber" name="64" href="#64">64</a>  			server = <strong class="jxr_keyword">new</strong> MacosxUndertowWebServer(port);
 <a class="jxr_linenumber" name="65" href="#65">65</a>  		} <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (WebPlatformUtil.runOnLinux()) {
-<a class="jxr_linenumber" name="66" href="#66">66</a>  			database = <strong class="jxr_keyword">new</strong> LinuxDatabaseServer();
+<a class="jxr_linenumber" name="66" href="#66">66</a>  <em class="jxr_comment">//			database = new LinuxDatabaseServer();</em>
 <a class="jxr_linenumber" name="67" href="#67">67</a>  			server = <strong class="jxr_keyword">new</strong> LinuxUndertowWebServer(port);
 <a class="jxr_linenumber" name="68" href="#68">68</a>  		} <strong class="jxr_keyword">else</strong> {
 <a class="jxr_linenumber" name="69" href="#69">69</a>  			Logger.getLogger(UndertowServerControl.<strong class="jxr_keyword">class</strong>.getName()).log(Level.SEVERE, <strong class="jxr_keyword">null</strong>, <span class="jxr_string">"Not supported platfor"</span>);
