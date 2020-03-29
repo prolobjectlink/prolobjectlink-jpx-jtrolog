@@ -21,8 +21,8 @@ package org.prolobjectlink.db.prolog.jtrolog;
 
 import org.prolobjectlink.db.prolog.PrologDatabaseEngine;
 import org.prolobjectlink.db.prolog.PrologDatabaseProvider;
-import org.prolobjectlink.prolog.jtrolog.JTrolog;
 
+import io.github.prolobjectlink.prolog.jtrolog.JTrolog;
 import jTrolog.engine.Prolog;
 
 public class JTrologDatabaseProvider extends JTrolog implements PrologDatabaseProvider {

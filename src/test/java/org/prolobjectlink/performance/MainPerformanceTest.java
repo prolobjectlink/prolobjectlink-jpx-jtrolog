@@ -24,9 +24,10 @@ import org.prolobjectlink.db.Storage;
 import org.prolobjectlink.db.etc.Settings;
 import org.prolobjectlink.db.prolog.jtrolog.JTrologContainerFactory;
 import org.prolobjectlink.domain.geometry.Point;
-import org.prolobjectlink.prolog.Prolog;
-import org.prolobjectlink.prolog.PrologProvider;
-import org.prolobjectlink.prolog.jtrolog.JTrolog;
+
+import io.github.prolobjectlink.prolog.Prolog;
+import io.github.prolobjectlink.prolog.PrologProvider;
+import io.github.prolobjectlink.prolog.jtrolog.JTrolog;
 
 public class MainPerformanceTest {
 

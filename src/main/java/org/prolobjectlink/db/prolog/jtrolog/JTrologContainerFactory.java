@@ -22,7 +22,8 @@ package org.prolobjectlink.db.prolog.jtrolog;
 import org.prolobjectlink.db.HierarchicalCache;
 import org.prolobjectlink.db.etc.Settings;
 import org.prolobjectlink.db.prolog.PrologContainerFactory;
-import org.prolobjectlink.prolog.jtrolog.JTrolog;
+
+import io.github.prolobjectlink.prolog.jtrolog.JTrolog;
 
 public final class JTrologContainerFactory extends PrologContainerFactory {
 
