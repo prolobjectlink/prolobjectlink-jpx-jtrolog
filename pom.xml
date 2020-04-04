@@ -6,6 +6,7 @@
 	<artifactId>prolobjectlink-jpx-jtrolog</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>prolobjectlink-jpx-jtrolog</name>
+	<packaging>bundle</packaging>
 	<description>prolobjectlink-jtrolog</description>
 
 	<url>https://prolobjectlink.github.io/${project.name}</url>
@@ -18,8 +19,8 @@
 
 	<licenses>
 		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<name>GNU LGPL 2.1</name>
+			<url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
@@ -44,7 +45,7 @@
 		<developerConnection>scm:git:https://github.com/prolobjectlink/${project.name}.git</developerConnection>
 		<connection>scm:git:https://github.com/prolobjectlink/${project.name}.git</connection>
 		<url>https://prolobjectlink.github.io/${project.name}</url>
-
+		<tag>v@{project.version}</tag>
 	</scm>
 
 	<ciManagement>
@@ -78,7 +79,7 @@
 		</snapshotRepository>
 		<repository>
 			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/release/</url>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 		<site>
 			<id>website</id>
@@ -111,9 +112,14 @@
 			<artifactId>prolobjectlink-jpp-javax</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>io.github.prolobjectlink</groupId> -->
+		<!-- <artifactId>prolobjectlink-jps-undertow</artifactId> -->
+		<!-- <version>1.0-SNAPSHOT</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>io.github.prolobjectlink</groupId>
-			<artifactId>prolobjectlink-jps-undertow</artifactId>
+			<artifactId>prolobjectlink-jps-grizzly</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
@@ -163,22 +169,22 @@
 					<nohelp>true</nohelp>
 				</configuration>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-javadoc-plugin</artifactId> -->
-			<!-- <version>3.0.0</version> -->
-			<!-- <configuration> -->
-			<!-- <nohelp>true</nohelp> -->
-			<!-- </configuration> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <id>attach-javadocs</id> -->
-			<!-- <goals> -->
-			<!-- <goal>jar</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<nohelp>true</nohelp>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -304,7 +310,7 @@
 					<canUpdateDescription>true</canUpdateDescription>
 					<failOnMissingHeader>true</failOnMissingHeader>
 					<acceptPomPackaging>true</acceptPomPackaging>
-					<licenseName>apache_v2</licenseName>
+					<licenseName>lgpl_v2_1</licenseName>
 					<!-- <dryRun>true</dryRun> -->
 					<licenseFile>LICENSE.md</licenseFile>
 					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
@@ -334,7 +340,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>2.3.1</version>
+				<version>3.0.3</version>
 				<configuration>
 					<threshold>Normal</threshold>
 					<effort>Default</effort>
@@ -434,6 +440,234 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<version>2.3.7</version>
+				<configuration>
+					<instructions>
+						<Implementation-Title>${project.name}</Implementation-Title>
+						<Implementation-Version>${project.version}</Implementation-Version>
+						<Bundle-DocURL>${project.url}</Bundle-DocURL>
+						<Bundle-Name>JTrolog Java Prolog Interface Implementation</Bundle-Name>
+						<!-- <Export-Package>${project.groupId}.prolog.jtrolog</Export-Package> -->
+						<Export-Package>org.prolobjectlink.db.prolog.jtrolog</Export-Package>
+						<Import-Package>javax.script;
+
+							javax.persistence.spi;
+							org.prolobjectlink.db;
+							org.prolobjectlink.db.etc;
+							org.prolobjectlink.db.jpa;
+							org.prolobjectlink.db.memory;
+							org.prolobjectlink.db.persistent;
+							org.prolobjectlink.db.prolog;
+							org.prolobjectlink.db.util;
+							org.prolobjectlink.db.xml;
+							org.prolobjectlink.logging;
+							org.prolobjectlink.web.application;
+							org.prolobjectlink.web.platform;
+							org.prolobjectlink.web.platform.linux.grizzly;
+							org.prolobjectlink.web.platform.macosx.grizzly;
+							org.prolobjectlink.web.platform.win32.grizzly;
+
+							com.apple.mrj;
+							com.fasterxml.classmate; com.fasterxml.classmate.members;
+							com.lowagie.toolbox; com.mysql.jdbc; com.sun.javadoc;
+							com.sun.jdi; com.sun.jdi.connect; com.sun.jdi.event;
+							com.sun.jdi.request; com.sun.msv.datatype;
+							com.sun.msv.datatype.xsd;
+							com.sun.org.apache.xml.internal.serialize; com.sun.tools.javadoc;
+							groovyjarjarasm.asm; javax.accessibility; javax.activation;
+							javax.annotation.processing; javax.crypto;
+							javax.crypto.interfaces; javax.crypto.spec;
+							javax.enterprise.context; javax.enterprise.context.spi;
+							javax.enterprise.inject.spi; javax.enterprise.util;
+							javax.imageio; javax.imageio.metadata;
+							javax.imageio.plugins.jpeg; javax.imageio.spi;
+							javax.imageio.stream; javax.interceptor; javax.lang.model;
+							javax.lang.model.element; javax.lang.model.type;
+							javax.lang.model.util; javax.mail; javax.mail.internet;
+							javax.management; javax.naming; javax.naming.directory;
+							javax.naming.event; javax.naming.ldap; javax.naming.spi;
+							javax.net; javax.net.ssl; javax.print; javax.print.attribute;
+							javax.print.attribute.standard; javax.security.auth;
+							javax.security.auth.callback; javax.security.auth.login;
+							javax.security.auth.x500; javax.security.cert;
+							javax.security.jacc; javax.sql; javax.sql.rowset; javax.swing;
+							javax.swing.border; javax.swing.event; javax.swing.filechooser;
+							javax.swing.plaf; javax.swing.plaf.basic; javax.swing.table;
+							javax.swing.text; javax.swing.text.html; javax.swing.tree;
+							javax.tools; javax.xml.bind; javax.xml.bind.annotation;
+							javax.xml.bind.annotation.adapters; javax.xml.bind.util;
+							javax.xml.soap; javax.xml.transform.stax;
+							jersey.repackaged.com.google.common.cache.LocalCache.jersey.repackaged.com.google.common.cache;
+							jersey.repackaged.com.google.common.cache.LocalCache.jersey.repackaged.com.google.common.cache.LocalCache$jersey.repackaged.com.google.common.cache;
+							jersey.repackaged.com.google.common.collect.AbstractMapBasedMultimap.jersey.repackaged.com.google.common.collect;
+							jersey.repackaged.com.google.common.collect.MapMakerInternalMap.jersey.repackaged.com.google.common.collect;
+							jersey.repackaged.com.google.common.collect.MapMakerInternalMap.jersey.repackaged.com.google.common.collect.MapMakerInternalMap$jersey.repackaged.com.google.common.collect;
+							jersey.repackaged.com.google.common.collect.StandardTable.jersey.repackaged.com.google.common.collect;
+							jxl; jxl.biff; jxl.format; jxl.read.biff; jxl.write;
+							jxl.write.biff; mondrian.olap; mondrian.spi;
+							net.sourceforge.barbecue; net.sourceforge.barbecue.linear.code39;
+							net.sourceforge.barbecue.linear.ean;
+							net.sourceforge.barbecue.output; netscape.ldap;
+							org.apache.avalon.framework.logger; org.apache.batik.bridge;
+							org.apache.batik.dom; org.apache.batik.dom.svg;
+							org.apache.batik.ext.awt.image; org.apache.batik.gvt;
+							org.apache.batik.svggen; org.apache.bsf; org.apache.bsf.util;
+							org.apache.commons.collections.keyvalue;
+							org.apache.commons.collections.list;
+							org.apache.commons.collections.set; org.apache.commons.javaflow;
+							org.apache.crimson.jaxp; org.apache.log; org.apache.log4j;
+							org.apache.oro.text.regex; org.apache.poi.hdgf.extractor;
+							org.apache.poi.hpbf.extractor; org.apache.poi.hslf.extractor;
+							org.apache.poi.hsmf; org.apache.poi.hsmf.datatypes;
+							org.apache.poi.hsmf.extractor; org.apache.poi.hwpf;
+							org.apache.poi.hwpf.extractor; org.apache.poi.sl.usermodel;
+							org.apache.regexp; org.apache.tools.ant;
+							org.apache.tools.ant.taskdefs;
+							org.apache.tools.ant.taskdefs.compilers;
+							org.apache.tools.ant.types; org.apache.tools.ant.types.resources;
+							org.apache.tools.ant.util; org.apache.velocity;
+							org.apache.velocity.app; org.apache.velocity.context;
+							org.apache.xerces.utils.regex; org.apache.xml.resolver;
+							org.apache.xml.resolver.tools; org.apache.xml.serialize;
+							org.apache.xmlbeans.impl.xpath.saxon;
+							org.apache.xmlbeans.impl.xquery.saxon; org.apache.xpath;
+							org.apache.xpath.objects; org.codehaus.groovy.ast;
+							org.codehaus.groovy.control; org.eclipse.core.resources;
+							org.eclipse.core.runtime; org.eclipse.core.runtime.jobs;
+							org.eclipse.core.runtime.preferences; org.eclipse.jdt.core.index;
+							org.eclipse.jface.text; org.eclipse.osgi.util;
+							org.eclipse.text.edits; org.gjt.xpp; org.hibernate.validator;
+							org.ietf.jgss; org.jaxen; org.jaxen.dom; org.jaxen.dom4j;
+							org.jaxen.pattern; org.jaxen.saxpath; org.jboss.logmanager;
+							org.joda.time; org.joda.time.format; org.krysalis.barcode4j;
+							org.krysalis.barcode4j.impl; org.krysalis.barcode4j.impl.codabar;
+							org.krysalis.barcode4j.impl.code128;
+							org.krysalis.barcode4j.impl.code39;
+							org.krysalis.barcode4j.impl.datamatrix;
+							org.krysalis.barcode4j.impl.fourstate;
+							org.krysalis.barcode4j.impl.int2of5;
+							org.krysalis.barcode4j.impl.pdf417;
+							org.krysalis.barcode4j.impl.postnet;
+							org.krysalis.barcode4j.impl.upcean;
+							org.krysalis.barcode4j.output;
+							org.krysalis.barcode4j.output.bitmap;
+							org.krysalis.barcode4j.output.svg; org.krysalis.barcode4j.tools;
+							org.mozilla.javascript; org.mozilla.javascript.optimizer;
+							org.openxmlformats.schemas.officeDocument.x2006.math;
+							org.openxmlformats.schemas.schemaLibrary.x2006.main;
+							org.osgi.service.prefs; org.relaxng.datatype; org.slf4j;
+							org.slf4j.spi; org.springframework.beans.factory;
+							org.springframework.beans.factory.xml;
+							org.springframework.core.io; org.w3c.dom.svg; org.xmlpull.v1;
+							schemasMicrosoftComOfficePowerpoint;
+							schemasMicrosoftComOfficeWord; sun.misc;
+							weblogic.apache.xml.serialize;
+
+							${project.groupId}.*;provide:=true</Import-Package>
+						<Bundle-SymbolicName>${project.groupId}.db.prolog.jpl.yap.plugin;singleton:=true</Bundle-SymbolicName>
+						<Bundle-RequiredExecutionEnvironment>JavaSE-1.6</Bundle-RequiredExecutionEnvironment>
+						<Embed-Dependency>*;scope=compile|runtime;inline=false</Embed-Dependency>
+						<Embed-Directory>target/dependency</Embed-Directory>
+						<Embed-StripGroup>true</Embed-StripGroup>
+						<Embed-Transitive>true</Embed-Transitive>
+					</instructions>
+				</configuration>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>install</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>2.7.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.rat</groupId>
+				<artifactId>apache-rat-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>verify</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<excludeSubProjects>false</excludeSubProjects>
+					<numUnapprovedLicenses>0</numUnapprovedLicenses>
+					<licenses>
+						<license
+							implementation="org.apache.rat.analysis.license.SimplePatternBasedLicense">
+							<licenseFamilyCategory>LGPL2.1</licenseFamilyCategory>
+							<licenseFamilyName>GNU Lesser General Public License (LGPL) 2.1</licenseFamilyName>
+							<notes></notes>
+							<patterns>
+								<pattern>GNU Lesser General Public License</pattern>
+							</patterns>
+						</license>
+					</licenses>
+					<licenseFamilies>
+						<licenseFamily
+							implementation="org.apache.rat.license.GPL2LicenseFamily">
+							<familyName>GNU Lesser General Public License (LGPL) 2.1</familyName>
+						</licenseFamily>
+					</licenseFamilies>
+					<excludes>
+						generated content
+						<exclude>**/.*/**</exclude>
+						<exclude>**/target/**/*</exclude>
+					</excludes>
+					<includes>
+						only check common source files
+						<include>**/src/**/*.apt</include>
+						<include>**/src/**/*.bat</include>
+						<include>**/src/**/*.css</include>
+						<include>**/src/**/*.html</include>
+						<include>**/src/**/*.java</include>
+						<include>**/src/**/*.js</include>
+						<include>**/src/**/*.jsp</include>
+						<include>**/src/**/*.properties</include>
+						<include>**/src/**/*.sh</include>
+						<include>**/src/**/*.txt</include>
+						<include>**/src/**/*.vm</include>
+						<include>**/src/**/*.xml</include>
+					</includes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -464,11 +698,11 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-javadoc-plugin</artifactId> -->
-			<!-- <version>2.10.4</version> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -487,11 +721,11 @@
 					<outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
 				</configuration>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.codehaus.mojo</groupId> -->
-			<!-- <artifactId>findbugs-maven-plugin</artifactId> -->
-			<!-- <version>2.3.1</version> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.3</version>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
@@ -504,6 +738,25 @@
 				<configuration>
 					<targetJdk>1.5</targetJdk>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.18.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.2</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependency-updates-report</report>
+							<report>plugin-updates-report</report>
+							<report>property-updates-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 		</plugins>
 	</reporting>

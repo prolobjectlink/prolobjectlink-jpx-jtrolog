@@ -4,17 +4,19 @@
  * %%
  * Copyright (C) 2012 - 2018 WorkLogic Project
  * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 2.1 of the
+ * License, or (at your option) any later version.
  * 
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Lesser Public License for more details.
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * You should have received a copy of the GNU General Lesser Public
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/lgpl-2.1.html>.
  * #L%
  */
 /*
@@ -51,7 +53,7 @@ import java.util.Random;
  * 
  * @author ivar.orstavik@hist.no
  */
-@SuppressWarnings({ "rawtypes", "unchecked","serial" })
+@SuppressWarnings({ "rawtypes", "unchecked", "serial" })
 public class IOLibrary extends Library {
 
 	private HashMap streams;
@@ -212,10 +214,8 @@ public class IOLibrary extends Library {
 	}
 
 	/**
-	 * reads a source text from a file.
-	 * <p/>
-	 * It's useful used with agent predicate: text_from_file(File,Source),
-	 * agent(Source).
+	 * reads a source text from a file. It's useful used with agent predicate:
+	 * text_from_file(File,Source), agent(Source).
 	 */
 	public boolean text_from_file_2(BindingsTable bt, Term file_name, Term text) throws IOException {
 		StringBuffer res = new StringBuffer();
@@ -245,7 +245,8 @@ public class IOLibrary extends Library {
 	}
 
 	public String getTheory() {
-		return "consult(File) :- text_from_file(File,Text), add_theory(Text).\n" + "reconsult(File) :- text_from_file(File,Text), set_theory(Text).\n"
+		return "consult(File) :- text_from_file(File,Text), add_theory(Text).\n"
+				+ "reconsult(File) :- text_from_file(File,Text), set_theory(Text).\n"
 				+ "solve_file(File,Goal) :- text_from_file(File,Text),text_term(Text,Goal),call(Goal).\n";
 	}
 

@@ -4,22 +4,24 @@
  * %%
  * Copyright (C) 2019 Prolobjectlink Project
  * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 2.1 of the
+ * License, or (at your option) any later version.
  * 
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Lesser Public License for more details.
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * You should have received a copy of the GNU General Lesser Public
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/lgpl-2.1.html>.
  * #L%
  */
 package org.prolobjectlink;
 
-import static org.prolobjectlink.db.XmlParser.XML;
+import static io.github.prolobjectlink.db.XmlParser.XML;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,25 +39,8 @@ import javax.persistence.criteria.Expression;
 
 import org.junit.After;
 import org.junit.Before;
-import org.prolobjectlink.db.ContainerFactory;
-import org.prolobjectlink.db.DatabaseClass;
-import org.prolobjectlink.db.DatabaseUser;
-import org.prolobjectlink.db.HierarchicalCache;
-import org.prolobjectlink.db.HierarchicalDatabase;
-import org.prolobjectlink.db.Protocol;
-import org.prolobjectlink.db.RelationalDatabase;
-import org.prolobjectlink.db.Schema;
-import org.prolobjectlink.db.Storage;
-import org.prolobjectlink.db.StorageManager;
-import org.prolobjectlink.db.StorageMode;
-import org.prolobjectlink.db.StoragePool;
-import org.prolobjectlink.db.etc.Settings;
-import org.prolobjectlink.db.jpa.criteria.JpaObject;
-import org.prolobjectlink.db.jpa.spi.JPAPersistenceSchemaVersion;
-import org.prolobjectlink.db.jpa.spi.JPAPersistenceVersion;
 import org.prolobjectlink.db.prolog.jtrolog.JTrologContainerFactory;
 import org.prolobjectlink.db.prolog.jtrolog.JTrologDatabaseProvider;
-import org.prolobjectlink.db.savepoint.SavePointManager;
 import org.prolobjectlink.domain.geometry.Point;
 import org.prolobjectlink.domain.geometry.Polygon;
 import org.prolobjectlink.domain.geometry.Segment;
@@ -66,8 +51,27 @@ import org.prolobjectlink.domain.model.Department;
 import org.prolobjectlink.domain.model.Employee;
 import org.prolobjectlink.domain.model.Person;
 import org.prolobjectlink.domain.model.view.AnEmployeeView;
-import org.prolobjectlink.graph.DirectedGraph;
 
+import io.github.prolobjectlink.GraphEdge;
+import io.github.prolobjectlink.GraphVertex;
+import io.github.prolobjectlink.db.ContainerFactory;
+import io.github.prolobjectlink.db.DatabaseClass;
+import io.github.prolobjectlink.db.DatabaseUser;
+import io.github.prolobjectlink.db.HierarchicalCache;
+import io.github.prolobjectlink.db.HierarchicalDatabase;
+import io.github.prolobjectlink.db.Protocol;
+import io.github.prolobjectlink.db.RelationalDatabase;
+import io.github.prolobjectlink.db.Schema;
+import io.github.prolobjectlink.db.Storage;
+import io.github.prolobjectlink.db.StorageManager;
+import io.github.prolobjectlink.db.StorageMode;
+import io.github.prolobjectlink.db.StoragePool;
+import io.github.prolobjectlink.db.etc.Settings;
+import io.github.prolobjectlink.db.jpa.criteria.JpaObject;
+import io.github.prolobjectlink.db.jpa.spi.JPAPersistenceSchemaVersion;
+import io.github.prolobjectlink.db.jpa.spi.JPAPersistenceVersion;
+import io.github.prolobjectlink.db.savepoint.SavePointManager;
+import io.github.prolobjectlink.graph.DirectedGraph;
 import io.github.prolobjectlink.prolog.Prolog;
 import io.github.prolobjectlink.prolog.PrologInteger;
 import io.github.prolobjectlink.prolog.PrologProvider;

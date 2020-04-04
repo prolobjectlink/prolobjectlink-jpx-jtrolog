@@ -1,0 +1,8 @@
+org.prolobjectlink
+org.prolobjectlink.db.jpa
+org.prolobjectlink.db.modelgen
+org.prolobjectlink.db.prolog
+org.prolobjectlink.performance
+org.prolobjectlink.persistence
+org.prolobjectlink.predicate
+org.prolobjectlink.util

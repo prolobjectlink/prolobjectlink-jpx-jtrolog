@@ -4,17 +4,19 @@
  * %%
  * Copyright (C) 2012 - 2018 WorkLogic Project
  * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 2.1 of the
+ * License, or (at your option) any later version.
  * 
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Lesser Public License for more details.
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * You should have received a copy of the GNU General Lesser Public
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/lgpl-2.1.html>.
  * #L%
  */
 /*
@@ -76,7 +78,7 @@ public class BuiltIn extends Library {
 	}
 
 	/**
-	 * Defines a map for synonyms for primitives. String primitive name ->
+	 * Defines a map for synonyms for primitives. String primitive name =
 	 * String[]{synonym name, another synonym name, ..}.
 	 */
 	public String[] getSynonym(String primitive) {
@@ -304,7 +306,7 @@ public class BuiltIn extends Library {
 
 	/**
 	 * op(+Precedence, +Type, +Name) defines a new operator if precedence not in
-	 * 0..1200 -> delete currently present op
+	 * 0..1200 = delete currently present op
 	 */
 	public void op_3(BindingsTable bt, Number arg0, StructAtom arg1, StructAtom arg2) {
 		String st = ((Struct) arg1).name;
