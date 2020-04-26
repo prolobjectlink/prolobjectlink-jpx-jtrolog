@@ -32,12 +32,8 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import org.junit.Test;
-import org.prolobjectlink.BaseTest;
-import org.prolobjectlink.domain.geometry.Point;
-import org.prolobjectlink.domain.geometry.Polygon;
-import org.prolobjectlink.domain.geometry.Segment;
-import org.prolobjectlink.domain.geometry.Tetragon;
 
+import io.github.prolobjectlink.BaseTest;
 import io.github.prolobjectlink.db.ObjectConverter;
 import io.github.prolobjectlink.db.prolog.PrologArrayList;
 import io.github.prolobjectlink.db.prolog.PrologDate;
@@ -46,6 +42,10 @@ import io.github.prolobjectlink.db.prolog.PrologHashSet;
 import io.github.prolobjectlink.db.prolog.PrologObjectConverter;
 import io.github.prolobjectlink.db.prolog.PrologTreeMap;
 import io.github.prolobjectlink.db.prolog.PrologTreeSet;
+import io.github.prolobjectlink.domain.geometry.Point;
+import io.github.prolobjectlink.domain.geometry.Polygon;
+import io.github.prolobjectlink.domain.geometry.Segment;
+import io.github.prolobjectlink.domain.geometry.Tetragon;
 import io.github.prolobjectlink.prolog.Prolog;
 import io.github.prolobjectlink.prolog.PrologProvider;
 import io.github.prolobjectlink.prolog.PrologTerm;

@@ -27,10 +27,10 @@ import static org.junit.Assert.assertNotNull;
 import java.lang.reflect.Field;
 
 import org.junit.Test;
-import org.prolobjectlink.BaseTest;
-import org.prolobjectlink.domain.geometry.Point;
 
+import io.github.prolobjectlink.BaseTest;
 import io.github.prolobjectlink.db.prolog.PrologRenamer;
+import io.github.prolobjectlink.domain.geometry.Point;
 import io.github.prolobjectlink.prolog.PrologVariable;
 
 public class RenamerTest extends BaseTest {

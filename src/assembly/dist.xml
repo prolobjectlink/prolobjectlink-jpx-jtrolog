@@ -82,6 +82,12 @@
 			<directory>${project.basedir}/obj</directory>
 			<outputDirectory>obj</outputDirectory>
 		</fileSet>
+		
+		<!-- root file system prolog to java folder -->
+		<fileSet>
+			<directory>${project.basedir}/root</directory>
+			<outputDirectory>root</outputDirectory>
+		</fileSet>
 
 		<!-- logs folder -->
 		<fileSet>

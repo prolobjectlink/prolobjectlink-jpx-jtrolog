@@ -29,15 +29,15 @@ import java.util.Arrays;
 import java.util.UUID;
 
 import org.junit.Test;
-import org.prolobjectlink.BaseTest;
-import org.prolobjectlink.domain.classes.MonsEnum;
 
+import io.github.prolobjectlink.BaseTest;
 import io.github.prolobjectlink.db.prolog.PrologArrayList;
 import io.github.prolobjectlink.db.prolog.PrologDate;
 import io.github.prolobjectlink.db.prolog.PrologHashMap;
 import io.github.prolobjectlink.db.prolog.PrologHashSet;
 import io.github.prolobjectlink.db.prolog.PrologTreeMap;
 import io.github.prolobjectlink.db.prolog.PrologTreeSet;
+import io.github.prolobjectlink.domain.classes.MonsEnum;
 
 public class PersistenceTest extends BaseTest {
 

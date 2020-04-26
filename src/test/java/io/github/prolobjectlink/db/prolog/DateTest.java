@@ -28,8 +28,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.Date;
 
 import org.junit.Test;
-import org.prolobjectlink.BaseTest;
 
+import io.github.prolobjectlink.BaseTest;
 import io.github.prolobjectlink.db.prolog.PrologDate;
 
 public class DateTest extends BaseTest {

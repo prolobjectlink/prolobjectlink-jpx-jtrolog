@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2020-04-14T07:07:10.626">
+<pmd version="4.2.5" timestamp="2020-05-31T11:16:00.570">
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpx-jtrolog\src\main\java\io\github\prolobjectlink\db\prolog\jtrolog\JTrologContainerFactory.java">
+<violation beginline="27" endline="27" begincolumn="1" endcolumn="55" rule="UnusedImports" ruleset="Import Statement Rules" package="io.github.prolobjectlink.db.prolog.jtrolog" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'io.github.prolobjectlink.prolog.jtrolog.JTrolog'
+</violation>
+</file>
+<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpx-jtrolog\src\main\java\io\github\prolobjectlink\db\prolog\jtrolog\JTrologHierarchicalCache.java">
+<violation beginline="34" endline="36" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="io.github.prolobjectlink.db.prolog.jtrolog" class="JTrologHierarchicalCache" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'containerFactory'.
+</violation>
+<violation beginline="38" endline="41" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="io.github.prolobjectlink.db.prolog.jtrolog" class="JTrologHierarchicalCache" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused constructor parameters such as 'containerFactory'.
+</violation>
+</file>
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpx-jtrolog\src\main\java\jTrolog\parser\Tokenizer.java">
 <violation beginline="25" endline="25" begincolumn="1" endcolumn="29" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="jTrolog.parser" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
 No need to import a type that lives in the same package
@@ -51,19 +64,6 @@ No need to import a type that lives in the same package
 <file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpx-jtrolog\src\main\java\jTrolog\terms\Wrapper.java">
 <violation beginline="24" endline="24" begincolumn="1" endcolumn="26" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="jTrolog.terms" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
 No need to import a type that lives in the same package
-</violation>
-</file>
-<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpx-jtrolog\src\main\java\org\prolobjectlink\db\prolog\jtrolog\JTrologContainerFactory.java">
-<violation beginline="28" endline="28" begincolumn="1" endcolumn="55" rule="UnusedImports" ruleset="Import Statement Rules" package="org.prolobjectlink.db.prolog.jtrolog" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
-Avoid unused imports such as 'io.github.prolobjectlink.prolog.jtrolog.JTrolog'
-</violation>
-</file>
-<file name="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpx-jtrolog\src\main\java\org\prolobjectlink\db\prolog\jtrolog\JTrologHierarchicalCache.java">
-<violation beginline="35" endline="37" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.prolobjectlink.db.prolog.jtrolog" class="JTrologHierarchicalCache" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
-Avoid unused constructor parameters such as 'containerFactory'.
-</violation>
-<violation beginline="39" endline="42" begincolumn="16" endcolumn="9" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="org.prolobjectlink.db.prolog.jtrolog" class="JTrologHierarchicalCache" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
-Avoid unused constructor parameters such as 'containerFactory'.
 </violation>
 </file>
 <suppressedviolation filename="C:\Users\Jose Zalacain\Documents\eclipse-java-photon-workspace\prolobjectlink-jpx-jtrolog\src\main\java\jTrolog\engine\BindingsTable.java" suppressiontype="annotation" msg="Avoid unused private methods such as 'leftMostChildsPost(int,int)'." usermsg=""/>

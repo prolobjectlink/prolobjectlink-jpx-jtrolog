@@ -91,7 +91,7 @@ Contribution
 <dependencies>
 	...
 	<dependency>
-		<groupId>org.prolobjectlink</groupId>
+		<groupId>io.github.prolobjectlink</groupId>
 		<artifactId>prolobjectlink-jpi</artifactId>
 		<version>[1.0.0, )</version>
 	</dependency>

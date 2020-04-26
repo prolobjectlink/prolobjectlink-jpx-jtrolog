@@ -31,14 +31,14 @@ import java.util.Map;
 import java.util.Set;
 
 import org.junit.Test;
-import org.prolobjectlink.BaseTest;
-import org.prolobjectlink.domain.model.Address;
-import org.prolobjectlink.domain.model.Department;
-import org.prolobjectlink.domain.model.Employee;
 
+import io.github.prolobjectlink.BaseTest;
 import io.github.prolobjectlink.db.DatabaseClass;
 import io.github.prolobjectlink.db.StorageMode;
 import io.github.prolobjectlink.db.modelgen.ModelGenerator;
+import io.github.prolobjectlink.domain.model.Address;
+import io.github.prolobjectlink.domain.model.Department;
+import io.github.prolobjectlink.domain.model.Employee;
 import io.github.prolobjectlink.web.application.WebApplication;
 
 public class ModelGeneratorTest extends BaseTest {
